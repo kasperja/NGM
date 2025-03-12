@@ -1,0 +1,1685 @@
+Let's make a game!
+	name:Hellion Scarab
+	by:kasperja
+	desc:Journey out, trade and upgrade your spaceship.<.><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.
+	created:07/06/2022
+	updated:11/06/2022
+	version:1.02
+
+Settings
+	
+	background:https://github.com/kasperja/NGM/raw/main/StarfieldSimulation96.gif
+	building cost increase:115%
+	building cost refund:50%
+	
+	spritesheet:icons, 48 by 48, https://github.com/kasperja/SSM/raw/main/SpriteCrystalsSC1.png
+		
+	stylesheet:https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/HS-3-CSS.txt
+	
+	no particles
+	no bulk particles
+	css filters off
+	number display full
+
+Layout
+	
+	*main
+  contains:res, buttons, BulkDisplay
+  *res
+	icons:hide
+    contains:Resources
+    class:fullWidth
+	tooltip origin:bottom
+  *buttons
+    contains:Buttons
+	tooltip origin:left
+*store
+  contains:buildings, buildings2, upgrades, upgrades2, buildingsHeader, buildings2Header, upgradesHeader, upgrades2Header
+  *buildings
+	icons:hide
+    contains:Buildings
+    tooltip origin:left
+  *buildingsHeader
+	//header:Shipyard
+	class:shipHeader
+  *buildings2
+	icons:hide
+    contains:tag:buildings2
+    tooltip origin:left
+  *buildings2Header
+	//header:Outposts
+	class:outHeader
+  *upgrades
+	tooltip origin:left
+    contains:Upgrades
+	contains:tag:upgrades
+    costs:show
+    names:show
+	icons:hide
+  *upgradesHeader
+	//header:Upgrades
+  *upgrades2
+	tooltip origin:left
+    contains:tag:upgrades2
+    costs:show
+    names:show
+	icons:hide
+  *upgrades2Header
+	//header:Facilities
+  *sepOne
+	header:-
+	class:sepOne
+  *sepTwo
+	header:-
+	class:sepTwo
+  *sep3
+	header:-
+	class:sep3
+  *sep4
+	header:-
+	class:sep4
+  *log
+	contains:Log
+	class:log
+		
+Buttons
+	*bunnyButton
+		name:Blaster
+		desc:Blast smaller asteroids to earn credits.<//><b>Stats:</b><.>Spaceship Level <b>[slvl]</b><.>Pilot Level <b>[ulvl]</b>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.02</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.02</#>
+		on load:log Game loaded.
+		on click:anim icon wobble
+		on click:yield 1 bunny
+		on click:yield 1 talz
+		//on click:yield 1 prestigio2
+		//on click:yield 500000000000000000000000000 bunnies
+		//on click:yield 500000000000000000000000000 talz
+		//on click:yield 500000000000000000000000000 goldenCarrots
+		//on click:yield 500000000000000000000000000 tsc
+		//on click:yield 50000000000000000000000000000000000000000000000 prestigio
+		//on click:yield 50000000000000000000000000000000000000000000000 taa
+		//on click:yield 1 taa
+		//on click:yield 1000 taa
+		on click:
+			if (have goldenTouch and chance(5%)) 
+				yield 1 goldenCarrot
+				yield 1 tsc
+			end
+		end
+		//on click:spawn psSCS
+		icon:https://github.com/kasperja/NGM/raw/main/crosshai2r.png
+		no text
+		class:bigButton
+		icon class:shadowed
+		tooltip origin:bottom
+		tooltip class:red
+		
+Resources
+
+	*bunny|bunnies
+		name:Credit|Credits
+		desc:Earn credits for exploring the universe and by trading.
+		//<.>Total earned in this ship : <b>[talz]</b>
+		class:noBackground
+		show earned
+
+	*goldenCarrot|goldenCarrots
+		name:Ore|Ores
+		desc:Ores can be refined to provide materials for ship parts, or sold for credits at stations.
+		class:noBackground
+		show earned
+		hidden when 0
+
+	*prestigio
+		name:Microchip|Microchips
+		desc:Sell your ship to earn Microchips<.>Max AI lvl reached : <b>[BountyAI:max]</b>
+		class:noBackground
+		show earned
+		tag:prestige
+		hidden when 0
+
+	*prestigio2
+		name:Victory Medal|Victory Medals
+		desc:Shows how many times you have completed the game.<.>Total Ores collected since last Victory Medal : <b>[tsc]</b>
+		class:noBackground
+		show earned
+		tag:prestige prestige2
+		hidden when 0
+		
+	*totalShips
+   		hidden
+   		is always:(cages+hutches+coops+pens+meadows+villages+cities+citadels+stations+polices+bombers+ionfrigates+battlecruisers+Superfreighters+Vanguards)
+
+	*totalPlanets
+   		hidden
+   		is always:(cages2+hutches2+coops2+pens2+meadows2+villages2+cities2+citadels2+stations2+polices2+bombers2+ionfrigates2)
+
+	*talz		
+		hidden
+
+	*slvl
+		name:Spaceship Level
+		text:Spaceship Level [slvl]
+		is always:(pow(talz,0.041))*1.47
+		class:slvl
+		no tooltip
+
+	*ulvl
+		name:Pilot Level		
+		text:Pilot Level [ulvl]
+		is always:(pow(((bunnies:max)),0.041)*1.47)
+		class:ulvl
+		no tooltip
+		tag:prestige prestige2
+
+	*chk
+		on start:
+			if (chk > 0)
+			else
+				talz=bunnies:earned
+ 				chk=1
+			end
+		end
+		on load:
+			if (chk > 0)
+			else
+				talz=bunnies:earned
+ 				chk=1
+			end
+		end
+		hidden
+		tag:prestige prestige2
+
+	*tsc
+		hidden
+		tag:prestige
+
+	*taa
+		hidden
+		tag:prestige
+
+	*schk
+		passive:
+			if (slvl>=(schkt+1)) 
+				log <b><#e6e8d8>Spaceship Level [slvl] reached!</b>
+				schk=0
+				schkt = floor(slvl)
+			end
+		end		
+		hidden
+
+	*schkt
+		on load:
+			schkt = floor(slvl)
+		end	
+		on start:
+			schkt = floor(slvl)
+		end		
+		hidden
+
+	*uchk
+		passive:
+			if (ulvl>=(uchkt+1)) 
+				log <b><#e6e8d8>Pilot Level [ulvl] reached!</b>
+				uchk=0
+				uchkt = floor(ulvl)
+			end
+		end		
+		tag:prestige prestige2
+		hidden
+
+	*uchkt
+		on load:
+			uchkt = floor(ulvl)
+		end	
+		on start:
+			uchkt = floor(ulvl)
+		end	
+		tag:prestige prestige2		
+		hidden
+
+	*rewa
+		hidden	
+
+	*rewa2
+		hidden
+		
+	*ast
+		hidden
+		passive:
+			if (ast>random(5,10)) 
+				ast is 0
+				astc is 0
+			end
+		end
+
+	*astc
+		hidden
+		passive: 
+			if (astc == 1) 
+				yield 1 ast
+				spawn luckyBunny
+				spawn luckyBunny2		
+			end	 
+		end
+
+*pir
+		hidden
+		passive:
+			if (pir>random(4,7)) 
+				pir is 0
+				pirc is 0
+			end
+		end
+
+	*pirc
+		hidden
+		passive: 
+			if (pirc == 1) 
+				yield 1 pir
+				spawn luckyBunny4		
+			end	 
+		end
+
+	*comm
+		hidden
+		passive: 
+			if (comm>random(40,70))
+			$ranocc=random(1,21)
+				if ($ranocc == 1 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>Hi there, thanks for destroying a pirate that has chased me for the past week. Here is a small reward.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 2 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>Greetings Pilot. I need more space in my cargo hold, so I just ejected some Ores for you.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 3 and chance(40%))
+							log Asteroid field detected.
+							log Entering safe mode.
+							toast <b>WARNING:</b> Entering asteroid field.
+							astc is 1
+							
+				end
+				if ($ranocc == 4 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Automatic repairs were conducted.
+				end
+				if ($ranocc == 5 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Qak law enforcement, we didn't find any illegal goods on board.
+				end
+				if ($ranocc == 6 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Give up your cargo immediately or be exterminated!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 7 and chance(20%))	
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Die you three eyed excuse for a Bino star goat!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 8 and chance(20%))	
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Bug eyed clone of a clockwork hyper slug!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 9 and chance(20%))	
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Phemien law enforcement, we didn't find any illegal goods on board.
+				end
+				if ($ranocc == 10 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>One dimensional space sick replicant...
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 11 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Borg loving son of a mutant garbage droid!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 12 and chance(20%))	
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is the Yegar law enforcement. Please accept this reward for keeping our system secure.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 13 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Bug eyed apology for a radiation damaged space weevil!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 14 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is Qak Mining Industries. We have mined some valuable minerals from a nearby asteroid field. We mined more than we can carry, so you can keep what is left.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 15 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Clone of a clockwork android!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 16 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Single celled excuse for a mutant cyborg...
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 17 and chance(20%))	
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>What's up? You shared some information with me that led me to a pirate fleet I have been looking for. Thanks to you they are now all in jail on Zao TO5. Here is a share of the reward.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 18 and chance(20%))
+							rewa=(((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is the Qak Space Police Agency. We have evidence that you have consumed a too high amount of space-beer shortly before flying your spacecraft. We scanned your ship, and noticed that most of the ship is running in Auto-pilot, so you can get away with paying a smaller fine.
+							log You pay [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is -rewa+bunnies
+				end
+				if ($ranocc == 19 and chance(20%))	
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is the Phemien One. Thanks for being considerate in the space traffic.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 20 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log This is the ship computer of the Hellion Scarab.
+							log An automated weapon has neutralized a hostile spacecraft.
+							log <b>[rewa] Credits </b>rewarded. <//><//><b>[rewa2] Ore[?(rewa2 >= 2)|s|] </b>looted.
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 21 and chance(20%))
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log This is the automated asteroid mining system.
+							log Your ship has mined <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>, which has been transferred directly to the cargo hold.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 22 and chance(20%))
+							log test comm 22
+				end
+				if ($ranocc == 23 and chance(20%))
+							log test comm 23
+				end
+				comm is 0
+			end
+		end
+
+		
+		
+	
+
+Shinies
+	*luckyBunny
+		text:ORE
+		movement:moveRandom anywhere spinCCW:1
+		frequency: 120
+		frequency variation:60
+		req:7000 talz
+		icon:https://raw.githubusercontent.com/kasperja/NGM/main/ast1.png
+		class:bigButton
+		on click:
+			$boost=1
+			if (chance(0%))
+				//get at least 7, or between 1 and 3 minutes of our bunny production
+				$amount=(max(7,random(bunnies:ps*10*1,bunnies:ps*20*3))*$boost)
+				log Asteroid destroyed. <//><//><b>[$amount] Ore[?($amount >= 2)|s|] </b>collected.	
+				yield $amount bunnies
+				yield $amount talz
+			else
+				//*$boost
+				$amount=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3))*$boost)
+				log Asteroid destroyed. <//><//><b>[$amount] Ore[?($amount >= 2)|s|] </b>collected.
+				yield $amount goldenCarrot
+				yield $amount tsc
+			end
+		end
+
+	*luckyBunny2
+		text:ORE
+		movement:moveRandom anywhere spinCW:1
+		frequency: 120
+		frequency variation:60
+		req:7000 talz
+		icon:https://raw.githubusercontent.com/kasperja/NGM/main/ast1.png
+		class:bigButton
+		on click:
+			$boost=1
+			if (chance(0%))
+				//get at least 7, or between 1 and 3 minutes of our bunny production
+				$amount=(max(7,random(bunnies:ps*10*1,bunnies:ps*20*3))*$boost)
+				log Asteroid destroyed. <//><//><b>[$amount] Ore[?($amount >= 2)|s|] </b>collected.	
+				yield $amount bunnies
+				yield $amount talz
+			else
+				//*$boost
+				$amount=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3))*$boost)
+				log Asteroid destroyed. <//><//><b>[$amount] Ore[?($amount >= 2)|s|] </b>collected.
+				yield $amount goldenCarrot
+				yield $amount tsc
+			end
+		end
+
+	*luckyBunny3
+		text:Station
+		movement:moveRandom:0.4 anywhere grow
+		frequency: 80
+		frequency variation:40
+		duration:20
+		req:7000 talz
+		icon:https://raw.githubusercontent.com/kasperja/NGM/main/stat1.png
+		class:bigButton stationSh
+		on click:
+			$boost=1
+			$rano=random(1,10)
+			if ($rano > 4)
+				//get at least 7, or between 1 and 3 minutes of our bunny production
+				$amount=(max(random(5,10),random(bunnies:ps*60*1,bunnies:ps*120*3))*$boost)
+				log <b>Station docking granted</b>
+				
+				
+				$amounttwo=0
+				if (goldenCarrots >= 7)
+					$amounttwo=((max(random(1,3),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 6)
+					$amounttwo=((max(random(1,3),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 5)
+					$amounttwo=((max(random(1,3),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 4)
+					$amounttwo=((max(random(1,2),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 3)
+					$amounttwo=((max(random(1,2),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 2)
+					$amounttwo=((max(random(1,2),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 1)
+					$amounttwo=((max(1,random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				end
+				if (goldenCarrots >= 1 and $rano > 4)
+					log Trade conducted.
+					$ransb=random(1,10)
+					if ($ransb > 6 and $rano > 4) 
+						log <b>[$amounttwo*-1] Ore[?(($amounttwo*-1) >= 2)|s|]</b> sold. 
+						log <b>[$amount] Credits</b> collected.
+						yield $amounttwo goldenCarrot
+						yield $amount bunnies
+						yield $amount talz
+					else if ($ransb <= 6 and $rano > 4) 
+						log <b>[$amounttwo*-1] Ore[?(($amounttwo*-1) >= 2)|s|]</b> bought for <b>[$amount*0.1] Credits</b>. 
+						yield ($amounttwo*-1) goldenCarrot
+						yield ($amounttwo*-1) tsc
+						yield ($amount*0.1*-1) bunnies
+					end	
+				else if (goldenCarrots < 1 and $rano > 4)
+					$ranb=random(1,10)
+					$beer=((max(random(2,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)*-1)
+					$tradebar=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)*1)
+					if ($ranb > 5 and $rano > 4 and goldenCarrots < 1)
+						log You pay a visit to the station bar.
+						log Space-beer for <b>[(($beer*-1))] Credit[?((($beer*-1)) >= 2)|s|]</b> consumed.
+						yield $beer bunnies
+					else if ($ranb <= 5 and $rano > 4 and goldenCarrots < 1)
+						log You share information with a Bounty Hunter. 
+						log You gain <b>[$tradebar] Credits</b>.
+						yield $tradebar bunnies
+						yield $tradebar talz	
+					end
+				end
+			else if ($rano <=4)
+				log <b>Station docking granted</b>
+				$ranb2=random(1,10)
+				$beer=((max(random(2,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)*-1)
+				$tradebar=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)*1)
+				if ($ranb2 > 5 and $rano <=4)
+					log You pay a visit to the station bar.
+					log Space-beer for <b>[(($beer*-1))] Credit[?((($beer*-1)) >= 2)|s|]</b> consumed.
+					yield $beer bunnies
+				else if ($ranb2 <= 5 and $rano <=4)
+					log You share information with a Bounty Hunter. 
+					log You gain <b>[$tradebar] Credits</b>.
+					yield $tradebar bunnies
+					yield $tradebar talz
+				end
+			end	
+		end
+		
+
+*luckyBunny4
+		text:Pirate
+		movement:moveRandom anywhere
+		frequency: 60
+		frequency variation:30
+		req:7000 talz
+		icon:https://raw.githubusercontent.com/kasperja/NGM/main/pir1.png
+		class:bigButton
+		on click:
+			$boost=1
+			if (chance(50%))
+				//get at least 7, or between 1 and 3 minutes of our bunny production
+				$amount=(max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)
+				log Pirate eliminated. <//><//><b>[$amount] Credits </b>rewarded.	
+				yield $amount bunnies
+				yield $amount talz
+			else
+				//*$boost
+				$amount=(max(random(1,7),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)
+				$amountth=(max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)
+				log Pirate eliminated. <//><//><b>[$amountth] Credits </b>rewarded. <//><//><b>[$amount] Ore[?($amount >= 2)|s|] </b>looted.
+				yield $amount goldenCarrot
+				yield $amount tsc
+				yield $amountth bunnies
+				yield $amountth talz
+			end
+		end
+
+		*psDrones
+			icon:icons[1,0] 
+			no click
+			frequency:15
+			frequency variation:30
+			duration:30
+			movement:onRight moveLeft growShrink 
+		*psDrones2
+			icon:icons[2,0] 
+			no click
+			frequency:15
+			frequency variation:30
+			duration:32
+			movement:onLeft moveRight growShrink 		
+		*psHaulers
+			icon:icons[1,3] 
+			no click
+			frequency:70
+			frequency variation:30
+			duration:34
+			movement:onRight moveLeft growShrink 
+		*psHaulers2
+			icon:icons[2,3] 
+			no click
+			frequency:60
+			frequency variation:30
+			duration:36
+			movement:onLeft moveRight growShrink 	
+		*psTransp
+			icon:icons[1,4] 
+			no click
+			frequency:170
+			frequency variation:30
+			duration:38
+			movement:onRight moveLeft growShrink 
+		*psTransp2
+			icon:icons[2,4] 
+			no click
+			frequency:280
+			frequency variation:30
+			duration:40
+			movement:onLeft moveRight growShrink 	
+		*psFrei
+			icon:icons[1,5] 
+			no click
+			frequency:160
+			frequency variation:30
+			duration:42
+			movement:onRight moveLeft growShrink 
+		*psFrei2
+			icon:icons[2,5] 
+			no click
+			frequency:240
+			frequency variation:30
+			duration:44
+			movement:onLeft moveRight growShrink 	
+		*psSCS
+			icon:icons[1,6] 
+			no click
+			frequency:200
+			frequency variation:30
+			duration:46
+			movement:onRight moveLeft growShrink 
+		*psSCS2
+			icon:icons[2,6] 
+			no click
+			frequency:430
+			frequency variation:30
+			duration:48
+			movement:onLeft moveRight growShrink 	
+		*psOrca
+			icon:icons[1,7] 
+			no click
+			frequency:460
+			frequency variation:30
+			duration:50
+			movement:onRight moveLeft growShrink 
+		*psOrca2
+			icon:icons[2,7] 
+			no click
+			frequency:270
+			frequency variation:30
+			duration:51
+			movement:onLeft moveRight growShrink 	
+		*psMam
+			icon:icons[1,8] 
+			no click
+			frequency:520
+			frequency variation:30
+			duration:52
+			movement:onRight moveLeft growShrink 
+		*psMam2
+			icon:icons[2,8] 
+			no click
+			frequency:340
+			frequency variation:30
+			duration:54
+			movement:onLeft moveRight growShrink 	
+		*psTitan
+			icon:icons[1,15] 
+			no click
+			frequency: 1470
+			frequency variation:30
+			duration:70
+			movement:onRight moveLeft growShrink 
+		*psTitan2
+			icon:icons[2,15] 
+			no click
+			frequency:2480
+			frequency variation:30
+			duration:70
+			movement:onLeft moveRight growShrink 	
+		*psPS
+			icon:icons[1,9] 
+			no click
+			frequency:660
+			frequency variation:30
+			duration:33
+			movement:onRight moveLeft growShrink 
+		*psPS2
+			icon:icons[2,9] 
+			no click
+			frequency:440
+			frequency variation:30
+			duration:32
+			movement:onLeft moveRight growShrink 	
+		*psBE
+			icon:icons[1,10] 
+			no click
+			frequency:510
+			frequency variation:30
+			duration:32
+			movement:onRight moveLeft growShrink 
+		*psBE2
+			icon:icons[2,10] 
+			no click
+			frequency:700
+			frequency variation:30
+			duration:32
+			movement:onLeft moveRight growShrink 	
+		*psIon
+			icon:icons[1,11] 
+			no click
+			frequency:760
+			frequency variation:30
+			duration:56
+			movement:onRight moveLeft growShrink 
+		*psIon2
+			icon:icons[2,11] 
+			no click
+			frequency:570
+			frequency variation:30
+			duration:56
+			movement:onLeft moveRight growShrink 	
+		*psBC
+			icon:icons[1,12] 
+			no click
+			frequency:620
+			frequency variation:30
+			duration:58
+			movement:onRight moveLeft growShrink 
+		*psBC2
+			icon:icons[2,12] 
+			no click
+			frequency:830
+			frequency variation:30
+			duration:59
+			movement:onLeft moveRight growShrink 	
+		*psSuperF
+			icon:icons[1,13] 
+			no click
+			frequency:880
+			frequency variation:30
+			duration:62
+			movement:onRight moveLeft growShrink 
+		*psSuperF2
+			icon:icons[2,13] 
+			no click
+			frequency:690
+			frequency variation:30
+			duration:63
+			movement:onLeft moveRight growShrink 	
+		*psVG
+			icon:icons[1,14] 
+			no click
+			frequency:740
+			frequency variation:30
+			duration:40
+			movement:onRight moveLeft growShrink 
+		*psVG2
+			icon:icons[2,14] 
+			no click
+			frequency:950
+			frequency variation:30
+			duration:41
+			movement:onLeft moveRight growShrink 	
+		*particleShips
+			icon:icons[1,2] 
+			no click
+			frequency:32
+			frequency variation:30
+			duration:30
+			movement:onRight moveLeft growShrink 
+		*particleShips2
+			icon:icons[2,2] 
+			no click
+			frequency:32
+			frequency variation:30
+			duration:30
+			movement:onLeft moveRight growShrink 
+		
+
+Buildings
+	
+	*TEMPLATE
+		on click:anim glow
+ 
+	*cage|cages
+		name:Thrusters
+		text:Thruster[?(cage >= 0)|s|] : <b>lvl [this]</b>
+		desc:Thrusters increase your speed and efficiency, and you are rewarded by the traders guild for exploring space.<//><b>For every level:</b><.>Gain 1 Credit every 10 seconds.
+		cost:40 bunnies
+		on tick:yield 0.1 bunny
+		on tick:yield 0.1 talz
+		req:20 talz
+		
+		
+ 
+	*hutch|hutches
+		name:Tractor-Beam
+		text:Tractor-Beam : <b>lvl [this]</b>
+		desc:The Tractor-Beam automatically collects ore from asteroids floating by.<//><b>For every level:</b><.>Collects 1 Ore every 10 minutes.
+		cost:800 bunnies
+		on tick:yield 0.001667 goldenCarrot
+		on tick:yield 0.001667 tsc
+		req:600 talz
+		
+ 
+	*coop|coops
+		name:Pulse Laser
+		text:Pulse Laser : <b>lvl [this]</b>
+		desc:A pulse laser system to blast asteroids and enemy pirates.<//><b>For every level:</b><.>Produces 100 Credits per second.
+		cost:10000 bunnies
+		on tick:yield 100 bunnies
+		on tick:yield 100 talz
+		req:20000 talz
+		tag: buildings2
+ 
+	*pen|pens
+		name:Fuel Tank
+		text:Fuel Tank : <b>lvl [this]</b>
+		desc:Your ship can travel faster and longer with extra fuel.<//><b>For every level:</b><.>Produces 50 Credits per second.<.>Produces 1 Ore every hour.
+		cost:60000 bunnies
+		on tick:yield 50 bunnies
+		on tick:yield 50 talz
+		on tick:yield 0.000277778 goldenCarrot
+		on tick:yield 0.000277778 tsc
+		req:120000 talz
+			
+ 
+	*meadow|meadows
+		name:Engine Tuning
+		text:Engine Tuning : <b>lvl [this]</b>
+		desc:Your engines are tuned, so you travel faster.<//><b>For every level:</b><.>Produces 1,000 Credits per second.
+		cost:1700000 bunnies
+		on tick:yield 1000 bunnies
+		on tick:yield 1000 talz
+		//on tick:yield 1 goldenCarrot
+		req:1400000 talz
+		
+ 
+	*village|villages
+		name:Hull Plating
+		text:Hull Plating : <b>lvl [this]</b>
+		desc:With Hull Plating you can defeat more difficult enemies, and visit more dangerous systems.<//><b>For every level:</b><.>Produces 4,000 Credits per second.
+		cost:8000000 bunnies, 2 goldenCarrot
+		on tick:yield 4000 bunnies
+		on tick:yield 4000 talz
+		req:2000000 talz and independenceDay
+		
+ 
+	*city|cities
+		name:Missile Launcher
+		text:Missile Launcher : <b>lvl [this]</b>
+		desc:This weapon can destroy larger ships and asteroids.<//><b>For every level:</b><.>Produces 6,000 Credits per second.<.>Produces 1 Ore every minute.
+		cost:80000000 bunnies, 8 goldenCarrots
+		on tick:yield 6000 bunnies
+		on tick:yield 6000 talz
+		on tick:yield 0.01667 goldenCarrot
+		on tick:yield 0.01667 tsc
+		req:10000000 talz and independenceDay
+		tag: buildings2
+ 
+	*citadel|citadels
+		name:Shield Generator
+		text:Shield Generator : <b>lvl [this]</b>
+		desc:With this module the ship can take fire without damaging the hull, with no need of repairs.<//><b>For every level:</b><.>Produces 20,000 Credits per second.
+		cost:140000000 bunnies, 32 goldenCarrots
+		on tick:yield 20000 bunnies
+		on tick:yield 20000 talz
+		req:1700000000 talz and independenceDay
+	
+ 
+*Station|stations
+		name:Docking Computer
+		text:Docking Computer : <b>lvl [this]</b>
+		desc:The Docking Computer handles and optimizes station docking.<//><b>For every level:</b><.>Produces 40,000 Credits per second.
+		cost:400000000 bunnies
+		on tick:yield 40000 bunnies
+		on tick:yield 40000 talz
+		req:3500000000 talz and independenceDay
+		
+ 
+*Police|polices
+		name:Cargo Bay Extension
+		text:Cargo Bay Extension : <b>lvl [this]</b>
+		desc:Increases the Cargo Bay, so you can carry more goods.<//><b>For every level:</b><.>Produces 60,000 Credits per second.
+		cost:600000000 bunnies
+		on tick:yield 60000 bunnies
+		on tick:yield 60000 talz
+		req:400000000 talz and independenceDay
+		
+ 
+*Bomber|bombers
+		name:Mineral Scanner
+		text:Mineral Scanner : <b>lvl [this]</b>
+		desc:Scans the asteroids for more valuable ore.<//><b>For every level:</b><.>Produces 1 Ore every 10 seconds.
+		cost:5000000000 bunnies
+		on tick:yield 0.1 goldenCarrot
+		on tick:yield 0.1 tsc
+		req:4000000000 talz and independenceDay
+		
+ 
+
+		
+ 
+
+ 
+ 
+//Buildings2 Planets
+ 
+*TEMPLATE
+	on click:anim glow
+ 
+	*cage2|cages2
+		name:Seeker Missiles
+		text:Seeker Missiles : <b>lvl [this]</b>
+		desc:These missiles automatically chases down enemies.<//><b>For every level:</b><.>Produces 9,000 Credits every second.
+		cost:200000000 bunnies, 50 goldenCarrots
+		on tick:yield 9000 bunnies
+		on tick:yield 9000 talz
+		req: independenceDay and 1000000000 talz
+		tag: buildings2
+		
+ 
+ 
+	*hutch2|hutches2
+		name:Afterburner
+		text:Afterburner : <b>lvl [this]</b>
+		desc:The ship can enter a higher level of sub-light speed.<//><b>For every level:</b><.>Produces 50,000 Credits every second.<.>Produces 1 Ore every 5 seconds.
+		cost:300000000 bunnies, 1000 goldenCarrots
+		on tick:yield 50000 bunnies
+		on tick:yield 50000 talz
+		on tick:yield 0.2 goldenCarrot
+		on tick:yield 0.2 tsc
+		req:8000000000 talz and 10000 tsc and independenceDay
+		
+		
+ 
+	*coop2|coops2
+		name:Repair Droid
+		text:Repair Droid : <b>lvl [this]</b>
+		desc:Repairs the ship when damage is taken.<//><b>For every level:</b><.>Produces 100,000 Credits per second.<.>Produces 1 Ore every 10 seconds.
+		cost:600000000 bunnies
+		on tick:yield 100000 bunnies
+		on tick:yield 100000 talz
+		on tick:yield 0.1 goldenCarrot
+		on tick:yield 0.1 tsc
+		req:14000000000 talz and 30000 tsc 
+		
+		
+ 
+	*pen2|pens2
+		name:Bioscanner
+		text:Bioscanner : <b>lvl [this]</b>
+		desc:Scans for life aboard ships.<//><b>For every level:</b><.>Produces 250,000 Credits per second.
+		cost:700000000 bunnies, 800 goldenCarrots
+		on tick:yield 250000 bunnies
+		on tick:yield 250000 talz
+		req:60000000000 talz and 50000 tsc 
+		
+		
+		
+ 
+	*meadow2|meadows2
+		name:Recon Drone
+		text:Recon Drone : <b>lvl [this]</b>
+		desc:A small drone you can deploy to scout.<//><b>For every level:</b><.>Produces 300,000 Credits per second.<.>Produces 2 Ore per second.
+		cost:5000000000 bunnies
+		on tick:yield 300000 bunnies
+		on tick:yield 300000 talz
+		on tick:yield 2 goldenCarrot
+		on tick:yield 2 tsc
+		req:80000000000 talz and 100000 tsc
+		
+		
+ 
+ 
+	*village2|villages2
+		name:Laser Turret
+		text:Laser Turret : <b>lvl [this]</b>
+		desc:Automatic precision weapon.<//><b>For every level:</b><.>Produces 400,000 Credits per second.<.>Produces 1 Ore per second.
+		cost:15000000000 bunnies, 3000 goldenCarrots
+		on tick:yield 400000 bunnies
+		on tick:yield 400000 talz
+		on tick:yield 1 goldenCarrot
+		on tick:yield 1 tsc
+		req:50000000000 talz
+		tag: buildings2
+		
+ 
+	*city2|cities2
+		name:Cloaking Device
+		text:Cloaking Device : <b>lvl [this]</b>
+		desc:Hide your ship from sight and targeting systems.<//><b>For every level:</b><.>Produces 600,000 Credits per second.
+		cost:35000000000 bunnies, 40000 goldenCarrots
+		on tick:yield 600000 bunnies
+		on tick:yield 600000 talz
+		req:550000000000 talz and (citadels>=1)
+		
+		
+ 
+	*citadel2|citadels2
+		name:Gauss Cannon
+		text:Gauss Cannon : <b>lvl [this]</b>
+		desc:Fires ultra fast projectiles.<//><b>For every level:</b><.>Produces 1,000,000 Credits per second.<.>Produces 5 Ore per second.
+		cost:14000000000 bunnies, 100000 goldenCarrots
+		on tick:yield 1000000 bunnies
+		on tick:yield 1000000 talz
+		on tick:yield 5 goldenCarrot
+		on tick:yield 5 tsc
+		req:militaryProtection
+		tag: buildings2
+		
+ 
+*Station2|stations2
+		name:Shield Booster
+		text:Shield Booster : <b>lvl [this]</b>
+		desc:Can boost the shields for a short time when needed. Further reduces the need for repairs of your increasingly expensive parts.<//><b>For every level:</b><.>Produces 10,000,000 Credits per second.
+		cost:600000 goldenCarrots
+		on tick:yield 10000000 bunnies
+		on tick:yield 10000000 talz
+		req:1500000000000 talz and militaryProtection
+		
+		
+ 
+*Police2|polices2
+		name:Beam Laser
+		text:Beam Laser : <b>lvl [this]</b>
+		desc:The Beam Laser is a highly advanced weapon, which also can be used for heavy mining.<//><b>For every level:</b><.>Produces 27,000,000 Credits per second.<.>Produces 15 Ores per second.
+		cost:400000000000 bunnies, 900000 goldenCarrots
+		on tick:yield 27000000 bunnies
+		on tick:yield 27000000 talz
+		on tick:yield 15 goldenCarrot
+		on tick:yield 15 tsc
+		req:100 fortress
+		tag: buildings2
+		
+*Ionfrigate|ionfrigates
+		name:Mining Laser
+		text:Mining Laser : <b>lvl [this]</b>
+		desc:Greatly improves the mining capabilities of your ship.<//><b>For every level:</b><.>Produces 10 Ores per second.
+		cost:20000000000 bunnies, 1000 goldenCarrots
+		on tick:yield 10 goldenCarrot
+		on tick:yield 10 tsc
+		req:independenceDay and militaryProtection and militaryProtection2
+		
+ 
+*Battlecruiser|battlecruisers
+		name:Power Plant
+		text:Power Plant : <b>lvl [this]</b>
+		desc:The Power Plant powers up your ship components.<//><b>For every level:</b><.>Produces 20,000,000 Credits per second.
+		cost:200000000000 bunnies, 4000 goldenCarrots
+		on tick:yield 20000000 bunnies
+		on tick:yield 20000000 talz
+		req:70000000000 talz and independenceDay and militaryProtection and militaryProtection2
+ *fortress
+		name:Hyperdrive
+		text:Hyperdrive ([this]%)
+		desc:With the Hyperdrive you can travel further, and obtain technologies from distant systems.<//><b>The Hyperdrive is [this]% complete.</b>
+		cost:600000000 bunnies, 400 goldenCarrots
+		req:100000000000 talz and independenceDay and militaryProtection and militaryProtection2
+		cost increase:107%
+		limit:100
+		
+	*Superfreighter|Superfreighters
+		name:Plasma Accelerator
+		text:Plasma Accelerator : <b>lvl [this]</b>
+		desc:Thermal weapon for shooting larger ships and asteroids. <//><b>For every level:</b><.>Produces 140,000,000 Credits per second.<.>Produces 8 Ores per second.
+		cost:1000000000000 bunnies, 70000 goldenCarrots
+		on tick:yield 140000000 bunnies
+		on tick:yield 140000000 talz
+		on tick:yield 8 goldenCarrot
+		on tick:yield 8 tsc
+		req:100000000000 talz and independenceDay and militaryProtection and militaryProtection2 
+		tag: buildings2
+
+*Bomber2|bombers2
+		name:Shock Cannon
+		text:Shock Cannon : <b>lvl [this]</b>
+		desc:These cannons fire pure lightning energy.<//><b>For every level:</b><.>Produces 60,000,000 Credits per second.<.>Produces 30 Ores per second.
+		cost:1500000000000 bunnies, 3000000 goldenCarrots, 1 prestigio
+		on tick:yield 60000000 bunnies
+		on tick:yield 60000000 talz
+		on tick:yield 30 goldenCarrot
+		on tick:yield 30 tsc
+		req:100000000000 talz and 100 fortress
+		tag: buildings2
+
+ *Ionfrigate2|ionfrigates2
+		name:Mass Driver
+		text:Mass Driver : <b>lvl [this]</b>
+		desc:State of the art projectile weapon.<//><b>Effect:</b><.>Produces 350,000,000 Credits per second.<.>Produces 200 Ores per second.
+		cost:5000000000000 bunnies, 5 prestigio
+		on tick:yield 350000000 bunnies
+		on tick:yield 350000000 talz
+		on tick:yield 200 goldenCarrot
+		on tick:yield 200 tsc
+		req:100000000000 talz and independenceDay and buildingUpgrade42 and 100 fortress 
+		tag: buildings2
+
+	*Vanguard|Vanguards
+		name:EMP Bomb
+		text:EMP Bombs : <b>lvl [this]</b>
+		desc:The EMP Bomb is a powerful weapon that can immobilize a whole fleet.<//><b>For every level:</b><.>Produces 500,000,000 Credits per second.<.>Produces 600 Ores per second.
+		cost:2000000000000 bunnies, 1000000 goldenCarrots, 10 prestigio
+		on tick:yield 500000000 bunnies
+		on tick:yield 500000000 talz
+		on tick:yield 600 goldenCarrot
+		on tick:yield 600 tsc
+		req:100000000000 talz and independenceDay and militaryProtection and militaryProtection2 and buildingUpgrade42 and 100 fortress
+		tag: buildings2
+
+//Tier'd "upgrades"
+
+
+	*BountyAI
+		name:Artificial Intelligence
+		text:Artificial Intelligence : <b>lvl [this]</b>
+		desc:Integrate advanced AI into the ship computer, making a lot of actions automatical and highly efficient. Additionally makes the targeting system more precise for both mining and combat.<//><b>Effect:</b><.>With every level, gain an Ore every second for every Microchip ever earned (previous games included).<.>With every level, gain 1,000,000 Credits every second for every Microchip ever earned (previous games included).
+		cost:1000 prestigio
+		req:buildingUpgrade42
+		on tick:yield (taa) goldenCarrots
+		on tick:yield (taa) tsc
+		on tick:yield (taa*1000000) bunnies
+		on tick:yield (taa*1000000) talz
+		tags:buildings
+		cost increase:150%
+		
+
+Upgrades
+	*TEMPLATE
+		on click:anim glow
+	
+	//food upgrades
+	//inspiration : http://rabbit.org/suggested-vegetables-and-fruits-for-a-rabbit-diet/
+
+	*parsley
+		name:Sub-Light Amplifier
+		desc:Amplifies the efficiency of the thrusters.<//><b>Effect:</b><.>Thrusters production x2
+		cost:500 bunnies
+		passive:multiply yield of cage by 2
+		req:200 talz and (cages>=3)
+		tag: upgrades2
+
+	*spinach
+		name:Buyings Locator
+		desc:Your ship computer automatically scans for best deals to buy.<//><b>Effect:</b><.>Credits production +15%
+		cost:1000 bunnies
+		passive:multiply yield of bunnies by 1.15
+		passive:multiply yield of talz by 1.15
+		req:500 talz and parsley
+		tag: upgrades2
+
+	*lettuce
+		name:Sellings Locator
+		desc:Your ship computer automatically scans for best places to sell.<//><b>Effect:</b><.>Credits production +20%
+		cost:1800 bunnies
+		passive:multiply yield of bunnies by 1.20
+		passive:multiply yield of talz by 1.20
+		req:1000 talz and parsley and (cages>=20)
+		tag: upgrades2
+
+	//building upgrades
+	
+	*buildingUpgrade1
+		name:Fight Software
+		desc:With this software, the Pulse Laser targeting system is greatly improved.<//><b>Effect:</b><.>Pulse Laser production x2
+		cost:90000 bunnies
+		passive:multiply yield of coop by 2
+		req:80000 talz and (coops>=2)
+		tag: upgrades2
+
+	*buildingUpgrade2
+		name:Trading Software
+		desc:This software makes a lot of the trading processes and transactions for you.<//><b>Effect:</b><.>Credits production +25%
+		cost:1600000000 bunnies
+		passive:multiply yield of bunnies by 1.25
+		passive:multiply yield of talz by 1.25
+		req:230000000 talz and (citadels2>=5) and buildingUpgrade1
+		tag: upgrades2
+
+	*buildingUpgrade3
+		name:Explorer Software
+		desc:Your ship scans for asteroids and locations with high concentration of valuable minerals.<//><b>Effect:</b><.>Ore production +20%
+		cost:6000000000 bunnies
+		passive:multiply yield of goldenCarrots by 1.20
+		passive:multiply yield of tsc by 1.20
+		req:(polices2>=4) and buildingUpgrade2
+		tag: upgrades2
+
+	*buildingUpgrade4
+		name:Command Software
+		desc:You can enter commands for your ship autopilot.<//><b>Effect:</b><.>Fuel tank production x4<.>Engine tuning production x2
+		cost:25000000 bunnies
+		passive:multiply yield of pen by 4
+		passive:multiply yield of meadow by 2
+		req:(pens>=10 or meadows>=10)
+		tag: upgrades2
+
+	*buildingUpgrade5
+		name:Cargo Life Support System
+		desc:You can enter the cargo bay while in space, or transport lifeforms.<//><b>Effect:</b><.>Cargo Bay Extension production x4
+		cost:150000000 bunnies
+		passive:multiply yield of Police by 4
+		req:(polices>=10)
+		
+	*buildingUpgrade6
+		name:Cargo Bay Shield
+		desc:Invent the Hyper Drive to travel to distant galaxies.<//><b>Effect:</b><.>Cargo Bay Extension production x2<.>Shield Generator production x4
+		cost:100000000 bunnies
+		passive:multiply yield of citadel by 4
+		passive:multiply yield of Police by 2
+		req:(citadels>=10 or polices>=10)
+		
+	*buildingUpgrade7
+		name:Progressive Firewall Software
+		desc:You are less vulnerable to hacking from enemies.<//><b>Effect:</b><.>Docking Computer production x4<.>Mineral Scanner production x3
+		cost:500000000000 bunnies
+		passive:multiply yield of Bomber by 3
+		passive:multiply yield of Station by 4
+		req:(bombers>=30 or stations>=30) 
+		tag: upgrades2
+
+	*buildingUpgrade8
+		name:Pulse Wave Analyser
+		desc:Improves scanners so minerals are easier to distinguish.<//><b>Effect:</b><.>Mineral Scanner production x2<.>Tractor-Beam production x10
+		cost:1000000000 bunnies
+		passive:multiply yield of citadel by 2
+		passive:multiply yield of hutch by 10
+		req:10 citadels and buildingUpgrade5
+		tag: upgrades2
+
+	//golden carrot upgrades
+	
+	*goldenTouch
+		name:Mining Software
+		desc:You can now gain ore by shooting with the blaster.<//><b>Effect:</b><.>5% chance of gaining 1 Ore per Blaster shot.
+		cost:100 goldenCarrot
+		req:10 goldenCarrot:earned and buildingUpgrade1
+		tag: upgrades2
+
+	
+	*independenceDay
+		name:Supercomputer
+		desc:The Supercomputer makes the ship able to self-upgrade, using the Ore you have collected.<//><b>Effect:</b><.>Unlocks Ore-based constructions.
+		cost:1000 goldenCarrots
+		req:70 goldenCarrots:earned and (meadows>=1)
+		
+	*moonGardens
+		name:Deflector Shield
+		desc:Deflects enemy fire and asteroids.<//><b>Effect:</b><.>Shield Generator  production x7
+		cost:10000 goldenCarrots
+		passive:multiply yield of citadel by 7
+		req:(citadels>=1) and 50 goldenCarrots:earned
+		
+	*militaryProtection
+		name:Fusion Engine
+		desc:Your engine is upgraded with fusion power.<//><b>Effect:</b><.>Unlocks new technology.
+		cost:200000 goldenCarrots
+		req:12000000000 talz
+
+	*militaryProtection2
+		name:Defense Matrix
+		desc:Ensures maximum power to your weapons and shields.<//><b>Effect:</b><.>Unlocks high-tech weapon systems.
+		cost:2000000 goldenCarrots
+		req:42000000000 talz and militaryProtection
+		tag: upgrades2
+
+	*TEMPLATE
+		on click:anim glow
+	
+//upgrades2
+
+	//food upgrades
+	//inspiration : http://rabbit.org/suggested-vegetables-and-fruits-for-a-rabbit-diet/
+	
+	*parsley2
+		name:Emergency Jump
+		desc:When your ship takes near fatal damage, the ship jumps to safety.<//><b>Effect:</b><.>Thrusters production x4
+		passive:multiply yield of cage by 4
+		cost:1000 bunnies
+		req: (cages>=5)
+		
+	*spinach2
+		name:Acceleration Module
+		desc:Thrusters accelerates a lot faster.<//><b>Effect:</b><.>Thrusters production x3
+		passive:multiply yield of cage by 3
+		cost:9000 bunnies
+		req: parsley2
+		
+	*broccoli2
+		name:Signal Supressor
+		desc:Supresses signals and noise, making the Tractor-Beam more accurate.<//><b>Effect:</b><.>Tractor-Beam production x4
+		cost:100000 bunnies
+		passive:multiply yield of hutch by 4
+		req: parsley2
+
+	*apple2
+		name:Targeting Software
+		desc:Optimizes targeting for all weapons.<//><b>Effect:</b><.>Credits/click x10<.>Credit production +10%
+		cost:8000000000 bunnies
+		passive:multiply bunny yield of bunnyButton by 10
+		passive:multiply talz yield of bunnyButton by 10
+		passive:multiply yield of bunnies by 1.10
+		passive:multiply yield of talz by 1.10
+		req: (ionfrigates>=2)
+		tag: upgrades2
+		
+	*radish2
+		name:Warp Jamming
+		desc:Prevents enemy ships from warping.<//><b>Effect:</b><.>Tractor-Beam production x5<.>Pulse Laser production x5
+		cost:27000000 bunnies
+		passive:multiply yield of hutch by 5
+		passive:multiply yield of coop by 5
+		req: apple2
+		tag: upgrades2
+		
+	*mint2
+		name:Double Lasers
+		desc:Pulse Lasers are doubled and fire twice as fast.<//><b>Effect:</b><.>Pulse Laser production x4
+		cost:40000000 bunnies
+		passive:multiply yield of coop by 4
+		req: (coops>=2)
+		
+	*chard2
+		name:Quad Lasers
+		desc:Pulse Lasers are quadrubled and fire twice as fast.<//><b>Effect:</b><.>Pulse Laser production x8
+		cost:1000000000 bunnies
+		passive:multiply yield of coop by 8
+		req: mint2 and (coops>=4)
+		
+	*cherry2
+		name:Double Missle Launchers
+		desc:Missile Launchers are doubled and fire twice as fast.<//><b>Effect:</b><.>Missile Launcher production x4<.>Seeker Missiles production x4
+		cost:6000000000 bunnies
+		passive:multiply yield of city by 4
+		passive:multiply yield of cage2 by 4
+		req:50000000 talz and (cities>=2) and (cages2>=2)
+		
+	*carrot2
+		name:Quad Missile Launchers
+		desc:Missile Launchers are quadrubled and fire twice as fast.<//><b>Effect:</b><.>Missile Launcher production x8<.>Seeker Missiles production x8
+		cost:12000000000 bunnies
+		passive:multiply yield of city by 8
+		passive:multiply yield of cage2 by 8
+		req: cherry2 and (cities>=4) and (cages2>=4)
+	
+	//building upgrades
+	
+	*buildingUpgrade12
+		name:Double Cannons
+		desc:Gauss Cannons are doubled.<//><b>Effect:</b><.>Gauss Cannon production x2
+		cost:9000000000 bunnies
+		passive:multiply yield of citadel2 by 2
+		req:900000000 talz and (citadels2>=2) 
+		
+	*buildingUpgrade22
+		name:Quad Cannons
+		desc:Gauss Cannons are quadrubled.<//><b>Effect:</b><.>Gauss Cannon production x4
+		cost:1000000000000 bunnies
+		passive:multiply yield of citadel2 by 4
+		req: buildingUpgrade12 and (citadels2>=4) 
+		
+	*buildingUpgrade32
+		name:Sub-Surface Module 
+		desc:The Mining Laser can target minerals below the surface of the asteroids.<//><b>Effect:</b><.>Mining Laser production x4
+		cost:400000000000 bunnies
+		passive:multiply yield of Ionfrigate by 4
+		passive:multiply frequency of psIon by 0.5
+		passive:multiply frequency of psIon2 by 0.5
+		req: (ionfrigates>=1)
+		
+	*buildingUpgrade42
+		name:Warp Distorter
+		desc:The hyperdrive is upgraded, you can now explore the whole universe.<//><b>Effect:</b><.>Ore production +20%<.>Unlocks Alien technologies.
+		cost:10000000000000 bunnies, 10000000 goldenCarrots
+		passive:multiply yield of goldenCarrots by 1.20
+		passive:multiply yield of tsc by 1.20
+		req:5600000000 talz and 100 fortress
+
+	*ResetPrestige
+		name:Sell Your Ship
+		desc:Sell your ship for <b>[tsc*0.000001]</b> Microchips.<//><b>Effect:</b><.>Gain 1 Microchip per 1,000,000 Ore collected (ore earned in previous ships included).
+		tag:prestige upgrades2
+		req:buildingUpgrade42 and taa<1000000000000000000000000000000000000000000 
+		on earn:log <b><#e6e8d8>Ship sold.<//>
+		on earn:log <b><#e6e8d8>New ship bought.<//>
+		on earn:log <b>[tsc*0.000001] Microchips</b> earned.
+		on earn:
+			lose notTag:prestige
+			yield (tsc*0.000001) prestigio
+			yield (taa+tsc*0.000001) taa
+			lose ResetPrestige
+		end
+
+
+*ResetPrestige2
+		name:Gain the Victory Medal
+		desc:Reset everything, <b>even your Microchips</b>, gaining <b>1</b> Victory Medal.<//><b>Effect:</b><.>Complete the game and start from scratch with a Victory Medal.
+		tag:prestige upgrades2
+		req:1000000000000000000000000000000000000000000 taa and buildingUpgrade42
+		on earn:log <b><#e6e8d8>You are awarded a Victory Medal.
+		on earn:
+			lose notTag:prestige2
+			yield 1 prestigio2
+			lose ResetPrestige2
+		end
+
+Achievements
+	*TEMPLATE
+		on click:anim glow
+		
+	*shipAchiev1
+		name:Beam me up!
+		desc:Buy the Tractor-Beam.
+		req:(hutches>=1)
+		tag:prestige prestige2
+	*shipAchiev5
+		name:Plasma
+		desc:Buy a Plasma Accelerator.
+		req:(Superfreighters>=1)
+		tag:prestige prestige2
+	*shipAchiev6
+		name:Ionized
+		desc:Have a lvl <b>10</b> Plasma Accelerator.
+		req:(Superfreighters>=10)
+		tag:prestige prestige2
+	*shipAchiev7
+		name:State of Matter
+		desc:Have <b>100</b> Plasma Accelerator.
+		req:(Superfreighters>=100)
+		tag:prestige prestige2
+	*shipAchiev2
+		name:EMP
+		desc:Buy an EMP Bomb.
+		req:(Vanguards>=1)
+		tag:prestige prestige2
+	*shipAchiev3
+		name:Disturbance
+		desc:Have a lvl <b>10</b> EMP Bomb.
+		req:(Vanguards>=10)
+		tag:prestige prestige2
+	*shipAchiev4
+		name:Magnetic
+		desc:Have a lvl <b>100</b> EMP Bomb.
+		req:(Vanguards>=100)
+		tag:prestige prestige2
+
+	*bunnyAchievm1
+		name:The Start of the Journey
+		desc:Start a new game.
+		passive:yield 1 comm
+		passive:multiply frequency of psDrones by 5
+		passive:multiply frequency of psHaulers by 50
+		passive:multiply frequency of psTransp by 50
+		passive:multiply frequency of psFrei by 50
+		passive:multiply frequency of psSCS by 50
+		passive:multiply frequency of psOrca by 50
+		passive:multiply frequency of psMam by 50
+		passive:multiply frequency of psTitan by 50
+		passive:multiply frequency of psPS by 50
+		passive:multiply frequency of psBE by 50
+		passive:multiply frequency of psIon by 50
+		passive:multiply frequency of psBC by 50
+		passive:multiply frequency of psSuperF by 50
+		passive:multiply frequency of psVG by 50
+		passive:multiply frequency of psDrones2 by 5
+		passive:multiply frequency of psHaulers2 by 50
+		passive:multiply frequency of psTransp2 by 50
+		passive:multiply frequency of psFrei2 by 50
+		passive:multiply frequency of psSCS2 by 50
+		passive:multiply frequency of psOrca2 by 50
+		passive:multiply frequency of psMam2 by 50
+		passive:multiply frequency of psTitan2 by 50
+		passive:multiply frequency of psPS2 by 50
+		passive:multiply frequency of psBE2 by 50
+		passive:multiply frequency of psIon2 by 50
+		passive:multiply frequency of psBC2 by 50
+		passive:multiply frequency of psSuperF2 by 50
+		passive:multiply frequency of psVG2 by 50
+		passive:multiply frequency of particleShips by 50
+		passive:multiply frequency of particleShips2 by 50
+		on earn:tsc is goldenCarrots:earned
+		on earn:taa is prestigio:earned
+		req:0 bunnies
+		tag:prestige prestige2
+	*bunnyAchiev2
+		name:Space Trucker
+		desc:Have <b>1,000</b> Credits.
+		req:1000 bunnies
+		tag:prestige prestige2
+	*bunnyAchiev3
+		name:Millionaire
+		desc:Have <b>1,000,000</b> Credits.
+		req:1000000 bunnies
+		tag:prestige prestige2
+	*bunnyAchiev4
+		name:Billionaire
+		desc:Have <b>1,000,000,000</b> Credits.
+		req:1000000000 bunnies
+		tag:prestige prestige2
+	*bunnyAchiev5
+		name:Trillionaire
+		desc:Have <b>1,000,000,000,000</b> Credits.
+		req:1000000000000 bunnies
+		tag:prestige prestige2
+		
+	*bunnyPsAchiev1
+		name:Autopilot
+		desc:Produce <b>10</b> Credits per second.
+		req:10 bunnies per second
+		tag:prestige prestige2
+
+	*bunnyPsAchiev2
+		name:Profit
+		desc:Produce <b>100</b> Credits per second.
+		req:100 bunnies per second
+		tag:prestige prestige2
+	*bunnyPsAchiev3
+		name:Revenue
+		desc:Produce <b>1,000</b> Credits per second.
+		req:1000 bunnies per second
+		tag:prestige prestige2
+	*bunnyPsAchiev4
+		name:Income
+		desc:Produce <b>10,000</b> Credits per second.
+		req:10000 bunnies per second
+		tag:prestige prestige2
+	*bunnyPsAchiev5
+		name:Cash Flow
+		desc:Produce <b>100,000</b> Credits per second.
+		req:100000 bunnies per second
+		tag:prestige prestige2
+	*bunnyPsAchiev6
+		name:Royalty
+		desc:Produce <b>1,000,000</b> Credits per second.
+		req:1000000 bunnies per second
+		tag:prestige prestige2
+		
+	*carrotAchiev1
+		name:A New Business Form
+		desc:Have <b>10</b> Ores.
+		req:10 goldenCarrot
+		tag:prestige prestige2
+	*carrotAchiev2
+		name:Mineral Deposit
+		desc:Have <b>100</b> Ores.
+		req:100 goldenCarrot
+		tag:prestige prestige2
+	*carrotAchiev3
+		name:Ore Miner
+		desc:Have <b>1,000</b> Ores.
+		req:1000 goldenCarrot
+		tag:prestige prestige2
+	*carrotAchiev4
+		name:Ore Vein
+		desc:Have <b>10,000</b> Ores.
+		req:10000 goldenCarrot
+		tag:prestige prestige2
+	*carrotAchiev5
+		name:Mineral Madness
+		desc:Have <b>100,000</b> Ores.
+		req:100000 goldenCarrot
+		tag:prestige prestige2
+	*carrotAchiev6
+		name:Pressurized Cargo
+		desc:Have <b>1,000,000</b> Ores.
+		req:1000000 goldenCarrot
+		tag:prestige prestige2
+	
+	*fortressAchiev
+		name:Freedom!
+		desc:Complete building the <b>Hyperdrive</b>.<//>
+		req:100 fortress
+		tag:prestige prestige2
+
+	*aaAchiev
+		name:What A Bargain
+		desc:Sell your ship.<//>
+		req:1 prestigio
+		tag:prestige prestige2
+	*aaAchiev2
+		name:Computer Power
+		desc:Have <b>100 Microchips</b>.<//>
+		req:100 prestigio
+		tag:prestige prestige2
+	*aaAchiev3
+		name:OpenAI
+		desc:Have <b>1,000 Microchips</b>.<//>
+		req:1000 prestigio
+		tag:prestige prestige2
+	*aaAchiev4
+		name:Mainframe
+		desc:Have <b>10,000 Microchips</b>.<//>
+		req:10000 prestigio
+		tag:prestige prestige2
+	*aaAchiev5
+		name:Hybrid Intelligence
+		desc:Have <b>100,000 Microchips</b>.<//>
+		req:100000 prestigio
+		tag:prestige prestige2
+	*aaAchiev6
+		name:Digital World
+		desc:Have <b>1,000,000 Microchips</b>.<//>
+		req:1000000 prestigio
+		tag:prestige prestige2
+	*aaAchiev7
+		name:RAID
+		desc:Have <b>1,000,000,000 Microchips</b>.<//>
+		req:1000000000 prestigio
+		tag:prestige prestige2
+	*aaAchiev8
+		name:Data Control
+		desc:Have <b>1,000,000,000,000 Microchips</b>.<//>
+		req:1000000000000 prestigio
+		tag:prestige prestige2
+	*doAchiev1
+		name:Victory
+		desc:Have a <b>Victory Medal</b>.
+		req:1 prestigio2
+		tag:prestige prestige2
+	
+	
+CSS
+#game
+  {
+    background:#24656B;
+    background-size: cover;
+   
+    font-family: Kanit, sans-serif !important;
+    letter-spacing: 0px;
+ 
+    font-stretch: ultra-expanded
+   
+   // font-family: Kanit, sans-serif !important;
+    //font-weight:100;
+    color:#93f8ff;
+  }
