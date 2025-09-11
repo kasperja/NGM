@@ -1584,13 +1584,6 @@ Upgrades
 		cost:100 goldenCarrot
 		req:10 goldenCarrot:earned and buildingUpgrade1
 		tag: upgrades2
-
-	
-	*independenceDay
-		name:Supercomputer
-		desc:The Supercomputer makes the ship able to self-upgrade, using the Ore you have collected.<//><b>Effect:</b><.>Unlocks Ore-based constructions.
-		cost:1000 goldenCarrots
-		req:70 goldenCarrots:earned and (meadows>=1)
 		
 	*moonGardens
 		name:Deflector Shield
@@ -1652,6 +1645,12 @@ Upgrades
 		cost:100000 bunnies
 		passive:multiply yield of hutch by 4
 		req: parsley2
+
+	*independenceDay
+		name:Supercomputer
+		desc:The Supercomputer makes the ship able to self-upgrade, using the Ore you have collected.<//><b>Effect:</b><.>Unlocks Ore-based constructions.
+		cost:1000 goldenCarrots
+		req:70 goldenCarrots:earned and (meadows>=1)
 
 	*apple2
 		name:Targeting Software
@@ -2000,6 +1999,7 @@ CSS
     //font-weight:100;
     color:#93f8ff;
   }
+
 
 
 
