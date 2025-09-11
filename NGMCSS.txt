@@ -164,7 +164,7 @@ width:23.5%;
 }
 .upgrade.cantAfford:hover
 {
-	
+	transition: 0.2s;
 }
 .upgrade.owned,.achiev.owned
 {
@@ -416,6 +416,7 @@ float:left;
     //width: 100%;
     //background:#002130;
     color:#93f8ff;
+    transition: 0.2s;
     background-color: #999999;
 }
 .upgrade.owned:hover{
@@ -424,6 +425,7 @@ float:left;
     //background:#002130;
     background:rgba(255,255,255,0.0);
     background-color: #999999;
+    transition: 0.2s;
 }
 .upgrade.cantAfford {
     //width: 100%;
@@ -473,7 +475,7 @@ border-style: solid !important;
 }
  
 .upgrade.notOwned:hover{
-    
+    transition: 0.2s;
     //float: left;
     //background:#002130;
     color:#93f8ff;
@@ -589,6 +591,7 @@ left: -1px !important;
 .achiev, .achiev:hover{
     padding:5px 5px;
     background-image: linear-gradient(to right, #00000000 , #4286f400 , #93f8ff00);
+    
 }
 title {
     display: none;
@@ -1060,6 +1063,7 @@ right: 0px;
 color: #ffe33b;
 background-color: #FFFFFFFF;
 border-color: #FFFFFFFF;
+transition: 0.2s;
 }
 .upgrade:active{
 background-color: #EEEEEEFF!important;
@@ -1182,7 +1186,7 @@ border-style: solid !important;
 border-width:  0.1em !important;
 border-color: #ffe33b !important;
 color: #00000066 !important;
-transition: 0s !important;
+transition: 0.2s !important;
 }
 
 #box-upgrades, #box-buildings, #box-upgrades2{
@@ -1297,4 +1301,32 @@ overflow: auto !important;
 
 visibility: hidden !important;
 
+}
+.tag-sortup, .tag-sortup2, .upgrade,.upgrade2, .upgrade2.notOwned, .upgrade2.cantAfford{
+    order:4;
+}
+.upgrade.notOwned, .upgrade2.notOwned {
+    order:4;
+}
+.tag-zortMiddle{
+
+  order: 3 !important;
+  color:#ffe33b !important;
+  background-color: #ffe33b55 !important;
+  border: 1px solid #93f8f !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.tag-zortTop{
+
+  order: 5 !important;
+  color:#ffe33b !important;
+  background-color: #ffe33b55 !important;
+  border: 1px solid #93f8f !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.upgrade.owned, .upgrade2.owned
+{
+    order:1;
 }
