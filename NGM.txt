@@ -525,7 +525,7 @@ Resources
 				end
 				if ($ranocc == 36 and chance(20%))
 							log <b>Incoming transmission:</b>
-							log <#fe6e52>Hand over your cargo, or youâ€™ll be space dust!
+							log <#fe6e52>Hand over your cargo, or you’ll be space dust!
 							log <b>Enemy ships approaching.</b>
 							toast <b>WARNING:</b> Enemy ships approaching.
 							pirc is 1
@@ -533,7 +533,7 @@ Resources
 				if ($ranocc == 37 and chance(20%))	
 							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
 							log <b>Incoming transmission:</b>
-							log <#93f8ff>Thanks for saving my transport. Iâ€™ll transfer some ores as thanks.
+							log <#93f8ff>Thanks for saving my transport. I’ll transfer some ores as thanks.
 							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
 							goldenCarrot is rewa2+goldenCarrot
 							tsc is rewa2+tsc
@@ -626,7 +626,7 @@ Resources
 				if ($ranocc == 51 and chance(20%))	
 							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
 							log <b>Incoming transmission:</b>
-							log <#93f8ff>Thanks for chasing off those scavengers. Hereâ€™s a reward crate.
+							log <#93f8ff>Thanks for chasing off those scavengers. Here’s a reward crate.
 							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
 							goldenCarrot is rewa2+goldenCarrot
 							tsc is rewa2+tsc
@@ -695,7 +695,7 @@ Resources
 				if ($ranocc == 62 and chance(20%))
 							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
 							log <b>Incoming transmission:</b> 
-							log <#93f8ff>Thanks for your escort, Iâ€™ll make it home. Credits are on the way.
+							log <#93f8ff>Thanks for your escort, I’ll make it home. Credits are on the way.
 							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
 							bunnies is rewa+bunnies
 							talz is rewa+talz
@@ -1745,7 +1745,7 @@ Upgrades
 	*ResetPrestige
 		name:Sell Your Ship
 		desc:Sell your ship for <b>[tsc*0.000001]</b> Microchips.<//><b>Effect:</b><.>Gain 1 Microchip per 1,000,000 Ore collected (ore earned in previous ships included).
-		tag:prestige upgrades2
+		tag:prestige upgrades2 zortMax
 		req:buildingUpgrade42 and taa<1000000000000000000000000000000000000000000 
 		on earn:log <b><#e6e8d8>Ship sold.<//>
 		on earn:log <b><#e6e8d8>New ship bought.<//>
@@ -1761,7 +1761,7 @@ Upgrades
 *ResetPrestige2
 		name:Gain the Victory Medal
 		desc:Reset everything, <b>even your Microchips</b>, gaining <b>1</b> Victory Medal.<//><b>Effect:</b><.>Complete the game and start from scratch with a Victory Medal.
-		tag:prestige upgrades2
+		tag:prestige upgrades2 zortMax
 		req:1000000000000000000000000000000000000000000 taa and buildingUpgrade42
 		on earn:log <b><#e6e8d8>You are awarded a Victory Medal.
 		on earn:
@@ -2000,6 +2000,7 @@ CSS
     //font-weight:100;
     color:#93f8ff;
   }
+
 
 
 
