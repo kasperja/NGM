@@ -3,8 +3,8 @@ Let's make a game!
 	by:kasperja
 	desc:Journey out, trade and upgrade your spaceship.<.><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.
 	created:07/06/2022
-	updated:11/06/2022
-	version:1.02
+	updated:11/09/2025
+	version:1.1
 
 Settings
 	
@@ -86,8 +86,8 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.<//><b>Stats:</b><.>Spaceship Level <b>[slvl]</b><.>Pilot Level <b>[ulvl]</b>
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.02</#>
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.02</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.1</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.1</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
@@ -286,7 +286,7 @@ Resources
 		hidden
 		passive: 
 			if (comm>random(40,70))
-			$ranocc=random(1,21)
+			$ranocc=random(1,52)
 				if ($ranocc == 1 and chance(20%))
 							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
 							log <b>Incoming transmission:</b> 
@@ -303,7 +303,7 @@ Resources
 							goldenCarrot is rewa2+goldenCarrot
 							tsc is rewa2+tsc
 				end
-				if ($ranocc == 3 and chance(40%))
+				if ($ranocc == 3 and chance(60%))
 							log Asteroid field detected.
 							log Entering safe mode.
 							toast <b>WARNING:</b> Entering asteroid field.
@@ -439,10 +439,302 @@ Resources
 							tsc is rewa2+tsc
 				end
 				if ($ranocc == 22 and chance(20%))
-							log test comm 22
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is Yegar Patrol Ship Y470. Your record shows no violations. Fly safe, Pilot.
 				end
 				if ($ranocc == 23 and chance(20%))
-							log test comm 23
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>Greetings Pilot. You just saved me from bankruptcy by scaring off those raiders. Here are some credits.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 24 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>You smell like the reactor leak of a second-hand garbage hauler!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 25 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Phemien Mining Division. Excess ore fragments have been left in orbit.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 26 and chance(20%))	
+							log Warning: Shields at 25%. Rerouting power from secondary systems.
+				end
+				if ($ranocc == 27 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Phemien Border Patrol. Cargo scan complete. All items appear legal. Proceed.
+				end
+				if ($ranocc == 28 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Mutant-blooded offspring of a collapsed warp drive!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 29 and chance(20%))
+							log <b>Incoming distress call:</b>
+							log <#93f8ff>Civilian vessel under attack in sector 3-A.
+				end
+				if ($ranocc == 30 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is the Yegar Law Enforcement. Your assistance in our blockade has been noted. Reward sent.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 31 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>That pirate bounty was mine, but you deserve a share. Sending it now.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 32 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is the Qak Trade Authority. We appreciate your fair trading practices. Bonus credits applied.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 33 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log The navigation module has recalculated your route through a safer corridor.
+				end
+				if ($ranocc == 34 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Cowardly spawn of a reactor-burned asteroid rat!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 35 and chance(20%))	
+							log Hull integrity restored to 100%.
+				end
+				if ($ranocc == 36 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Hand over your cargo, or you’ll be space dust!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 37 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>Thanks for saving my transport. I’ll transfer some ores as thanks.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 38 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Slime-shelled parasite of a rusted jump gate!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 39 and chance(20%))
+							log Entering radiation storm.
+							log Entering safe mode. Systems may experience temporary disruption.
+							toast <b>WARNING:</b> Entering radiation storm.				
+				end
+				if ($ranocc == 40 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Qak Trading Guild. An excess shipment of goods has been ejected for you.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 41 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Environmental filters cleared 98% of contaminants.
+				end
+				if ($ranocc == 42 and chance(20%))
+							log Warning: Proximity mines detected ahead. Exercise caution.			
+				end
+				if ($ranocc == 43 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Malformed clone of a subspace fungus!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 44 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log This is the ship computer of the Hellion Scarab.
+							log Automated turret installation neutralized enemy fighter.
+							log <b>[rewa] Credits </b>rewarded. <//><//><b>[rewa2] Ore[?(rewa2 >= 2)|s|] </b>looted.
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 45 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is Yegar Command Ship Y3. Your recent actions have improved sector security. Reward dispatched.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 46 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is Qak Mining HQ. Your help kept our miners alive. Expect payment in full.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 47 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Reactor efficiency boosted by 5%.
+				end
+				if ($ranocc == 48 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Yegar Enforcement Unit. Your record remains spotless. Carry on.
+				end
+				if ($ranocc == 49 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log This is the ship computer of the Hellion Scarab.
+							log Automated defense grid neutralized two hostile drones.
+							log <b>[rewa] Credits </b>rewarded.
+							bunnies is rewa+bunnies
+							talz is rewa+talz			
+				end
+				if ($ranocc == 50 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Drop your shields or prepare for annihilation!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 51 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>Thanks for chasing off those scavengers. Here’s a reward crate.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 52 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Phemien Law Authority. Your ship is clear of contraband. Safe travels.
+				end
+				if ($ranocc == 53 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Spawn of a derelict warp-maggot nest!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 54 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Power rerouted from weapons to shields.
+				end
+				if ($ranocc == 55 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Qak Mining Division. We abandoned surplus ore. You may collect it.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 56 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is Yegar Patrol Ship Y791. Your contribution to peacekeeping is noted. Reward incoming.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 57 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Rust-skinned shadow of a broken jump drone!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 58 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Drop your cargo, or your hull will be turned into scrap!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 59 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Navigation computer recalculated optimal hyperspace route.
+				end
+				if ($ranocc == 60 and chance(20%))
+							log Asteroid field detected.
+							log Entering dense asteroid belt. Collision risk increased.
+							toast <b>WARNING:</b> Entering asteroid field.
+							astc is 1
+				end
+				if ($ranocc == 61 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Phemien Border Watch. Scan complete. All readings normal.
+				end
+				if ($ranocc == 62 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>Thanks for your escort, I’ll make it home. Credits are on the way.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 63 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log Automated turret: Hostile ship destroyed. Sector secure.
+							log <b>[rewa] Credits </b>rewarded. <//><//><b>[rewa2] Ore[?(rewa2 >= 2)|s|] </b>looted.
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 64 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Warp-spawned leech of a corroded reactor core!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 65 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Fuel reserves replenished by 10% via scavenged material.
+				end
+				if ($ranocc == 66 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Relinquish your cargo, or your end will be slow.
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 67 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Civilian freighter Q-89. Your interference saved our crew. Accept these supplies.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
 				end
 				comm is 0
 			end
