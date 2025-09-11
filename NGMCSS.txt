@@ -1335,3 +1335,27 @@ visibility: hidden !important;
 {
     order:1;
 }
+
+.popup, #tooltip, .toast {
+    background: #00110e;
+    color: #ffc000 ;
+    
+    box-sizing: border-box;
+    border-radius: 10px !important;
+ 	
+	box-shadow: none !important;
+	text-shadow: none !important;
+
+}
+
+.tooltipPoint{
+border: 0px !important;
+box-shadow: none !important;
+text-shadow: none !important;
+color: #ffc000;
+visibility: hidden;
+}
+.closeButton{
+
+visibility: hidden;
+}
