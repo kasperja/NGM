@@ -286,7 +286,7 @@ Resources
 		hidden
 		passive: 
 			if (comm>random(40,70))
-			$ranocc=random(1,52)
+			$ranocc=random(1,67)
 				if ($ranocc == 1 and chance(20%))
 							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
 							log <b>Incoming transmission:</b> 
@@ -1975,3 +1975,4 @@ CSS
     //font-weight:100;
     color:#93f8ff;
   }
+
