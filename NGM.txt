@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<.><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.
 	created:07/06/2022
 	updated:11/09/2025
-	version:1.1
+	version:1.11
 
 Settings
 	
@@ -1975,6 +1975,7 @@ CSS
     //font-weight:100;
     color:#93f8ff;
   }
+
 
 
 
