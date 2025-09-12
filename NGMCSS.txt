@@ -1359,3 +1359,242 @@ visibility: hidden;
 
 visibility: hidden;
 }
+
+:root{
+  --curve:cubic-bezier(0.5,0.125,0.75,0.5);
+}
+    
+body {
+  margin:0px;
+  height:100vh;
+  width:100vw;
+  background:#000;
+  overflow:hidden;
+}
+
+.smallest, .smaller, .small, .regular, .big {
+  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars3.png");
+  background-size:100% 200%;
+  height:200%;
+  width:100%;
+  display:inline-block;
+  position:absolute;
+  
+  
+  height: 200% !important;
+width: 100% !important;
+color: #eeeeee !important;
+border: 0px;
+border: 0px;
+top: -60%;
+left:0px;
+
+
+background-size: 100% 100% !important;
+background-repeat: no-repeat;
+}
+
+.smallest {
+  animation: smallest 5s var(--curve) 0s infinite normal;
+  z-index:-1005;
+}
+.smaller {
+  animation: smaller 5s var(--curve) 0s infinite normal;
+  z-index:-1004;
+}
+.small {
+  animation: small 5s var(--curve) 0s infinite normal;
+  z-index:-1003;
+}
+.regular {
+  animation: regular 5s var(--curve) 0s infinite normal;
+  z-index:-1002;
+}
+.big {
+  animation: big 5s var(--curve) 0s infinite normal;
+  right:0;
+  z-index:-1001;
+}
+  
+
+@keyframes smallest {
+  from {
+    transform:scale(0.0001,0.0001);
+    opacity:0;
+  }
+  to {transform:scale(0.001,0.001);}
+}  
+
+@keyframes smaller {
+  from {transform:scale(0.001,0.001);}
+  to {transform:scale(0.01,0.01);}
+}  
+
+@keyframes small {
+  from {transform:scale(0.01,0.01);}
+  to {transform:scale(0.1,0.1);}
+}  
+
+
+@keyframes regular {
+  from {transform:scale(0.1,0.1);  opacity: 1;}
+  to {transform:scale(1,1);  opacity: 0.8;}
+}  
+
+@keyframes big {
+  from {transform:scale(1,1); opacity: 0.8;}
+  to {transform:scale(10,10);  opacity: 0;}
+  
+}
+
+.smallest2, .smaller2, .small2, .regular2, .big2 {
+  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars3.png");
+  background-size:100% 200%;
+  height:200%;
+  width:100%;
+  display:inline-block;
+  position:absolute;
+  
+  
+  height: 200% !important;
+width: 100% !important;
+color: #eeeeee !important;
+border: 0px;
+border: 0px;
+top: -60%;
+left:0px;
+
+
+background-size: 100% 100% !important;
+background-repeat: no-repeat;
+}
+
+.smallest2 {
+  animation: smallest2 10s var(--curve) 0s infinite normal;
+  z-index:-1005;
+}
+.smaller2 {
+  animation: smaller2 10s var(--curve) 0s infinite normal;
+  z-index:-1004;
+}
+.small2 {
+  animation: small2 10s var(--curve) 0s infinite normal;
+  z-index:-1003;
+}
+.regular2 {
+  animation: regular2 10s var(--curve) 0s infinite normal;
+  z-index:-1002;
+}
+.big2 {
+  animation: big2 10s var(--curve) 0s infinite normal;
+  right:0;
+  z-index:-1001;
+}
+  
+
+@keyframes smallest2 {
+  from {
+    transform:scale(0.0001,0.0001) rotate(140deg);
+    opacity:0;
+  }
+  to {transform:scale(0.001,0.001) rotate(140deg);}
+}  
+
+@keyframes smaller2 {
+  from {transform:scale(0.001,0.001) rotate(140deg);}
+  to {transform:scale(0.01,0.01) rotate(140deg);}
+}  
+
+@keyframes small2 {
+  from {transform:scale(0.01,0.01) rotate(140deg);}
+  to {transform:scale(0.1,0.1) rotate(140deg);}
+}  
+
+
+@keyframes regular2 {
+  from {transform:scale(0.1,0.1) rotate(140deg); opacity: 1;}
+  to {transform:scale(1,1) rotate(140deg); opacity: 0.8;}
+}  
+
+@keyframes big2 {
+  from {transform:scale(1,1) rotate(140deg); opacity: 0.8;}
+  to {transform:scale(10,10) rotate(140deg);  opacity: 0;}
+  
+}
+
+.smallest3, .smaller3, .small3, .regular3, .big3 {
+  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars3.png");
+  background-size:100% 200%;
+  height:200%;
+  width:100%;
+  display:inline-block;
+  position:absolute;
+  
+  
+  height: 200% !important;
+width: 100% !important;
+color: #eeeeee !important;
+border: 0px;
+border: 0px;
+top: -60%;
+left:0px;
+
+
+background-size: 100% 100% !important;
+background-repeat: no-repeat;
+}
+
+.smallest3 {
+  animation: smallest3 14s var(--curve) 0s infinite normal;
+  z-index:-1005;
+}
+.smaller3 {
+  animation: smaller3 14s var(--curve) 0s infinite normal;
+  z-index:-1004;
+}
+.small3 {
+  animation: small3 14s var(--curve) 0s infinite normal;
+  z-index:-1003;
+}
+.regular3 {
+  animation: regular3 14s var(--curve) 0s infinite normal;
+  z-index:-1002;
+}
+.big3 {
+  animation: big3 14s var(--curve) 0s infinite normal;
+  right:0;
+  z-index:-1001;
+}
+  
+
+@keyframes smallest3 {
+  from {
+    transform:scale(0.0001,0.0001) rotate(230deg);
+    opacity:0;
+  }
+  to {transform:scale(0.001,0.001) rotate(230deg);}
+}  
+
+@keyframes smaller3 {
+  from {transform:scale(0.001,0.001) rotate(230deg);}
+  to {transform:scale(0.01,0.01) rotate(230deg);}
+}  
+
+@keyframes small3 {
+  from {transform:scale(0.01,0.01) rotate(230deg);}
+  to {transform:scale(0.1,0.1) rotate(230deg);}
+}  
+
+
+@keyframes regular3 {
+  from {transform:scale(0.1,0.1) rotate(230deg); opacity: 1;}
+  to {transform:scale(1,1) rotate(230deg); opacity: 0.8;}
+}  
+
+@keyframes big3 {
+  from {transform:scale(1,1) rotate(230deg); opacity: .8;}
+  to {transform:scale(10,10) rotate(230deg);  opacity: 0;}
+  
+}
+
+
