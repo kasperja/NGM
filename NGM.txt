@@ -81,30 +81,18 @@ Layout
   *log
 	contains:Log
 	class:log
-	*smallest
-	  class:smallest
-	*smaller
-	  class:smaller
 	*small
 	  class:small
 	*regular
 	  class:regular
 	*big
 	  class:big
-	*smallest2
-	  class:smallest2
-	*smaller2
-	  class:smaller2
 	*small2
 	  class:small2
 	*regular2
 	  class:regular2
 	*big2
 	  class:big2
-	*smallest3
-	  class:smallest3
-	*smaller3
-	  class:smaller3
 	*small3
 	  class:small3
 	*regular3
@@ -2033,7 +2021,6 @@ CSS
     //font-weight:100;
     color:#93f8ff;
   }
-
 
 
 
