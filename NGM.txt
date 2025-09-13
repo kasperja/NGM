@@ -101,7 +101,7 @@ Layout
 	  class:regular2
 	*big2
 	  class:big2
-	 *smallest3
+	*smallest3
 	  class:smallest3
 	*smaller3
 	  class:smaller3
@@ -2033,6 +2033,7 @@ CSS
     //font-weight:100;
     color:#93f8ff;
   }
+
 
 
 
