@@ -1373,7 +1373,7 @@ body {
 }
 
 .smallest, .smaller, .small, .regular, .big {
-  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars3.png");
+  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars8.png");
   background-size:100% 200%;
   height:200%;
   width:100%;
@@ -1448,7 +1448,7 @@ background-repeat: no-repeat;
 }
 
 .smallest2, .smaller2, .small2, .regular2, .big2 {
-  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars3.png");
+  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars8.png");
   background-size:100% 200%;
   height:200%;
   width:100%;
@@ -1523,7 +1523,7 @@ background-repeat: no-repeat;
 }
 
 .smallest3, .smaller3, .small3, .regular3, .big3 {
-  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars3.png");
+  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars8.png");
   background-size:100% 200%;
   height:200%;
   width:100%;
@@ -1601,6 +1601,7 @@ background-repeat: no-repeat;
 
 visibility: hidden;
 }
+
 
 
 
