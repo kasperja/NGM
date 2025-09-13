@@ -1437,12 +1437,12 @@ background-repeat: no-repeat;
 
 
 @keyframes regular {
-  from {transform:scale(0.1,0.1);  opacity: 1;}
-  to {transform:scale(1,1);  opacity: 0.8;}
+  from {transform:scale(0.1,0.1);  opacity: 0;}
+  to {transform:scale(1,1);  opacity: 1;}
 }  
 
 @keyframes big {
-  from {transform:scale(1,1); opacity: 0.8;}
+  from {transform:scale(1,1); opacity: 1;}
   to {transform:scale(10,10);  opacity: 0;}
   
 }
@@ -1512,12 +1512,12 @@ background-repeat: no-repeat;
 
 
 @keyframes regular2 {
-  from {transform:scale(0.1,0.1) rotate(140deg); opacity: 1;}
-  to {transform:scale(1,1) rotate(140deg); opacity: 0.8;}
+  from {transform:scale(0.1,0.1) rotate(140deg); opacity: 0;}
+  to {transform:scale(1,1) rotate(140deg); opacity: 1;}
 }  
 
 @keyframes big2 {
-  from {transform:scale(1,1) rotate(140deg); opacity: 0.8;}
+  from {transform:scale(1,1) rotate(140deg); opacity: 1;}
   to {transform:scale(10,10) rotate(140deg);  opacity: 0;}
   
 }
@@ -1587,12 +1587,12 @@ background-repeat: no-repeat;
 
 
 @keyframes regular3 {
-  from {transform:scale(0.1,0.1) rotate(230deg); opacity: 1;}
-  to {transform:scale(1,1) rotate(230deg); opacity: 0.8;}
+  from {transform:scale(0.1,0.1) rotate(230deg); opacity: 0;}
+  to {transform:scale(1,1) rotate(230deg); opacity: 1;}
 }  
 
 @keyframes big3 {
-  from {transform:scale(1,1) rotate(230deg); opacity: .8;}
+  from {transform:scale(1,1) rotate(230deg); opacity: 1;}
   to {transform:scale(10,10) rotate(230deg);  opacity: 0;}
   
 }
@@ -1601,6 +1601,7 @@ background-repeat: no-repeat;
 
 visibility: hidden;
 }
+
 
 
 
