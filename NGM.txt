@@ -81,20 +81,14 @@ Layout
   *log
 	contains:Log
 	class:log
-	*small
-	  class:small
 	*regular
 	  class:regular
 	*big
 	  class:big
-	*small2
-	  class:small2
 	*regular2
 	  class:regular2
 	*big2
 	  class:big2
-	*small3
-	  class:small3
 	*regular3
 	  class:regular3
 	*big3
