@@ -1602,6 +1602,11 @@ background-repeat: no-repeat;
 visibility: hidden;
 }
 
+.mainPopup{
+
+top: 225px !important;
+
+}
 
 
 
