@@ -67,6 +67,7 @@ background-size: cover !important;
 	overflow:hidden;
 	width:100%;
 	position:absolute;
+	transition: 0.4s;
 }
 #box-res.fullWidth
 {	
@@ -78,6 +79,7 @@ background-size: cover !important;
 	
 	z-index:100;
 	position:absolute;
+	transition: 0.4s;
 }
 
 #box-things-Resources
@@ -87,6 +89,7 @@ background-size: cover !important;
 width:100% !important;
 justify-content: space-evenly !important;
 	height:5% !important;
+	transition: 0.4s;
 }
 
 #box-buttons
@@ -96,6 +99,7 @@ justify-content: space-evenly !important;
 	bottom:0px;
 	left:0px;
 	position:absolute;
+	transition: 0.4s;
 }
 #box-store
 {
@@ -103,7 +107,7 @@ justify-content: space-evenly !important;
 	top:0px;
 	bottom:0px;
 	margin-bottom:-2px;
-	
+	transition: 0.4s;
 	position:absolute;
 }
 #box-buildings,#box-upgrades,#box-buildings2,#box-upgrades2
@@ -117,6 +121,7 @@ justify-content: space-evenly !important;
 	padding-bottom:48px;/* this is to accommodate the info and settings buttons */
 	position:absolute;
 	margin-top:-2px;
+	transition: 0.4s;
 }
 #box-buildings
 {right:60%;
@@ -183,6 +188,7 @@ width:23.5%;
 	padding-right: auto;
 	margin-right:auto;
 	font-size:14px;
+	transition: 0.4s;
 }
 
 
@@ -206,6 +212,7 @@ width:23.5%;
    // font-family: Kanit, sans-serif;
     //font-weight:100;
     color:#000000;
+    transition: 0.4s;
   }
 .upgrade, .building
   {
@@ -230,7 +237,7 @@ background-repeat: no-repeat;
   background-color: $yellow;
   color: $brown;
   
-  
+  transition: 0.4s;
   
   box-shadow: -6px 6px 0 $brown;
   text-decoration: none;
@@ -359,25 +366,25 @@ font-weight:100;
  
 }
  
-#thing-3
+#thing-5
   {	
 	float:left;
 	width: 100%;
 	
   }
-#thing-1
+#thing-3
   {
 	float:left;
 	width: 100%;
   }
  
-#thing-2
+#thing-4
   {
 float:left;
 	width: 100%;
   }
 
-#thing-4
+#thing-6
   {	
 	float:left;
 	width: 100%;
@@ -410,6 +417,7 @@ float:left;
     border: 1px solid #002130;
     background:rgba(255,255,255,0.0);
     background-color: #qqqqqq;
+    transition: 0.4s;
 
 }
 .upgrade:hover{
@@ -455,7 +463,7 @@ float:left;
     box-shadow: 0px 0px 0px #39f;
 	font-family: Kanit, sans-sherif !important;
 	font-size: 14px;
-
+transition: 0.4s;
 }
 .upgrade.notOwned {
     width: 100% !important;
@@ -466,7 +474,7 @@ float:left;
     text-align: left;
     //height: 48px;
     //background:#002130;
-    
+    transition: 0.4s;
     background:rgba(255,255,255,0.0);
     background-color: #999999;
     box-shadow: 0px 0px 0px #39f;
@@ -513,7 +521,7 @@ border-style: solid !important;
     //font-family: Kanit, sans-serif !important;
     font-size: 18px;
     //color: #93f8ff;
-    
+    transition: 0.4s;
 	text-align: center;
 }
  
@@ -538,7 +546,7 @@ position: relative;
 color: #ffde00EE;
 border: 2px !important;
 border-color: #ffde00EE !important;
-background-color: #0a3a4dAA !important;
+background-color: #0a3a4dEE !important;
 border-style: dashed dashed dashed dashed !important;
  
 }
@@ -561,6 +569,7 @@ border-style: dashed dashed dashed dashed !important;
 	border: 2px outset #FFFFFFFF;
     //background-image: linear-gradient(to left, #00000000 , #93f8ff55);
     box-shadow: 0px 0px 0px 0px #333 inset, 0px 0px 0px 0px #999 inset, 0px 0px 0px 0px #fff inset;
+    transition: 0.4s;
 }
  
 ::-webkit-scrollbar-track {
@@ -572,6 +581,7 @@ border-color: #999999;
 margin-bottom: -1px !important;
 margin-right: 0px !important; 
 border-style: solid solid solid none;
+transition: 0.4s;
 }
 ::-webkit-scrollbar-thumb {
 width: 22px !important;
@@ -698,6 +708,7 @@ padding: 0px !important;
     height: 64px;
     z-index: 10000000;
     opacity: 0.5;
+    transition: 0.4s;
     pointer-events: none;
 }
 
@@ -713,6 +724,7 @@ margin-right: 0px !important;
 #box-upgrades, #box-buildings, #box-upgrades2, #box-buildings2{
     top: 35px;
 	overflow-y: visible !important;
+	transition: 0.4s;
 }
 
 #box-upgrades{
@@ -790,6 +802,7 @@ left: 1vw;
 color: #ffffff44;
 background-color: #00000000;
 background-color: #999999;
+
 }
 
 #thing-text-8{
@@ -806,6 +819,7 @@ color: #93f8ff44;
 background-color: #00000000;
 background-color: #999999;
 
+
 }
 
 .thing{
@@ -816,6 +830,7 @@ background-color: #eeeeee !important;
 margin-bottom: -1px !important;
 font-family: Kanit, sans-serif !important;
 text-shadow: 0px 0px !important;
+
 }
 .thing:hover{
 background-color: #FFFFFFFF;
@@ -842,6 +857,7 @@ border-color: #555555 !important;
 border-style: none solid none none !important;
 overflow-y: scroll !important;
 background-color: #eeeeee !important;
+transition: 0.4s;
 }
 
 #box-upgrades{
@@ -887,7 +903,7 @@ background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/
 background-size: 100% 100% !important;
 background-repeat: no-repeat;
 
-
+transition: 0.4s;
 }
 .box.sepTwo,.box.sepTwo:hover{
 
@@ -898,6 +914,7 @@ border: 0px;
 z-index:-1000;
 background: rgb(2,0,36);
 background-image: linear-gradient(to right,  rgba(196,184,107,1) 26%, rgba(237,237,237,1) 71%);
+transition: 0.4s;
 }
 .box.sep3,.box.sep3:hover{
 
@@ -908,6 +925,7 @@ border: 0px;
 z-index:-1000;
 background: rgb(2,0,36);
 background-image: linear-gradient(to right,  rgba(196,184,107,1) 26%, rgba(237,237,237,1) 71%);
+transition: 0.4s;
 }
 .box.sep4,.box.sep4:hover{
 
@@ -918,6 +936,7 @@ border: 0px;
 z-index:-1000;
 background: rgb(2,0,36);
 background-image: linear-gradient(to left,  rgba(196,184,107,1) 26%, rgba(237,237,237,1) 71%);
+transition: 0.4s;
 }
 
 #box-sepOne{
@@ -953,6 +972,7 @@ background-color: #eeeeee !important;
 width: 100% !important;
 height: 40% !important;
 top: 60% !important;
+transition: 0.4s;
 }
 #game{
 background-position: center center;}
@@ -973,6 +993,7 @@ border: 2px !important;
 border-color: #ffde00EE !important;
 background-color: #eeeeee00 !important;
 border-style: dashed dashed dashed dashed !important;
+
 }
 #thing-0:hover{
 transform:  translate(0, -129px) rotate(60deg) !important;
@@ -1030,12 +1051,14 @@ background-color: #18546cAA !important;
 border-style: dashed dashed dashed dashed !important;
 border-radius: 0px;
 z-index: 100 !important;
+transition: 0.4s;
 }
 .building{
 border: 8px !important;
 border-style: outset !important;
 background-color: #eeeeeeFF !important;
 border-color: #FFFFFFFF !important;
+transition: 0.4s;
 }
 .building:hover{
 top: 0px !important;
@@ -1055,6 +1078,7 @@ border: 1px solid #002130;
 border-style: solid;
 background-color: #eeeeeeFF;
 border-color: #aaaaaaAA;
+transition: 0.4s;
 }
 .upgrade:hover{
 top: 0px;
@@ -1082,6 +1106,7 @@ border-color: #FFFFFFFF !important;
 border-style: outset !important;
 
 background-image: linear-gradient(0deg, rgba(118,101,0,1) 0%, rgba(37,69,82,1) 100%);
+transition: 0.4s;
 }
 
 #log::-webkit-scrollbar {
@@ -1100,6 +1125,7 @@ color: #ffe33b;
 width: 110% !important;
 height: 110% !important;
 font-family: 'Courier Prime', monospace !important;
+transition: 0.4s;
 
 }
 #bulkDisplay{
@@ -1148,6 +1174,7 @@ color: #e67700;
     outline: 20px solid #eeeeeeFF !important;
 	border-bottom-color: #FeFeFe !important;
 	border-right-color: #FeFeFe !important;
+	transition: 0.4s;
 	
 }
 
@@ -1175,6 +1202,7 @@ border-style: solid !important;
 border-width:  0.1em !important;
 border-color: #ffe33b !important;
 color: #ffe33b !important;
+transition: 0.4s;
 }
 .tag-upgrades2,.upgrade{
 transition: 0s !important;
@@ -1221,6 +1249,7 @@ border-style: outset;
     opacity: 0.20;
     background-color: #FFFFFF;
     z-index: 10000002;
+    transition: 0.4s;
 }
 
 #fpsCounter, #fpsGraph{
@@ -1250,6 +1279,7 @@ background-size: 100% 100% !important;
     
     padding-top: 18px;
     padding-left: 30px;
+    transition: 0.4s;
 }
 #game{
 
@@ -1316,6 +1346,7 @@ visibility: hidden !important;
   border: 1px solid #93f8f !important;
   padding-top: 0px !important;
   padding-bottom: 0px !important;
+  transition: 0.4s;
 }
 .tag-zortTop{
 
@@ -1325,6 +1356,7 @@ visibility: hidden !important;
   border: 1px solid #93f8f !important;
   padding-top: 0px !important;
   padding-bottom: 0px !important;
+  transition: 0.4s;
 }
 .tag-zortMax{
 
@@ -1693,11 +1725,195 @@ top: 225px !important;
     animation: regular3 1s var(--curve) 0s infinite normal !important;
 }
 
-#thing-10{
+#thing-11, #thing-10{
 
 display: none !important;
 
 }
 
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]){
+   
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-store{
+    background-color: #0f0f0f !important;
+    transition: 0.4s;
+}
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .box.sepOne, #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .box.sepOne:hover{
+
+background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpDark1.png") !important;
+transition: 0.4s;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .thing{
+background-color: #0f0f0f !important;
+transition: 0.4s;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #thing-0{
+background-color: #0f0f0f00 !important;
+transition: 0.4s;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .upgrade{
+
+background-color: #00000000 !important;
+transition: 0.4s;
+}
 
 
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"])  #box-log{
+
+
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/logTechDark2.png) !important;
+
+
+
+
+border-radius: 5%;
+border: 10px !important;
+border-color: #0f0f0fff !important;
+border-style: outset !important;
+
+background-image: linear-gradient(0deg, rgba(118,101,0,1) 0%, rgba(37,69,82,1) 100%);
+transition: 0.4s;
+}
+
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"])  .thing.res{
+border: 2px #0f0f0fff !important;
+color: #999999;
+border-style: outset !important;
+background-color: #0f0f0f !important;
+margin-bottom: -1px !important;
+font-family: Kanit, sans-serif !important;
+text-shadow: 0px 0px !important;
+transition: 0.4s;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .thing:hover{
+  
+    //background:#002130;
+    color:#93f8ff;
+    background-color: #636363;
+	transition: 0.4s;
+  }
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .building{
+
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech2dark.png) !important;
+border-color: #0f0f0fff !important;
+transition: 0.4s;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .building:active{
+
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech2darkDOWN.png) !important;
+
+background-color: #eeeeeeFF !important;
+border-color: #0f0f0fff !important;
+transition: 0.4s;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-buildings, 
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-upgrades, 
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-buildings2, 
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-upgrades2{
+background-color: #0f0f0fff !important;
+transition: 0.4s;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-upgrades, 
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-upgrades2 {
+    border: 5px solid #0f0f0fff !important;
+    outline: 20px solid #0f0f0fff !important;
+    border-bottom-color: #0f0f0fff !important;
+    border-right-color: #0f0f0fff !important;
+    transition: 0.4s;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .building:active{
+background-color: #0f0f0fff !important;
+border-style: inset !important;
+transition: 0.4s;
+}
+
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .upgrade:hover{
+
+color: #00000066;
+background-color: #ffe33b !important;
+transition: 0.4s;
+}
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .upgrade:active{
+background-color: #ffe33b00 !important;
+
+color: #00000066 !important;
+transition: 0.4s;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-buildings2, 
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-buildings{
+ -webkit-box-shadow:inset 0px 0px 0px 2px #000000ff;
+  -moz-box-shadow:inset 0px 0px 0px 4px #000000ff;
+  box-shadow:inset 0px 4px 6px 2px #000000ff;
+  transition: 0.4s;
+      
+}
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) ::-webkit-scrollbar-thumb {
+    background: #0f0f0fff;
+	//background: #1f546a;
+	border: 2px outset #0f0f0fff;
+    //background-image: linear-gradient(to left, #00000000 , #93f8ff55);
+    box-shadow: 0px 0px 0px 0px #636363 inset, 0px 0px 0px 0px #000 inset, 0px 0px 0px 0px #636363 inset;
+    transition: 0.4s;
+}
+ 
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) ::-webkit-scrollbar-track {
+    background: #EEEEEE00;
+	box-shadow: 0px 0px 0px 0px #00000000 inset, 0px 0px 0px 0px #444 inset, 0px 0px 0px 0px #636363 inset;
+	
+border-color: #0f0f0fff;
+transition: 0.4s;
+}
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) ::-webkit-scrollbar-thumb {
+
+    background: #0f0f0fff;
+	transition: 0.4s;
+
+}
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) ::-webkit-scrollbar-thumb:hover {
+    background: #636363;
+    transition: 0.4s;
+}
+
+#game:has(#content #box-main .hexHandler2 .thing-text span[style*="color:#001019"]) {
+    background: #000000;
+    transition: 0.4s;
+    }
+    
+    #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-zortTop, #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"])  .tag-zortMiddle
+    #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-things-sortup, #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-things-sortup2, #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"])  .tag-auchouse{
+
+background-color: #ffe33b55 !important;
+transition: 0.4s;
+}
+
+#wrap:has(#game #content #box-main .hexHandler2 .thing-text span[style*="color:#001019"])  #fpsCounter, #wrap:has(#game #content #box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #fpsGraph{
+
+    
+    border-color: #0f0f0fff !important;
+    border-bottom-color: #0f0f0fff !important;
+    border-right-color: #0f0f0fff !important;
+    color: #ffe33b66 !important;
+    transition: 0.4s;
+    }
+    #wrap:has(#game #content #box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #fpsGraph {
+    
+    background-color: #ffffff;
+    
+    transition: 0.4s;
+    color: #ffe33b66 !important;
+}
+    
