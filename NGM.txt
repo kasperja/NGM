@@ -1489,7 +1489,7 @@ Buildings
         text:Throttle : [?(spt=0)|█ █ █][?(spt=1)|█ █ █  █ █ █][?(spt=2)|█ █ █  █ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █  █ █ █ MAX]
         desc:Set the speed of the Spaceship. <//>(Does not affect gameplay speed)
         req:10 talz
-    on tick:spt = speedtoggle
+    on click:spt = speedtoggle
         tag:speedtoggle
     limit:4
 
@@ -2040,6 +2040,7 @@ CSS
     //font-weight:100;
     color:#93f8ff;
   }
+
 
 
 
