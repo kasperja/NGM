@@ -1439,11 +1439,11 @@ background-repeat: no-repeat;
   z-index:-1003;
 }
 .regular{
-  animation: regular 2s var(--curve) 0s infinite normal;
+  animation: regular 20s var(--curve) 0s infinite normal;
   z-index:-1002;
 }
 .big{
-  animation: big 2s var(--curve) 0s infinite normal;
+  animation: big 20s var(--curve) 0s infinite normal;
   right:0;
   z-index:-1001;
 }
@@ -1517,12 +1517,12 @@ background-repeat: no-repeat;
   z-index:-1003;
 }
 .regular2{
-  animation: regular2 4s var(--curve) 0s infinite normal;
+  animation: regular2 40s var(--curve) 0s infinite normal;
   z-index:-1002;
 }
 
 .big2{
-  animation: big2 4s var(--curve) 0s infinite normal;
+  animation: big2 40s var(--curve) 0s infinite normal;
   right:0;
   z-index:-1001;
 }
@@ -1594,12 +1594,12 @@ background-repeat: no-repeat;
   z-index:-1003;
 }
 .regular3{
-  animation: regular3 8s var(--curve) 0s infinite normal;
+  animation: regular3 80s var(--curve) 0s infinite normal;
   z-index:-1002;
 }
 
 .big3{
-  animation: big3 8s var(--curve) 0s infinite normal;
+  animation: big3 80s var(--curve) 0s infinite normal;
   right:0;
   z-index:-1001;
 }
@@ -1648,80 +1648,101 @@ top: 225px !important;
 }
 
 #content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .big {
-    animation: big 2s var(--curve) 0s infinite normal !important;
+    animation: big 20s var(--curve) 0s infinite normal !important;
 }
 #content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .regular {
-    animation: regular 2s var(--curve) 0s infinite normal !important;
+    animation: regular 20s var(--curve) 0s infinite normal !important;
 }
 #content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .big2 {
-    animation: big2 4s var(--curve) 0s infinite normal !important;
+    animation: big2 40s var(--curve) 0s infinite normal !important;
 }
 #content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .regular2 {
-    animation: regular2 4s var(--curve) 0s infinite normal !important;
+    animation: regular2 40s var(--curve) 0s infinite normal !important;
 }
 #content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .big3 {
-    animation: big3 8s var(--curve) 0s infinite normal !important;
+    animation: big3 80s var(--curve) 0s infinite normal !important;
 }
 #content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .regular3 {
+    animation: regular3 80s var(--curve) 0s infinite normal !important;
+}
+
+
+
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .big {
+    animation: big 2s var(--curve) 0s infinite normal !important;
+}
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .regular {
+    animation: regular 2s var(--curve) 0s infinite normal !important;
+}
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .big2 {
+    animation: big2 4s var(--curve) 0s infinite normal !important;
+}
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .regular2 {
+    animation: regular2 4s var(--curve) 0s infinite normal !important;
+}
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .big3 {
+    animation: big3 8s var(--curve) 0s infinite normal !important;
+}
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .regular3 {
     animation: regular3 8s var(--curve) 0s infinite normal !important;
 }
 
 
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .big {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .big {
     animation: big 1s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .regular {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .regular {
     animation: regular 1s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .big2 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .big2 {
     animation: big2 2s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .regular2 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .regular2 {
     animation: regular2 2s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .big3 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .big3 {
     animation: big3 4s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .regular3 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .regular3 {
     animation: regular3 4s var(--curve) 0s infinite normal !important;
 }
 
 
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .big {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .big {
     animation: big 0.5s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .regular {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .regular {
     animation: regular 0.5s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .big2 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .big2 {
     animation: big2 1s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .regular2 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .regular2 {
     animation: regular2 1s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .big3 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .big3 {
     animation: big3 2s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .regular3 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .regular3 {
     animation: regular3 2s var(--curve) 0s infinite normal !important;
 }
 
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .big {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .big {
     animation: big 0.25s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .regular {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .regular {
     animation: regular 0.25s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .big2 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .big2 {
     animation: big2 0.5s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .regular2 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .regular2 {
     animation: regular2 0.5s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .big3 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .big3 {
     animation: big3 1s var(--curve) 0s infinite normal !important;
 }
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .regular3 {
+#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .regular3 {
     animation: regular3 1s var(--curve) 0s infinite normal !important;
 }
 
