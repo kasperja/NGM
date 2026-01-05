@@ -1,7 +1,7 @@
 Let's make a game!
 	name:Hellion Scarab
 	by:kasperja
-	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Starburst background coding: <b>Fractyl Cookie</b>.
+	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:11/09/2025
 	version:1.2
@@ -14,7 +14,7 @@ Settings
 	
 	spritesheet:icons, 48 by 48, https://github.com/kasperja/SSM/raw/main/SpriteCrystalsSC1.png
 		
-	stylesheet:https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/NGMCSS.txt
+	stylesheet:https://kasperja.neocities.org/HSspeed/css.txt
 	
 	no particles
 	no bulk particles
@@ -24,7 +24,7 @@ Settings
 Layout
 	
 	*main
-  contains:res, buttons, BulkDisplay
+  contains:res, buttons, BulkDisplay, tag:hexHandler
   *res
 	icons:hide
     contains:Resources
@@ -60,6 +60,7 @@ Layout
 	//header:Upgrades
   *upgrades2
 	tooltip origin:left
+	  contains:tag:speedtoggle
     contains:tag:upgrades2
     costs:show
     names:show
@@ -132,6 +133,11 @@ Buttons
 		tooltip class:red
 		
 Resources
+  *hexHandler
+    hidden
+    text:[?(spt=0)|<#001010></#>][?(spt=1)|<#001011></#>][?(spt=2)|<#001012></#>][?(spt=3)|<#001013></#>]
+    class:hidden hexHandler
+    tag:hexHandler
 
 	*bunny|bunnies
 		name:Credit|Credits
@@ -175,19 +181,22 @@ Resources
 		hidden
 
 	*slvl
+	  hidden
 		name:Spaceship Level
 		text:Spaceship Level [slvl]
 		is always:(pow(talz,0.041))*1.47
 		class:slvl
 		no tooltip
-
+		
 	*ulvl
+	  hidden
 		name:Pilot Level		
 		text:Pilot Level [ulvl]
 		is always:(pow(((bunnies:max)),0.041)*1.47)
 		class:ulvl
 		no tooltip
 		tag:prestige prestige2
+		
 
 	*chk
 		on start:
@@ -755,7 +764,15 @@ Resources
 				comm is 0
 			end
 		end
-
+  
+  *spt
+    passive: 
+      if (spt>3) 
+				spt is 0
+				speedtoggle is 0
+			end
+		end
+    hidden
 		
 		
 	
@@ -1467,6 +1484,14 @@ Buildings
 
 //Tier'd "upgrades"
 
+	*speedtoggle
+        name:Throttle
+        text:Throttle : [?(spt=0)|█ █ █][?(spt=1)|█ █ █  █ █ █][?(spt=2)|█ █ █  █ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █  █ █ █ MAX]
+        desc:Set the speed of the Spaceship. <//>(Does not affect gameplay speed)
+        req:10 talz
+    on tick:spt = speedtoggle
+        tag:speedtoggle
+    limit:4
 
 	*BountyAI
 		name:Artificial Intelligence
@@ -2015,7 +2040,6 @@ CSS
     //font-weight:100;
     color:#93f8ff;
   }
-
 
 
 
