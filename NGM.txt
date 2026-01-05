@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:11/09/2025
-	version:1.2
+	version:1.4
 
 Settings
 	
@@ -24,7 +24,7 @@ Settings
 Layout
 	
 	*main
-  contains:res, buttons, BulkDisplay, tag:hexHandler
+  contains:res, buttons, BulkDisplay, tag:hexHandler, tag:hexHandler2
   *res
 	icons:hide
     contains:Resources
@@ -51,6 +51,7 @@ Layout
 	class:outHeader
   *upgrades
 	tooltip origin:left
+	contains:tag:dimtoggle
     contains:Upgrades
 	contains:tag:upgrades
     costs:show
@@ -103,8 +104,8 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.<//><b>Stats:</b><.>Spaceship Level <b>[slvl]</b><.>Pilot Level <b>[ulvl]</b>
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.2</#>
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.2</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.4</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.4</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
@@ -138,6 +139,12 @@ Resources
     text:[?(spt=0)|<#001010></#>][?(spt=1)|<#001011></#>][?(spt=2)|<#001012></#>][?(spt=3)|<#001013></#>]
     class:hidden hexHandler
     tag:hexHandler
+    
+  *hexHandler2
+    hidden
+    text:[?(dimc=0)|<#001018></#>][?(dimc=1)|<#001019></#>]
+    class:hidden hexHandler2
+    tag:hexHandler2
 
 	*bunny|bunnies
 		name:Credit|Credits
@@ -770,6 +777,15 @@ Resources
       if (spt>3) 
 				spt is 0
 				speedtoggle is 0
+			end
+		end
+    hidden
+
+  *dimc
+    passive: 
+      if (dimc>1) 
+				dimc is 0
+				dimtoggle is 0
 			end
 		end
     hidden
@@ -1492,6 +1508,15 @@ Buildings
     on click:spt = speedtoggle
         tag:speedtoggle
     limit:4
+    
+  *dimtoggle
+        name:Light
+        text:Light Switch : [?(dimc=0)|<b>ON</b>][?(dimc=1)|<b>OFF</b>]
+        desc:Toggle the cockpit lights.
+        req:20 talz
+    on click:dimc = dimtoggle
+        tag:dimtoggle
+        limit:2
 
 	*BountyAI
 		name:Artificial Intelligence
@@ -2035,13 +2060,12 @@ CSS
     letter-spacing: 0px;
  
     font-stretch: ultra-expanded
-   
+   transition
    // font-family: Kanit, sans-serif !important;
     //font-weight:100;
     color:#93f8ff;
+    transition: 0.4s;
   }
-
-
 
 
 
