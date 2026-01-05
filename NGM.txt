@@ -105,6 +105,8 @@ Buttons
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.<//><b>Stats:</b><.>Spaceship Level <b>[slvl]</b><.>Pilot Level <b>[ulvl]</b>
 		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.4</#>
+		on start:spt = 1
+		on start:yield 1 speedtoggle
 		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.4</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
@@ -136,7 +138,7 @@ Buttons
 Resources
   *hexHandler
     hidden
-    text:[?(spt=0)|<#001010></#>][?(spt=1)|<#001011></#>][?(spt=2)|<#001012></#>][?(spt=3)|<#001013></#>]
+    text:[?(spt=0)|<#001010></#>][?(spt=1)|<#001011></#>][?(spt=2)|<#001012></#>][?(spt=3)|<#001013></#>][?(spt=4)|<#001014></#>]
     class:hidden hexHandler
     tag:hexHandler
     
@@ -774,7 +776,7 @@ Resources
   
   *spt
     passive: 
-      if (spt>3) 
+      if (spt>4) 
 				spt is 0
 				speedtoggle is 0
 			end
@@ -1502,12 +1504,12 @@ Buildings
 
 	*speedtoggle
         name:Throttle
-        text:Throttle : [?(spt=0)|█ █ █][?(spt=1)|█ █ █  █ █ █][?(spt=2)|█ █ █  █ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █  █ █ █ <b>MAX</b>]
+        text:Throttle : [?(spt=0)|█][?(spt=1)|█ █ █][?(spt=2)|█ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █][?(spt=4)|█ █ █  █ █ █  █ █ █  █ █ █ <b>MAX</b>]
         desc:Set the speed of the Spaceship. <//>(Does not affect gameplay speed)
         req:10 talz
     on click:spt = speedtoggle
         tag:speedtoggle
-    limit:4
+    limit:5
     
   *dimtoggle
         name:Light
@@ -2066,7 +2068,6 @@ CSS
     color:#93f8ff;
     transition: 0.4s;
   }
-
 
 
 
