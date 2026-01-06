@@ -1055,9 +1055,12 @@ transition: 0.4s;
 }
 .building{
 border: 8px !important;
-border-style: outset !important;
 background-color: #eeeeeeFF !important;
-border-color: #FFFFFFFF !important;
+border-style: solid !important;
+border-left-color: #ffffff !important;
+border-right-color: #aaaaaa !important;
+border-top-color: #ffffff !important;
+border-bottom-color: #aaaaaa !important;
 transition: 0.4s;
 }
 .building:hover{
@@ -1066,7 +1069,7 @@ right: 0px !important;
 left: 0px !important;
 color: #ffe33b;
 background-color: #FFFFFFFF !important;
-border-color: #FFFFFFFF !important;
+
 }
 .building:active{
 background-color: #EEEEEEFF !important;
@@ -1290,7 +1293,7 @@ background-size: 100% 100% !important;
 padding: 10px !important;
 background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech3.png) !important;
 
-background-size: 100% 100% !important;
+background-size: 100.1% 100.1% !important;
 transition: 0s;
 }
 .building:hover{
@@ -1787,15 +1790,16 @@ transition: 0.4s;
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"])  #box-log{
 
 
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/logTechDark2.png) !important;
-
-
-
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/logTechDark3.png) !important;
 
 border-radius: 5%;
 border: 10px !important;
-border-color: #0f0f0fff !important;
-border-style: outset !important;
+
+border-style: solid !important;
+border-left-color: #1f1f1fff !important;
+border-right-color: #000000FF !important;
+border-top-color: #1f1f1fff !important;
+border-bottom-color: #000000FF !important;
 
 background-image: linear-gradient(0deg, rgba(118,101,0,1) 0%, rgba(37,69,82,1) 100%);
 transition: 0.4s;
@@ -1805,7 +1809,11 @@ transition: 0.4s;
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"])  .thing.res{
 border: 2px #0f0f0fff !important;
 color: #999999;
-border-style: outset !important;
+border-style: solid !important;
+border-left-color: #2f2f2f !important;
+border-right-color: #000000FF !important;
+border-top-color: #2f2f2f !important;
+border-bottom-color: #000000FF !important;
 background-color: #0f0f0f !important;
 margin-bottom: -1px !important;
 font-family: Kanit, sans-serif !important;
@@ -1823,14 +1831,18 @@ transition: 0.4s;
 
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .building{
 
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech2dark.png) !important;
-border-color: #0f0f0fff !important;
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech3dark.png) !important;
+border-style: solid !important;
+border-left-color: #2f2f2f !important;
+border-right-color: #000000FF !important;
+border-top-color: #2f2f2f !important;
+border-bottom-color: #000000FF !important;
 transition: 0.4s;
 }
 
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .building:active{
 
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech2darkDOWN.png) !important;
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech3darkDOWN.png) !important;
 
 background-color: #eeeeeeFF !important;
 border-color: #0f0f0fff !important;
