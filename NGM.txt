@@ -781,6 +781,38 @@ Resources
 				speedtoggle is 0
 			end
 		end
+		passive:
+		if (spt==0)
+		  multiply yield of bunnies by 1.20
+		  multiply yield of talz by 1.20
+		  multiply yield of goldenCarrots by 1.20
+		  multiply yield of tsc by 1.20
+		end
+		if (spt==1)
+		  multiply yield of bunnies by 1.15
+		  multiply yield of talz by 1.15
+		  multiply yield of goldenCarrots by 1.15
+		  multiply yield of tsc by 1.15
+		end
+		if (spt==2)
+		  multiply yield of bunnies by 1.10
+		  multiply yield of talz by 1.10
+		  multiply yield of goldenCarrots by 1.10
+		  multiply yield of tsc by 1.10
+		end
+		if (spt==3)
+		  multiply yield of bunnies by 1.05
+		  multiply yield of talz by 1.05
+		  multiply yield of goldenCarrots by 1.05
+		  multiply yield of tsc by 1.05
+		end
+		if (spt==4)
+		  multiply yield of bunnies by 1.0
+		  multiply yield of talz by 1.0
+		  multiply yield of goldenCarrots by 1.0
+		  multiply yield of tsc by 1.0
+		end
+		end
     hidden
 
   *dimc
@@ -1505,7 +1537,7 @@ Buildings
 	*speedtoggle
         name:Throttle
         text:Throttle : [?(spt=0)|█][?(spt=1)|█ █ █][?(spt=2)|█ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █][?(spt=4)|█ █ █  █ █ █  █ █ █  █ █ █ <b>MAX</b>]
-        desc:Set the speed of the Spaceship. <//>(Does not affect gameplay speed)
+        desc:Set the speed of the Spaceship.<//>Faster = More encounters.<//>Slower = More passive income.<//><b>Current Effect:</b><.>Encounter frequency: <b>[(100*((2+spt)/2))]%</b><.>Credits income: <b>[(20)-(spt*5)]%</b> increased.<.>Ore income: <b>[(20)-(spt*5)]%</b> increased.
         req:10 talz
     on click:spt = speedtoggle
         tag:speedtoggle
@@ -1880,7 +1912,7 @@ Achievements
 	*bunnyAchievm1
 		name:The Start of the Journey
 		desc:Start a new game.
-		passive:yield 1 comm
+		passive:yield 1*((2+spt)/2) comm
 		passive:multiply frequency of psDrones by 5
 		passive:multiply frequency of psHaulers by 50
 		passive:multiply frequency of psTransp by 50
@@ -2068,7 +2100,6 @@ CSS
     color:#93f8ff;
     transition: 0.4s;
   }
-
 
 
 
