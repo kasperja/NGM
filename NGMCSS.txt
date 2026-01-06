@@ -1921,7 +1921,7 @@ transition: 0.4s;
 
 }
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) ::-webkit-scrollbar-thumb:hover {
-    background: #636363;
+    background: #2f2f2f;
     transition: 0.4s;
 }
 
@@ -1954,3 +1954,4 @@ transition: 0.4s;
     color: #ffe33b66 !important;
 }
     
+
