@@ -1861,8 +1861,10 @@ transition: 0.4s;
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-upgrades2 {
     border: 5px solid #0f0f0fff !important;
     outline: 20px solid #0f0f0fff !important;
-    border-bottom-color: #0f0f0fff !important;
-    border-right-color: #0f0f0fff !important;
+    border-left-color: #000000 !important;
+border-right-color: #2f2f2f !important;
+border-top-color: #000000 !important;
+border-bottom-color: #2f2f2f !important;
     transition: 0.4s;
 }
 
