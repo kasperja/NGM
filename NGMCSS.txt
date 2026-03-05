@@ -1941,6 +1941,7 @@ transition: 0.4s;
 
 background-color: #ffe33b55 !important;
 transition: 0.4s;
+
 }
 
 #wrap:has(#game #content #box-main .hexHandler2 .thing-text span[style*="color:#001019"])  #fpsCounter, #wrap:has(#game #content #box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #fpsGraph{
@@ -1959,4 +1960,10 @@ transition: 0.4s;
     transition: 0.4s;
     color: #ffe33b66 !important;
 }
-    
+
+.tag-statsdp, #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-statsdp{
+
+background-color: #00000000 !important;
+
+}
+
