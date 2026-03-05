@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:11/09/2025
-	version:1.4
+	version:1.41
 
 Settings
 	
@@ -104,10 +104,10 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.<//><b>Stats:</b><.>Spaceship Level <b>[slvl]</b><.>Pilot Level <b>[ulvl]</b>
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.4</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.41</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.4</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.41</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
@@ -1555,13 +1555,13 @@ Buildings
 	*BountyAI
 		name:Artificial Intelligence
 		text:Artificial Intelligence : <b>lvl [this]</b>
-		desc:Integrate advanced AI into the ship computer, making a lot of actions automatical and highly efficient. Additionally makes the targeting system more precise for both mining and combat.<//><b>Effect:</b><.>With every level, gain an Ore every second for every Microchip ever earned (previous games included).<.>With every level, gain 1,000,000 Credits every second for every Microchip ever earned (previous games included).
+		desc:Integrate advanced AI into the ship computer, making a lot of actions automatical and highly efficient. Additionally makes the targeting system more precise for both mining and combat.<//><b>Effect:</b><.>With every level, gain 5 Ores every second for every Microchip ever earned (previous games included).<.>With every level, gain 5,000,000 Credits every second for every Microchip ever earned (previous games included).
 		cost:1000 prestigio
 		req:buildingUpgrade42
-		on tick:yield (taa) goldenCarrots
-		on tick:yield (taa) tsc
-		on tick:yield (taa*1000000) bunnies
-		on tick:yield (taa*1000000) talz
+		on tick:yield (taa*5) goldenCarrots
+		on tick:yield (taa*5) tsc
+		on tick:yield (taa*5000000) bunnies
+		on tick:yield (taa*5000000) talz
 		tags:buildings
 		cost increase:150%
 		
@@ -2100,6 +2100,7 @@ CSS
     color:#93f8ff;
     transition: 0.4s;
   }
+
 
 
 
