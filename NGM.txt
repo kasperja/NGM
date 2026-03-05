@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:11/09/2025
-	version:1.41
+	version:1.6
 
 Settings
 	
@@ -104,10 +104,10 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.<//><b>Stats:</b><.>Spaceship Level <b>[slvl]</b><.>Pilot Level <b>[ulvl]</b>
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.41</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.6</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.41</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.6</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
@@ -184,7 +184,9 @@ Resources
 
 	*totalPlanets
    		hidden
-   		is always:(cages2+hutches2+coops2+pens2+meadows2+villages2+cities2+citadels2+stations2+polices2+bombers2+ionfrigates2)
+   		is always:(cages2+hutches2+coops2+pens2+meadows2+villages2+cities2+citadels2+stations2+polices2+bombers2+ionfrigates2+battlecruisers)
+
+  
 
 	*talz		
 		hidden
@@ -824,7 +826,13 @@ Resources
 		end
     hidden
 		
-		
+	*totalModules
+   		hidden
+   		is always:(cages+hutches+pens+meadows+villages+citadels+stations+polices+bombers+hutches2+coops2+pens2+meadows2+cities2+stations2+ionfrigates+battlecruisers+(fortress>=100))
+   		
+  *totalWeapons
+   		hidden
+   		is always:(coops+cities+cages2+villages2+citadels2+polices2+Superfreighters+bombers2+ionfrigates2+Vanguards)	
 	
 
 Shinies
@@ -1555,13 +1563,13 @@ Buildings
 	*BountyAI
 		name:Artificial Intelligence
 		text:Artificial Intelligence : <b>lvl [this]</b>
-		desc:Integrate advanced AI into the ship computer, making a lot of actions automatical and highly efficient. Additionally makes the targeting system more precise for both mining and combat.<//><b>Effect:</b><.>With every level, gain 10 Ores every second for every Microchip ever earned (previous games included).<.>With every level, gain 10,000,000 Credits every second for every Microchip ever earned (previous games included).
+		desc:Integrate advanced AI into the ship computer, making a lot of actions automatical and highly efficient. Additionally makes the targeting system more precise for both mining and combat.<//><b>Effect:</b><.>With every level, gain 1 Ores every second for every Microchip ever earned (previous games included).<.>With every level, gain 1,000,000 Credits every second for every Microchip ever earned (previous games included).
 		cost:1000 prestigio
 		req:buildingUpgrade42
-		on tick:yield (taa*10) goldenCarrots
-		on tick:yield (taa*10) tsc
-		on tick:yield (taa*10000000) bunnies
-		on tick:yield (taa*10000000) talz
+		on tick:yield (taa*1) goldenCarrots
+		on tick:yield (taa*1) tsc
+		on tick:yield (taa*100000) bunnies
+		on tick:yield (taa*100000) talz
 		tags:buildings
 		cost increase:150%
 		
@@ -1704,6 +1712,24 @@ Upgrades
 		cost:2000000 goldenCarrots
 		req:42000000000 talz and militaryProtection
 		tag: upgrades2
+		
+	*supplyModules
+		name:Module Interaction AI
+		desc:Safely pushes all modules beyond standard limits. All ship module levels amplify your Ore income.<//><b>Effect:</b><.>Ores production increased by 1% per accumulated module level.
+		cost:200000000000000 bunnies
+		passive:multiply yield of goldenCarrots by (1+(totalModules*0.1))
+		passive:multiply yield of tsc by (1+(totalModules*0.1))
+		req:buildingUpgrade42 and 5 BountyAI
+    tag: upgrades2
+    
+	*supplyWeapons
+		name:Adaptive Fire Control
+		desc:Dynamically adjusts weapon firing patterns during combat. All weapon levels amplify your Credits income.<//><b>Effect:</b><.>Credits production increased by 1% per accumulated weapon level.
+		cost:100000000000000 bunnies
+		passive:multiply yield of bunnies by (1+(totalWeapons*0.1))
+		passive:multiply yield of talz by (1+(totalWeapons*0.1))
+		req:buildingUpgrade42 and 1 BountyAI
+    tag: upgrades2
 
   *Upgrades2H
 	  name:Software
@@ -1715,7 +1741,7 @@ Upgrades
 		on click:anim glow
 	
 //upgrades2
-
+  
 	//food upgrades
 	//inspiration : http://rabbit.org/suggested-vegetables-and-fruits-for-a-rabbit-diet/
 	*OwnedUpgrades
@@ -1841,8 +1867,17 @@ Upgrades
 	  tag:auchouse zortTop
 	  no click
 	  
+	 *StatsDp
+	  name:StatsDP
+	  text:<b>Stats:</b> Spaceship Level: <b>[slvl]</b> | Pilot Level: <b>[ulvl]</b>
+	  desc:Upgrades you own.
+	  tag:auchouse zortTop statsdp
+	  no click
+	  req:3 talz
+	  
 	*ResetPrestige
 		name:Sell Your Ship
+		text:Sell Your Ship <#ffffff>|</#> Ship Value:<#ffffff><b> [tsc*0.000001]</b> </#>Microchips
 		desc:Sell your ship for <b>[tsc*0.000001]</b> Microchips.<//><b>Effect:</b><.>Gain 1 Microchip per 1,000,000 Ore collected (ore earned in previous ships included).
 		tag:prestige upgrades2 zortMax
 		req:buildingUpgrade42 and taa<1000000000000000000000000000000000000000000 
