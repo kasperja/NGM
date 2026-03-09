@@ -1563,7 +1563,7 @@ Buildings
 	*BountyAI
 		name:Artificial Intelligence
 		text:Artificial Intelligence : <b>lvl [this]</b>
-		desc:Integrate advanced AI into the ship computer, making a lot of actions automatical and highly efficient. Additionally makes the targeting system more precise for both mining and combat.<//><b>Effect:</b><.>With every level, gain 1 Ores every second for every Microchip ever earned (previous games included).<.>With every level, gain 1,000,000 Credits every second for every Microchip ever earned (previous games included).
+		desc:Integrate advanced AI into the ship computer, making a lot of actions automatical and highly efficient. Additionally makes the targeting system more precise for both mining and combat.<//><b>Effect:</b><.>With every level, gain 1 Ore every second for every Microchip ever earned (previous games included).<.>With every level, gain 1,000,000 Credits every second for every Microchip ever earned (previous games included).
 		cost:1000 prestigio
 		req:buildingUpgrade42
 		on tick:yield (taa*1) goldenCarrots
@@ -2135,6 +2135,7 @@ CSS
     color:#93f8ff;
     transition: 0.4s;
   }
+
 
 
 
