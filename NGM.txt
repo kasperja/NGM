@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:11/09/2025
-	version:1.6
+	version:1.61
 
 Settings
 	
@@ -104,10 +104,10 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.<//><b>Stats:</b><.>Spaceship Level <b>[slvl]</b><.>Pilot Level <b>[ulvl]</b>
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.6</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.61</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.6</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.61</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
@@ -175,8 +175,8 @@ Resources
 		desc:Shows how many times you have completed the game.<.>Total Ores collected since last Victory Medal : <b>[tsc]</b>
 		class:noBackground
 		show earned
-		tag:prestige prestige2
-		hidden when 0
+		tag:prestige prestige2 hideres
+		hidden
 		
 	*totalShips
    		hidden
@@ -1868,12 +1868,13 @@ Upgrades
 	  no click
 	  
 	 *StatsDp
-	  name:StatsDP
-	  text:<b>Stats:</b> Spaceship Level: <b>[slvl]</b> | Pilot Level: <b>[ulvl]</b>
-	  desc:Upgrades you own.
+	  name:Stats
+	  text:<#ffffff>Stats:</#> Spaceship Level: <b>[slvl]</b> <#ffffff>|</#> Pilot Level: <b>[ulvl]</b><//>[?(prestigio2 >= 1)| ֎ Victory Medals: <b>[prestigio2]</b> ֍ |]
+	  desc:<.>Spaceship Level: <b>[slvl]</b><.>Pilot Level: <b>[ulvl]</b>[?(prestigio2 >= 1)|<.>Victory Medals: <b>[prestigio2]</b>|]<.>Max AI lvl reached : <b>[BountyAI:max]</b>[?(prestigio2 >= 1)|<.>Total Ores collected since last Victory Medal : <b>[tsc]</b>|]<.>Ship Value:<#ffffff><b> [tsc*0.000001] </#>Microchips</b>
 	  tag:auchouse zortTop statsdp
-	  no click
-	  req:3 talz
+	  tooltip origin:right
+	  start with
+	  
 	  
 	*ResetPrestige
 		name:Sell Your Ship
@@ -2136,8 +2137,11 @@ CSS
     transition: 0.4s;
   }
 
+.tag-hideres{
+  display: none !important;
+  visibility :hidden !important;
 
-
+}
 
 
 
