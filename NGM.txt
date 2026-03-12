@@ -1869,7 +1869,7 @@ Upgrades
 	  
 	 *StatsDp
 	  name:Stats
-	  text:<#ffffff>Stats:</#> Spaceship Level: <b>[slvl]</b> <#ffffff>|</#> Pilot Level: <b>[ulvl]</b><//>[?(prestigio2 >= 1)| ֎ Victory Medals: <b>[prestigio2]</b> ֍ |]
+	  text:<#ffffff>Stats :</#> Spaceship Level: <b>[slvl]</b> <#ffffff>|</#> Pilot Level: <b>[ulvl]</b><//>[?(prestigio2 >= 1)| ֎ Victory Medals: <b>[prestigio2]</b> ֍ |]
 	  desc:<.>Spaceship Level : <b>[slvl]</b><.>Pilot Level : <b>[ulvl]</b>[?(prestigio2 >= 1)|<.>Victory Medals: <b>[prestigio2]</b>|]<.>Max AI level reached : <b>[BountyAI:max]</b>[?(prestigio2 >= 1)|<.>Total Ores collected since last Victory Medal : <b>[tsc]</b>|]<.>Total Module Level : <b>[totalModules]</b><.>Total Weapon Level : <b>[totalWeapons]</b><.>Total Component Level : <b>[totalModules+totalWeapons]</b>[?((tsc*0.000001) >= 1)|<.>Ship Value:<#ffffff><b> [tsc*0.000001] </#>Microchips</b>|]
 	  tag:auchouse zortTop statsdp
 	  tooltip origin:right
@@ -2142,6 +2142,7 @@ CSS
   visibility :hidden !important;
 
 }
+
 
 
 
