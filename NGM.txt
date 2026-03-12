@@ -103,7 +103,7 @@ Layout
 Buttons
 	*bunnyButton
 		name:Blaster
-		desc:Blast smaller asteroids to earn credits.<//><b>Stats:</b><.>Spaceship Level <b>[slvl]</b><.>Pilot Level <b>[ulvl]</b>
+		desc:Blast smaller asteroids to earn credits.
 		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.61</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
@@ -2142,6 +2142,7 @@ CSS
   visibility :hidden !important;
 
 }
+
 
 
 
