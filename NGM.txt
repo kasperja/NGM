@@ -1879,7 +1879,7 @@ Upgrades
 	*ResetPrestige
 		name:Sell Your Ship
 		text:Sell Your Ship <#ffffff>|</#> Ship Value:<#ffffff><b> [tsc*0.000001]</b> </#>Microchips
-		desc:Sell your ship for <b>[tsc*0.000001]</b> Microchips.<//><b>Effect:</b><.>Gain 1 Microchip per 1,000,000 Ore collected (ore earned in previous ships included).
+		desc:Sell your ship for <b>[tsc*0.000001]</b> Microchips.<//><b>Effect:</b><.>Gain 1 Microchip per 1,000,000 Ores collected (ore earned in previous ships included).
 		tag:prestige upgrades2 zortMax
 		req:buildingUpgrade42 and taa<1000000000000000000000000000000000000000000 
 		on earn:log <b><#e6e8d8>Ship sold.<//>
@@ -2142,6 +2142,7 @@ CSS
   visibility :hidden !important;
 
 }
+
 
 
 
