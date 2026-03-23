@@ -1576,9 +1576,9 @@ Buildings
         limit:2
         
   *uichanger
-        name:UI Color
-        text:UI Color : <#fde73b>[?(uicol=0)|<b>Yellow</b>][?(uicol=1)|<b>Red</b>][?(uicol=2)|<b>Blue</b>][?(uicol=3)|<b>Green</b>][?(uicol=4)|<b>Pink</b>][?(uicol=5)|<b>Teal</b>]
-        desc:Change the cockpit UI color.
+        name:HUD Color
+        text:HUD Color : <#fde73b>[?(uicol=0)|<b>Yellow</b>][?(uicol=1)|<b>Red</b>][?(uicol=2)|<b>Blue</b>][?(uicol=3)|<b>Green</b>][?(uicol=4)|<b>Pink</b>][?(uicol=5)|<b>Teal</b>]
+        desc:Change the cockpit HUD color.
         req:30 talz
         on click:uicol = uichanger
         tag:upgrades
