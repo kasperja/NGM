@@ -2003,3 +2003,47 @@ filter: hue-rotate(125deg) contrast(100%) brightness(1) saturate(100%);
 
 }
 
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-hudchanger{
+
+border: 1.5px solid !important;
+border-color: #ffe33b !important;
+background-image: none !important;
+background-color: #00000000 !important;
+padding-top: 0px !important;
+padding-bottom: 0px !important;
+padding-left: 13% !important;
+
+}
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]) .tag-hudchanger:hover{
+
+background-color: #ffe33b77 !important;
+
+}
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-hudchanger:hover{
+
+background-color: #ffe33b77 !important;
+
+}
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]) .tag-hudchanger:active{
+
+
+background-image: none !important;
+background-color: #00000000 !important;
+}
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-hudchanger:active{
+
+
+background-image: none !important;
+background-color: #00000000 !important;
+}
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]) .tag-hudchanger{
+
+border: 1.5px solid !important;
+border-color: #ffe33b !important;
+background-image: none !important;
+background-color: #00000000 !important;
+padding-top: 0px !important;
+padding-bottom: 0px !important;
+padding-left: 13% !important;
+}
