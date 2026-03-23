@@ -1981,7 +1981,7 @@ filter: hue-rotate(-48deg) contrast(100%) brightness(1) saturate(180%);
 #wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002003"]){
 
 
-filter: hue-rotate(155deg) contrast(100%) brightness(1) saturate(120%);
+filter: hue-rotate(180deg) contrast(100%) brightness(1) saturate(130%);
 
 }
 #wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002004"]){
