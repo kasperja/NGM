@@ -1966,4 +1966,40 @@ transition: 0.4s;
 background-color: #00000000 !important;
 
 }
+#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002001"]){
+
+
+filter: hue-rotate(0deg) contrast(100%) brightness(1) saturate(100%);
+
+}
+#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002002"]){
+
+
+filter: hue-rotate(-48deg) contrast(100%) brightness(1) saturate(180%);
+
+}
+#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002003"]){
+
+
+filter: hue-rotate(155deg) contrast(100%) brightness(1) saturate(120%);
+
+}
+#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002004"]){
+
+
+filter: hue-rotate(48deg) contrast(100%) brightness(1) saturate(120%);
+
+}
+#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002005"]){
+
+
+filter: hue-rotate(-107deg) contrast(100%) brightness(1) saturate(100%);
+
+}
+#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002006"]){
+
+
+filter: hue-rotate(125deg) contrast(100%) brightness(1) saturate(100%);
+
+}
 
