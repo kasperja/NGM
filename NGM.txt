@@ -834,6 +834,21 @@ Resources
    		hidden
    		is always:(coops+cities+cages2+villages2+citadels2+polices2+Superfreighters+bombers2+ionfrigates2+Vanguards)	
 	
+	*hexHandler3
+    hidden
+    text:[?(uicol=0)|<#002001></#>][?(uicol=1)|<#002002></#>][?(uicol=2)|<#002003></#>][?(uicol=3)|<#002004></#>][?(uicol=4)|<#002005></#>][?(uicol=5)|<#002006></#>]
+    class:hidden hexHandler3
+    tag:hexHandler3
+    
+  *uicol
+    passive: 
+      if (uicol>5) 
+				uicol is 0
+				uichanger is 0
+			end
+		end
+    hidden
+    tag:prestige prestige2
 
 Shinies
 	*luckyBunny
@@ -1559,6 +1574,15 @@ Buildings
     on click:dimc = dimtoggle
         tag:dimtoggle
         limit:2
+        
+  *uichanger
+        name:UI Color
+        text:UI Color : <#fde73b>[?(uicol=0)|<b>Yellow</b>][?(uicol=1)|<b>Red</b>][?(uicol=2)|<b>Blue</b>][?(uicol=3)|<b>Green</b>][?(uicol=4)|<b>Pink</b>][?(uicol=5)|<b>Teal</b>]
+        desc:Change the cockpit UI color.
+        req:30 talz
+        on click:uicol = uichanger
+        tag:upgrades
+        limit:7
 
 	*BountyAI
 		name:Artificial Intelligence
@@ -1870,7 +1894,7 @@ Upgrades
 	 *StatsDp
 	  name:Stats
 	  text:<#ffffff>Stats :</#> Spaceship Level : <b>[slvl]</b> <#ffffff>|</#> Pilot Level : <b>[ulvl]</b><//>[?(prestigio2 >= 1)| ֎ Victory Medals : <b>[prestigio2]</b> ֍ |]
-	  desc:<.>Spaceship Level : <b>[slvl]</b><.>Pilot Level : <b>[ulvl]</b>[?(prestigio2 >= 1)|<.>Victory Medals: <b>[prestigio2]</b>|]<.>Max AI level reached : <b>[BountyAI:max]</b>[?(prestigio2 >= 1)|<.>Total Ores collected since last Victory Medal : <b>[tsc]</b>|]<.>Total Module Level : <b>[totalModules]</b><.>Total Weapon Level : <b>[totalWeapons]</b><.>Total Component Level : <b>[totalModules+totalWeapons]</b>[?((tsc*0.000001) >= 2)|<.>Ship Value :<#ffffff><b> [tsc*0.000001] </#>Microchips</b>|]
+	  desc:<.>Spaceship Level : <b>[slvl]</b><.>Pilot Level : <b>[ulvl]</b>[?(prestigio2 >= 1)|<.>Victory Medals : <b>[prestigio2]</b>|]<.>Max AI level reached : <b>[BountyAI:max]</b>[?(prestigio2 >= 1)|<.>Total Ores collected since last Victory Medal : <b>[tsc]</b>|]<.>Total Module Level : <b>[totalModules]</b><.>Total Weapon Level : <b>[totalWeapons]</b><.>Total Component Level : <b>[totalModules+totalWeapons]</b>[?((tsc*0.000001) >= 2)|<.>Ship Value :<#ffffff><b> [tsc*0.000001] </#>Microchips</b>|]
 	  tag:auchouse zortTop statsdp
 	  tooltip origin:right
 	  start with
