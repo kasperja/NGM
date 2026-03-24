@@ -1561,7 +1561,6 @@ Buildings
         name:Throttle
         text:Throttle : [?(spt=0)|█][?(spt=1)|█ █ █][?(spt=2)|█ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █][?(spt=4)|█ █ █  █ █ █  █ █ █  █ █ █ <b>MAX</b>]
         desc:Set the speed of the Spaceship.<//>Faster = More encounters.<//>Slower = More passive income.<//><b>Current Effect:</b><.>Encounter frequency: <b>[(100*((2+spt)/2))]%</b><.>Credits income: <b>[(20)-(spt*5)]%</b> increased.<.>Ore income: <b>[(20)-(spt*5)]%</b> increased.
-        req:10 talz
     on click:spt = speedtoggle
         tag:speedtoggle
     limit:5
