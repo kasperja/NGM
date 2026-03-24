@@ -1570,7 +1570,6 @@ Buildings
         name:Light Switch
         text:Light Switch : [?(dimc=0)|<b>ON</b>][?(dimc=1)|<b>OFF</b>]
         desc:Toggle the cockpit lights.
-        req:20 talz
     on click:dimc = dimtoggle
         tag:dimtoggle
         limit:2
