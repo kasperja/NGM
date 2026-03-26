@@ -825,6 +825,7 @@ Resources
 			end
 		end
     hidden
+	tag:prestige prestige2
 		
 	*totalModules
    		hidden
