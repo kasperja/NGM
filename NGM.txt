@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:23/03/2026
-	version:1.64
+	version:1.68
 
 Settings
 	
@@ -14,7 +14,7 @@ Settings
 	
 	spritesheet:icons, 48 by 48, https://github.com/kasperja/SSM/raw/main/SpriteCrystalsSC1.png
 		
-	stylesheet:https://kasperja.neocities.org/HSspeed/css.txt
+	stylesheet:https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/NGMCSS.txt
 	
 	no particles
 	no bulk particles
@@ -104,10 +104,10 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.64</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.68</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.64</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.68</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
