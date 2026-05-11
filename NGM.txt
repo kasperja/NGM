@@ -1,2250 +1,2201 @@
-//NGM2CSS
-$yellow: #FFE800;
-$brown: #404040;
-$blue: #1CD3F8;
-$angle: 8px;
-$angle-o: 4px;
+Let's make a game!
+	name:Hellion Scarab
+	by:kasperja
+	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
+	created:07/06/2022
+	updated:23/03/2026
+	version:1.64
 
-
-.box
-{
-	text-align:center;
-	padding:0px;
-	box-shadow:none;
-}
-
-.thing,.box-header,.box-footer,.box-bit
-{
-}
-.box-bit{border-radius:0px;}
-
-.box-header
-{
-	border-bottom-left-radius:20px;
-	border-bottom-right-radius:20px;
-	margin-bottom:0px;
-	text-align: center;
-}
-.box-footer
-{
-	border-top-left-radius:20px;
-	border-top-right-radius:20px;
-	margin-top:1px;
-}
-
-
-#game{
-background-image: hidden !important;
-z-index: 3 !important; 
-}
-
-.thing .shiny .noClick .noText{
-
-z-index: -1; 
-
-}
-
-.thing .shiny .bigButton .noText{
-
-z-index: -100; 
-
-}
-
-
-
-.shiny-icon{
-z-index: -1000 !important;
-opacity: 1.0;
-//transform: rotate(90deg) !important;
-background-size: cover !important;
-}.shiny{background-size: cover !important;}
-
-#box-main
-{
-	left:0px;
-	top:0px;
-	bottom:0px;
-	overflow:hidden;
-	width:100%;
-	position:absolute;
-	transition: 0.4s;
-}
-#box-res.fullWidth
-{	
-	display: flex !important;
-	flex-wrap: nowrap !important;
-	width:50% !important;
-	top:60% !important;
-	right: 25% !important;
+Settings
 	
-	z-index:100;
-	position:absolute;
-	transition: 0.4s;
-}
-
-#box-things-Resources
-{	
-	display: flex !important;
-	flex-wrap: nowrap !important;
-width:100% !important;
-justify-content: space-evenly !important;
-	height:5% !important;
-	transition: 0.4s;
-}
-
-#box-buttons
-{
-	top:0px;
-	right:0px;
-	bottom:0px;
-	left:0px;
-	position:absolute;
-	transition: 0.4s;
-}
-#box-store
-{
-	right:0px;
-	top:0px;
-	bottom:0px;
-	margin-bottom:-2px;
-	transition: 0.4s;
-	position:absolute;
-}
-#box-buildings,#box-upgrades,#box-buildings2,#box-upgrades2
-{
-	top:-2px;
-	bottom:0px;
-	width:25%;
-	//right:0px;
-	overflow-x:hidden;
-	overflow-y:scroll;
-	padding-bottom:48px;/* this is to accommodate the info and settings buttons */
-	position:absolute;
-	margin-top:-2px;
-	transition: 0.4s;
-}
-#box-buildings
-{right:60%;
-width:15%;}
-
-#box-upgrades
-{left:0.5%;}
-
-#box-buildings2
-{
-right:40%;
-width:20%;
-}
-
-#box-upgrades2
-{right:0.5%;
-width:23.5%;
-}
-
-
-
-
-#bulkDisplay{margin:-11px 24px 4px 24px;}
-
-
-.thing
-{
-	display:inline-block;
-	padding:auto;
-	margin:auto;
-	margin-bottom:1px;
-	cursor:pointer;
-}
-.thing:hover,.thing.lit
-{
-	background:#6cf;
-}
-.thing.cantAfford
-{
-	opacity:0.65;
-}
-.upgrade.cantAfford
-{
+	background:https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/starburstPSD_2%20(2).jpg
+	building cost increase:115%
+	building cost refund:50%
 	
-}
-.upgrade.cantAfford:hover
-{
-	transition: 0.2s;
-}
-.upgrade.owned,.achiev.owned
-{
-	background:#6cf;
-}
-.thing-text,.thing-costs{font-weight:bold;}
+	spritesheet:icons, 48 by 48, https://github.com/kasperja/SSM/raw/main/SpriteCrystalsSC1.png
+		
+	stylesheet:https://kasperja.neocities.org/HSspeed/css.txt
+	
+	no particles
+	no bulk particles
+	css filters off
+	number display full
+
+Layout
+	
+	*main
+  contains:res, buttons, BulkDisplay, tag:hexHandler, tag:hexHandler2
+  *res
+	icons:hide
+    contains:Resources
+    class:fullWidth
+	tooltip origin:bottom
+  *buttons
+    contains:Buttons
+	tooltip origin:left
+*store
+  contains:buildings, buildings2, upgrades, upgrades2, buildingsHeader, buildings2Header, upgradesHeader, upgrades2Header
+  *buildings
+	icons:hide
+    contains:Buildings
+    tooltip origin:left
+  *buildingsHeader
+	//header:Shipyard
+	class:shipHeader
+  *buildings2
+	icons:hide
+    contains:tag:buildings2
+    tooltip origin:left
+  *buildings2Header
+	//header:Outposts
+	class:outHeader
+  *upgrades
+	tooltip origin:left
+	contains:tag:dimtoggle
+    contains:Upgrades
+	contains:tag:upgrades
+    costs:show
+    names:show
+	icons:hide
+  *upgradesHeader
+	//header:Upgrades
+  *upgrades2
+	tooltip origin:left
+	  contains:tag:speedtoggle
+    contains:tag:upgrades2
+    costs:show
+    names:show
+	icons:hide
+  *upgrades2Header
+	//header:Facilities
+  *sepOne
+	header:-
+	class:sepOne
+  *sepTwo
+	header:-
+	class:sepTwo
+  *sep3
+	header:-
+	class:sep3
+  *sep4
+	header:-
+	class:sep4
+  *log
+	contains:Log
+	class:log
+	*regular
+	  class:regular
+	*big
+	  class:big
+	*regular2
+	  class:regular2
+	*big2
+	  class:big2
+	*regular3
+	  class:regular3
+	*big3
+	  class:big3
+	
+	
+	
+	
+	
+Buttons
+	*bunnyButton
+		name:Blaster
+		desc:Blast smaller asteroids to earn credits.
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.64</#>
+		on start:spt = 1
+		on start:yield 1 speedtoggle
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.64</#>
+		on load:log Game loaded.
+		on click:anim icon wobble
+		on click:yield 1 bunny
+		on click:yield 1 talz
+		//on click:yield 1 prestigio2
+		//on click:yield 500000000000000000000000000 bunnies
+		//on click:yield 500000000000000000000000000 talz
+		//on click:yield 500000000000000000000000000 goldenCarrots
+		//on click:yield 500000000000000000000000000 tsc
+		//on click:yield 50000000000000000000000000000000000000000000000 prestigio
+		//on click:yield 50000000000000000000000000000000000000000000000 taa
+		//on click:yield 1 taa
+		//on click:yield 1000 taa
+		on click:
+			if (have goldenTouch and chance(5%)) 
+				yield 1 goldenCarrot
+				yield 1 tsc
+			end
+		end
+		//on click:spawn psSCS
+		icon:https://raw.githubusercontent.com/kasperja/NGM/main/crosshai2r.png
+		no text
+		class:bigButton
+		icon class:shadowed
+		tooltip origin:bottom
+		tooltip class:red
+		
+Resources
+  *hexHandler
+    hidden
+    text:[?(spt=0)|<#001010></#>][?(spt=1)|<#001011></#>][?(spt=2)|<#001012></#>][?(spt=3)|<#001013></#>][?(spt=4)|<#001014></#>]
+    class:hidden hexHandler
+    tag:hexHandler
+    
+  *hexHandler2
+    hidden
+    text:[?(dimc=0)|<#001018></#>][?(dimc=1)|<#001019></#>]
+    class:hidden hexHandler2
+    tag:hexHandler2
+
+	*bunny|bunnies
+		name:Credit|Credits
+		desc:Earn credits for exploring the universe and by trading.
+		//<.>Total earned in this ship : <b>[talz]</b>
+		class:noBackground
+		show earned
+
+	*goldenCarrot|goldenCarrots
+		name:Ore|Ores
+		desc:Ores can be refined to provide materials for ship parts, or sold for credits at stations.
+		class:noBackground
+		show earned
+		hidden when 0
+
+	*prestigio
+		name:Microchip|Microchips
+		desc:Sell your ship to earn Microchips<.>Max AI lvl reached : <b>[BountyAI:max]</b>
+		class:noBackground
+		show earned
+		tag:prestige
+		hidden when 0
+
+	*prestigio2
+		name:Victory Medal|Victory Medals
+		desc:Shows how many times you have completed the game.<.>Total Ores collected since last Victory Medal : <b>[tsc]</b>
+		class:noBackground
+		show earned
+		tag:prestige prestige2 hideres
+		hidden
+		
+	*totalShips
+   		hidden
+   		is always:(cages+hutches+coops+pens+meadows+villages+cities+citadels+stations+polices+bombers+ionfrigates+battlecruisers+Superfreighters+Vanguards)
+
+	*totalPlanets
+   		hidden
+   		is always:(cages2+hutches2+coops2+pens2+meadows2+villages2+cities2+citadels2+stations2+polices2+bombers2+ionfrigates2+battlecruisers)
+
+  
+
+	*talz		
+		hidden
+
+	*slvl
+	  hidden
+		name:Spaceship Level
+		text:Spaceship Level [slvl]
+		is always:(pow(talz,0.041))*1.47
+		class:slvl
+		no tooltip
+		
+	*ulvl
+	  hidden
+		name:Pilot Level		
+		text:Pilot Level [ulvl]
+		is always:(pow(((bunnies:max)),0.041)*1.47)
+		class:ulvl
+		no tooltip
+		tag:prestige prestige2
+		
+
+	*chk
+		on start:
+			if (chk > 0)
+			else
+				talz=bunnies:earned
+ 				chk=1
+			end
+		end
+		on load:
+			if (chk > 0)
+			else
+				talz=bunnies:earned
+ 				chk=1
+			end
+		end
+		hidden
+		tag:prestige prestige2
+
+	*tsc
+		hidden
+		tag:prestige
+
+	*taa
+		hidden
+		tag:prestige
+
+	*schk
+		passive:
+			if (slvl>=(schkt+1)) 
+				log <b><#e6e8d8>Spaceship Level [slvl] reached!</b>
+				schk=0
+				schkt = floor(slvl)
+			end
+		end		
+		hidden
+
+	*schkt
+		on load:
+			schkt = floor(slvl)
+		end	
+		on start:
+			schkt = floor(slvl)
+		end		
+		hidden
+
+	*uchk
+		passive:
+			if (ulvl>=(uchkt+1)) 
+				log <b><#e6e8d8>Pilot Level [ulvl] reached!</b>
+				uchk=0
+				uchkt = floor(ulvl)
+			end
+		end		
+		tag:prestige prestige2
+		hidden
+
+	*uchkt
+		on load:
+			uchkt = floor(ulvl)
+		end	
+		on start:
+			uchkt = floor(ulvl)
+		end	
+		tag:prestige prestige2		
+		hidden
+
+	*rewa
+		hidden	
+
+	*rewa2
+		hidden
+		
+	*ast
+		hidden
+		passive:
+			if (ast>random(5,10)) 
+				ast is 0
+				astc is 0
+			end
+		end
+
+	*astc
+		hidden
+		passive: 
+			if (astc == 1) 
+				yield 1 ast
+				spawn luckyBunny
+				spawn luckyBunny2		
+			end	 
+		end
+
+*pir
+		hidden
+		passive:
+			if (pir>random(4,7)) 
+				pir is 0
+				pirc is 0
+			end
+		end
+
+	*pirc
+		hidden
+		passive: 
+			if (pirc == 1) 
+				yield 1 pir
+				spawn luckyBunny4		
+			end	 
+		end
+
+	*comm
+		hidden
+		passive: 
+			if (comm>30)
+			$ranocc=random(1,67)
+				if ($ranocc == 1 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>Hi there, thanks for destroying a pirate that has chased me for the past week. Here is a small reward.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 2 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>Greetings Pilot. I need more space in my cargo hold, so I just ejected some Ores for you.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 3 and chance(60%))
+							log Asteroid field detected.
+							log Entering safe mode.
+							toast <b>WARNING:</b> Entering asteroid field.
+							astc is 1
+							
+				end
+				if ($ranocc == 4 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Automatic repairs were conducted.
+				end
+				if ($ranocc == 5 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Qak law enforcement, we didn't find any illegal goods on board.
+				end
+				if ($ranocc == 6 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Give up your cargo immediately or be exterminated!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 7 and chance(20%))	
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Die you three eyed excuse for a Bino star goat!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 8 and chance(20%))	
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Bug eyed clone of a clockwork hyper slug!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 9 and chance(20%))	
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Phemien law enforcement, we didn't find any illegal goods on board.
+				end
+				if ($ranocc == 10 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>One dimensional space sick replicant...
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 11 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Borg loving son of a mutant garbage droid!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 12 and chance(20%))	
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is the Yegar law enforcement. Please accept this reward for keeping our system secure.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 13 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Bug eyed apology for a radiation damaged space weevil!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 14 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is Qak Mining Industries. We have mined some valuable minerals from a nearby asteroid field. We mined more than we can carry, so you can keep what is left.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 15 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Clone of a clockwork android!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 16 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Single celled excuse for a mutant cyborg...
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 17 and chance(20%))	
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>What's up? You shared some information with me that led me to a pirate fleet I have been looking for. Thanks to you they are now all in jail on Zao TO5. Here is a share of the reward.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 18 and chance(20%))
+							rewa=(((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is the Qak Space Police Agency. We have evidence that you have consumed a too high amount of space-beer shortly before flying your spacecraft. We scanned your ship, and noticed that most of the ship is running in Auto-pilot, so you can get away with paying a smaller fine.
+							log You pay [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is -rewa+bunnies
+				end
+				if ($ranocc == 19 and chance(20%))	
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is the Phemien One. Thanks for being considerate in the space traffic.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 20 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log This is the ship computer of the Hellion Scarab.
+							log An automated weapon has neutralized a hostile spacecraft.
+							log <b>[rewa] Credits </b>rewarded. <//><//><b>[rewa2] Ore[?(rewa2 >= 2)|s|] </b>looted.
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 21 and chance(20%))
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log This is the automated asteroid mining system.
+							log Your ship has mined <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>, which has been transferred directly to the cargo hold.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 22 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is Yegar Patrol Ship Y470. Your record shows no violations. Fly safe, Pilot.
+				end
+				if ($ranocc == 23 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>Greetings Pilot. You just saved me from bankruptcy by scaring off those raiders. Here are some credits.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 24 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>You smell like the reactor leak of a second-hand garbage hauler!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 25 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Phemien Mining Division. Excess ore fragments have been left in orbit.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 26 and chance(20%))	
+							log Warning: Shields at 25%. Rerouting power from secondary systems.
+				end
+				if ($ranocc == 27 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Phemien Border Patrol. Cargo scan complete. All items appear legal. Proceed.
+				end
+				if ($ranocc == 28 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Mutant-blooded offspring of a collapsed warp drive!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 29 and chance(20%))
+							log <b>Incoming distress call:</b>
+							log <#93f8ff>Civilian vessel under attack in sector 3-A.
+				end
+				if ($ranocc == 30 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is the Yegar Law Enforcement. Your assistance in our blockade has been noted. Reward sent.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 31 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>That pirate bounty was mine, but you deserve a share. Sending it now.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 32 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is the Qak Trade Authority. We appreciate your fair trading practices. Bonus credits applied.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 33 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log The navigation module has recalculated your route through a safer corridor.
+				end
+				if ($ranocc == 34 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Cowardly spawn of a reactor-burned asteroid rat!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 35 and chance(20%))	
+							log Hull integrity restored to 100%.
+				end
+				if ($ranocc == 36 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Hand over your cargo, or you’ll be space dust!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 37 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>Thanks for saving my transport. I’ll transfer some ores as thanks.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 38 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Slime-shelled parasite of a rusted jump gate!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 39 and chance(20%))
+							log Entering radiation storm.
+							log Entering safe mode. Systems may experience temporary disruption.
+							toast <b>WARNING:</b> Entering radiation storm.				
+				end
+				if ($ranocc == 40 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Qak Trading Guild. An excess shipment of goods has been ejected for you.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 41 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Environmental filters cleared 98% of contaminants.
+				end
+				if ($ranocc == 42 and chance(20%))
+							log Warning: Proximity mines detected ahead. Exercise caution.			
+				end
+				if ($ranocc == 43 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Malformed clone of a subspace fungus!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 44 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log This is the ship computer of the Hellion Scarab.
+							log Automated turret installation neutralized enemy fighter.
+							log <b>[rewa] Credits </b>rewarded. <//><//><b>[rewa2] Ore[?(rewa2 >= 2)|s|] </b>looted.
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 45 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is Yegar Command Ship Y3. Your recent actions have improved sector security. Reward dispatched.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 46 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is Qak Mining HQ. Your help kept our miners alive. Expect payment in full.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 47 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Reactor efficiency boosted by 5%.
+				end
+				if ($ranocc == 48 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Yegar Enforcement Unit. Your record remains spotless. Carry on.
+				end
+				if ($ranocc == 49 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log This is the ship computer of the Hellion Scarab.
+							log Automated defense grid neutralized two hostile drones.
+							log <b>[rewa] Credits </b>rewarded.
+							bunnies is rewa+bunnies
+							talz is rewa+talz			
+				end
+				if ($ranocc == 50 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Drop your shields or prepare for annihilation!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 51 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>Thanks for chasing off those scavengers. Here’s a reward crate.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 52 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Phemien Law Authority. Your ship is clear of contraband. Safe travels.
+				end
+				if ($ranocc == 53 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Spawn of a derelict warp-maggot nest!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 54 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Power rerouted from weapons to shields.
+				end
+				if ($ranocc == 55 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Qak Mining Division. We abandoned surplus ore. You may collect it.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 56 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>This is Yegar Patrol Ship Y791. Your contribution to peacekeeping is noted. Reward incoming.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 57 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Rust-skinned shadow of a broken jump drone!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 58 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Drop your cargo, or your hull will be turned into scrap!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 59 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Navigation computer recalculated optimal hyperspace route.
+				end
+				if ($ranocc == 60 and chance(20%))
+							log Asteroid field detected.
+							log Entering dense asteroid belt. Collision risk increased.
+							toast <b>WARNING:</b> Entering asteroid field.
+							astc is 1
+				end
+				if ($ranocc == 61 and chance(20%))
+							log <b>Your ship is being scanned.</b>
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Phemien Border Watch. Scan complete. All readings normal.
+				end
+				if ($ranocc == 62 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							log <b>Incoming transmission:</b> 
+							log <#93f8ff>Thanks for your escort, I’ll make it home. Credits are on the way.
+							log You are rewarded [rewa] Credit[?(rewa >= 2)|s|].
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+				end
+				if ($ranocc == 63 and chance(20%))
+							rewa=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3)))*10)
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log Automated turret: Hostile ship destroyed. Sector secure.
+							log <b>[rewa] Credits </b>rewarded. <//><//><b>[rewa2] Ore[?(rewa2 >= 2)|s|] </b>looted.
+							bunnies is rewa+bunnies
+							talz is rewa+talz
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				if ($ranocc == 64 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Warp-spawned leech of a corroded reactor core!
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 65 and chance(20%))	
+							log This is the ship computer of the Hellion Scarab.
+							log Fuel reserves replenished by 10% via scavenged material.
+				end
+				if ($ranocc == 66 and chance(20%))
+							log <b>Incoming transmission:</b>
+							log <#fe6e52>Relinquish your cargo, or your end will be slow.
+							log <b>Enemy ships approaching.</b>
+							toast <b>WARNING:</b> Enemy ships approaching.
+							pirc is 1
+				end
+				if ($ranocc == 67 and chance(20%))	
+							rewa2=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3)))
+							log <b>Incoming transmission:</b>
+							log <#93f8ff>This is the Civilian freighter Q-89. Your interference saved our crew. Accept these supplies.
+							log You collect <b>[rewa2] Ore[?(rewa2 >= 2)|s|]</b>.
+							goldenCarrot is rewa2+goldenCarrot
+							tsc is rewa2+tsc
+				end
+				comm is 0
+			end
+		end
+  
+  *spt
+    passive: 
+      if (spt>4) 
+				spt is 0
+				speedtoggle is 0
+			end
+		end
+		passive:
+		if (spt==0)
+		  multiply yield of bunnies by 1.20
+		  multiply yield of talz by 1.20
+		  multiply yield of goldenCarrots by 1.20
+		  multiply yield of tsc by 1.20
+		end
+		if (spt==1)
+		  multiply yield of bunnies by 1.15
+		  multiply yield of talz by 1.15
+		  multiply yield of goldenCarrots by 1.15
+		  multiply yield of tsc by 1.15
+		end
+		if (spt==2)
+		  multiply yield of bunnies by 1.10
+		  multiply yield of talz by 1.10
+		  multiply yield of goldenCarrots by 1.10
+		  multiply yield of tsc by 1.10
+		end
+		if (spt==3)
+		  multiply yield of bunnies by 1.05
+		  multiply yield of talz by 1.05
+		  multiply yield of goldenCarrots by 1.05
+		  multiply yield of tsc by 1.05
+		end
+		if (spt==4)
+		  multiply yield of bunnies by 1.0
+		  multiply yield of talz by 1.0
+		  multiply yield of goldenCarrots by 1.0
+		  multiply yield of tsc by 1.0
+		end
+		end
+    hidden
+
+  *dimc
+    passive: 
+      if (dimc>1) 
+				dimc is 0
+				dimtoggle is 0
+			end
+		end
+    hidden
+	tag:prestige prestige2
+		
+	*totalModules
+   		hidden
+   		is always:(cages+hutches+pens+meadows+villages+citadels+stations+polices+bombers+hutches2+coops2+pens2+meadows2+cities2+stations2+ionfrigates+battlecruisers+(fortress>=100))
+   		
+  *totalWeapons
+   		hidden
+   		is always:(coops+cities+cages2+villages2+citadels2+polices2+Superfreighters+bombers2+ionfrigates2+Vanguards)	
+	
+	*hexHandler3
+    hidden
+    text:[?(uicol=0)|<#002001></#>][?(uicol=1)|<#002002></#>][?(uicol=2)|<#002003></#>][?(uicol=3)|<#002004></#>][?(uicol=4)|<#002005></#>][?(uicol=5)|<#002006></#>]
+    class:hidden hexHandler3
+    tag:hexHandler3
+    
+  *hexHandler4
+    hidden
+    text:[?(uiCH=0)|<#003001></#>][?(uiCH=1)|<#003002></#>][?(uiCH=2)|<#003003></#>][?(uiCH=3)|<#003004></#>][?(uiCH=4)|<#003005></#>][?(uiCH=5)|<#003006></#>]
+    class:hidden hexHandler4
+    tag:hexHandler4
+    
+  *uicol
+    passive: 
+      if (uicol>5) 
+				uicol is 0
+				uichanger is 0
+			end
+		end
+    hidden
+    tag:prestige prestige2
+    
+  *uiCH
+    passive: 
+      if (uiCH>5) 
+				uiCH is 0
+				chchanger is 0
+			end
+		end
+    hidden
+    tag:prestige prestige2
+
+Shinies
+	*luckyBunny
+		text:ORE
+		movement:moveRandom anywhere spinCCW:1
+		frequency: 120
+		frequency variation:60
+		req:7000 talz
+		icon:https://raw.githubusercontent.com/kasperja/NGM/main/ast1.png
+		class:bigButton
+		on click:
+			$boost=1
+			if (chance(0%))
+				//get at least 7, or between 1 and 3 minutes of our bunny production
+				$amount=(max(7,random(bunnies:ps*10*1,bunnies:ps*20*3))*$boost)
+				log Asteroid destroyed. <//><//><b>[$amount] Ore[?($amount >= 2)|s|] </b>collected.	
+				yield $amount bunnies
+				yield $amount talz
+			else
+				//*$boost
+				$amount=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3))*$boost)
+				log Asteroid destroyed. <//><//><b>[$amount] Ore[?($amount >= 2)|s|] </b>collected.
+				yield $amount goldenCarrot
+				yield $amount tsc
+			end
+		end
+
+	*luckyBunny2
+		text:ORE
+		movement:moveRandom anywhere spinCW:1
+		frequency: 120
+		frequency variation:60
+		req:7000 talz
+		icon:https://raw.githubusercontent.com/kasperja/NGM/main/ast1.png
+		class:bigButton
+		on click:
+			$boost=1
+			if (chance(0%))
+				//get at least 7, or between 1 and 3 minutes of our bunny production
+				$amount=(max(7,random(bunnies:ps*10*1,bunnies:ps*20*3))*$boost)
+				log Asteroid destroyed. <//><//><b>[$amount] Ore[?($amount >= 2)|s|] </b>collected.	
+				yield $amount bunnies
+				yield $amount talz
+			else
+				//*$boost
+				$amount=(max(random(1,7),random(goldenCarrots:ps*10*1,goldenCarrots:ps*20*3))*$boost)
+				log Asteroid destroyed. <//><//><b>[$amount] Ore[?($amount >= 2)|s|] </b>collected.
+				yield $amount goldenCarrot
+				yield $amount tsc
+			end
+		end
+
+	*luckyBunny3
+		text:Station
+		movement:moveRandom:0.4 anywhere grow
+		frequency: 80
+		frequency variation:40
+		duration:20
+		req:7000 talz
+		icon:https://raw.githubusercontent.com/kasperja/NGM/main/stat1.png
+		class:bigButton stationSh
+		on click:
+			$boost=1
+			$rano=random(1,10)
+			if ($rano > 4)
+				//get at least 7, or between 1 and 3 minutes of our bunny production
+				$amount=(max(random(5,10),random(bunnies:ps*60*1,bunnies:ps*120*3))*$boost)
+				log <b>Station docking granted</b>
+				
+				
+				$amounttwo=0
+				if (goldenCarrots >= 7)
+					$amounttwo=((max(random(1,3),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 6)
+					$amounttwo=((max(random(1,3),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 5)
+					$amounttwo=((max(random(1,3),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 4)
+					$amounttwo=((max(random(1,2),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 3)
+					$amounttwo=((max(random(1,2),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 2)
+					$amounttwo=((max(random(1,2),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				else if (goldenCarrots >= 1)
+					$amounttwo=((max(1,random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)*-1)
+				end
+				if (goldenCarrots >= 1 and $rano > 4)
+					log Trade conducted.
+					$ransb=random(1,10)
+					if ($ransb > 6 and $rano > 4) 
+						log <b>[$amounttwo*-1] Ore[?(($amounttwo*-1) >= 2)|s|]</b> sold. 
+						log <b>[$amount] Credits</b> collected.
+						yield $amounttwo goldenCarrot
+						yield $amount bunnies
+						yield $amount talz
+					else if ($ransb <= 6 and $rano > 4) 
+						log <b>[$amounttwo*-1] Ore[?(($amounttwo*-1) >= 2)|s|]</b> bought for <b>[$amount*0.1] Credits</b>. 
+						yield ($amounttwo*-1) goldenCarrot
+						yield ($amounttwo*-1) tsc
+						yield ($amount*0.1*-1) bunnies
+					end	
+				else if (goldenCarrots < 1 and $rano > 4)
+					$ranb=random(1,10)
+					$beer=((max(random(2,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)*-1)
+					$tradebar=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)*1)
+					if ($ranb > 5 and $rano > 4 and goldenCarrots < 1)
+						log You pay a visit to the station bar.
+						log Space-beer for <b>[(($beer*-1))] Credit[?((($beer*-1)) >= 2)|s|]</b> consumed.
+						yield $beer bunnies
+					else if ($ranb <= 5 and $rano > 4 and goldenCarrots < 1)
+						log You share information with a Bounty Hunter. 
+						log You gain <b>[$tradebar] Credits</b>.
+						yield $tradebar bunnies
+						yield $tradebar talz	
+					end
+				end
+			else if ($rano <=4)
+				log <b>Station docking granted</b>
+				$ranb2=random(1,10)
+				$beer=((max(random(2,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)*-1)
+				$tradebar=((max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)*1)
+				if ($ranb2 > 5 and $rano <=4)
+					log You pay a visit to the station bar.
+					log Space-beer for <b>[(($beer*-1))] Credit[?((($beer*-1)) >= 2)|s|]</b> consumed.
+					yield $beer bunnies
+				else if ($ranb2 <= 5 and $rano <=4)
+					log You share information with a Bounty Hunter. 
+					log You gain <b>[$tradebar] Credits</b>.
+					yield $tradebar bunnies
+					yield $tradebar talz
+				end
+			end	
+		end
+		
+
+*luckyBunny4
+		text:Pirate
+		movement:moveRandom anywhere
+		frequency: 60
+		frequency variation:30
+		req:7000 talz
+		icon:https://raw.githubusercontent.com/kasperja/NGM/main/pir1.png
+		class:bigButton
+		on click:
+			$boost=1
+			if (chance(50%))
+				//get at least 7, or between 1 and 3 minutes of our bunny production
+				$amount=(max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)
+				log Pirate eliminated. <//><//><b>[$amount] Credits </b>rewarded.	
+				yield $amount bunnies
+				yield $amount talz
+			else
+				//*$boost
+				$amount=(max(random(1,7),random(goldenCarrots:ps*30*1,goldenCarrots:ps*60*3))*$boost)
+				$amountth=(max(random(5,10),random(bunnies:ps*30*1,bunnies:ps*60*3))*$boost)
+				log Pirate eliminated. <//><//><b>[$amountth] Credits </b>rewarded. <//><//><b>[$amount] Ore[?($amount >= 2)|s|] </b>looted.
+				yield $amount goldenCarrot
+				yield $amount tsc
+				yield $amountth bunnies
+				yield $amountth talz
+			end
+		end
+
+		*psDrones
+			icon:icons[1,0] 
+			no click
+			frequency:15
+			frequency variation:30
+			duration:30
+			movement:onRight moveLeft growShrink 
+		*psDrones2
+			icon:icons[2,0] 
+			no click
+			frequency:15
+			frequency variation:30
+			duration:32
+			movement:onLeft moveRight growShrink 		
+		*psHaulers
+			icon:icons[1,3] 
+			no click
+			frequency:70
+			frequency variation:30
+			duration:34
+			movement:onRight moveLeft growShrink 
+		*psHaulers2
+			icon:icons[2,3] 
+			no click
+			frequency:60
+			frequency variation:30
+			duration:36
+			movement:onLeft moveRight growShrink 	
+		*psTransp
+			icon:icons[1,4] 
+			no click
+			frequency:170
+			frequency variation:30
+			duration:38
+			movement:onRight moveLeft growShrink 
+		*psTransp2
+			icon:icons[2,4] 
+			no click
+			frequency:280
+			frequency variation:30
+			duration:40
+			movement:onLeft moveRight growShrink 	
+		*psFrei
+			icon:icons[1,5] 
+			no click
+			frequency:160
+			frequency variation:30
+			duration:42
+			movement:onRight moveLeft growShrink 
+		*psFrei2
+			icon:icons[2,5] 
+			no click
+			frequency:240
+			frequency variation:30
+			duration:44
+			movement:onLeft moveRight growShrink 	
+		*psSCS
+			icon:icons[1,6] 
+			no click
+			frequency:200
+			frequency variation:30
+			duration:46
+			movement:onRight moveLeft growShrink 
+		*psSCS2
+			icon:icons[2,6] 
+			no click
+			frequency:430
+			frequency variation:30
+			duration:48
+			movement:onLeft moveRight growShrink 	
+		*psOrca
+			icon:icons[1,7] 
+			no click
+			frequency:460
+			frequency variation:30
+			duration:50
+			movement:onRight moveLeft growShrink 
+		*psOrca2
+			icon:icons[2,7] 
+			no click
+			frequency:270
+			frequency variation:30
+			duration:51
+			movement:onLeft moveRight growShrink 	
+		*psMam
+			icon:icons[1,8] 
+			no click
+			frequency:520
+			frequency variation:30
+			duration:52
+			movement:onRight moveLeft growShrink 
+		*psMam2
+			icon:icons[2,8] 
+			no click
+			frequency:340
+			frequency variation:30
+			duration:54
+			movement:onLeft moveRight growShrink 	
+		*psTitan
+			icon:icons[1,15] 
+			no click
+			frequency: 1470
+			frequency variation:30
+			duration:70
+			movement:onRight moveLeft growShrink 
+		*psTitan2
+			icon:icons[2,15] 
+			no click
+			frequency:2480
+			frequency variation:30
+			duration:70
+			movement:onLeft moveRight growShrink 	
+		*psPS
+			icon:icons[1,9] 
+			no click
+			frequency:660
+			frequency variation:30
+			duration:33
+			movement:onRight moveLeft growShrink 
+		*psPS2
+			icon:icons[2,9] 
+			no click
+			frequency:440
+			frequency variation:30
+			duration:32
+			movement:onLeft moveRight growShrink 	
+		*psBE
+			icon:icons[1,10] 
+			no click
+			frequency:510
+			frequency variation:30
+			duration:32
+			movement:onRight moveLeft growShrink 
+		*psBE2
+			icon:icons[2,10] 
+			no click
+			frequency:700
+			frequency variation:30
+			duration:32
+			movement:onLeft moveRight growShrink 	
+		*psIon
+			icon:icons[1,11] 
+			no click
+			frequency:760
+			frequency variation:30
+			duration:56
+			movement:onRight moveLeft growShrink 
+		*psIon2
+			icon:icons[2,11] 
+			no click
+			frequency:570
+			frequency variation:30
+			duration:56
+			movement:onLeft moveRight growShrink 	
+		*psBC
+			icon:icons[1,12] 
+			no click
+			frequency:620
+			frequency variation:30
+			duration:58
+			movement:onRight moveLeft growShrink 
+		*psBC2
+			icon:icons[2,12] 
+			no click
+			frequency:830
+			frequency variation:30
+			duration:59
+			movement:onLeft moveRight growShrink 	
+		*psSuperF
+			icon:icons[1,13] 
+			no click
+			frequency:880
+			frequency variation:30
+			duration:62
+			movement:onRight moveLeft growShrink 
+		*psSuperF2
+			icon:icons[2,13] 
+			no click
+			frequency:690
+			frequency variation:30
+			duration:63
+			movement:onLeft moveRight growShrink 	
+		*psVG
+			icon:icons[1,14] 
+			no click
+			frequency:740
+			frequency variation:30
+			duration:40
+			movement:onRight moveLeft growShrink 
+		*psVG2
+			icon:icons[2,14] 
+			no click
+			frequency:950
+			frequency variation:30
+			duration:41
+			movement:onLeft moveRight growShrink 	
+		*particleShips
+			icon:icons[1,2] 
+			no click
+			frequency:32
+			frequency variation:30
+			duration:30
+			movement:onRight moveLeft growShrink 
+		*particleShips2
+			icon:icons[2,2] 
+			no click
+			frequency:32
+			frequency variation:30
+			duration:30
+			movement:onLeft moveRight growShrink 
+		
+
+Buildings
+	
+	*TEMPLATE
+		on click:anim glow
+ 
+	*cage|cages
+		name:Thrusters
+		text:Thruster[?(cage >= 0)|s|] : <b>lvl [this]</b>
+		desc:Thrusters increase your speed and efficiency, and you are rewarded by the traders guild for exploring space.<//><b>For every level:</b><.>Gain 1 Credit every 10 seconds.
+		cost:40 bunnies
+		on tick:yield 0.1 bunny
+		on tick:yield 0.1 talz
+		req:20 talz
+		
+		
+ 
+	*hutch|hutches
+		name:Tractor-Beam
+		text:Tractor-Beam : <b>lvl [this]</b>
+		desc:The Tractor-Beam automatically collects ore from asteroids floating by.<//><b>For every level:</b><.>Collects 1 Ore every 10 minutes.
+		cost:800 bunnies
+		on tick:yield 0.001667 goldenCarrot
+		on tick:yield 0.001667 tsc
+		req:600 talz
+		
+ 
+	*coop|coops
+		name:Pulse Laser
+		text:Pulse Laser : <b>lvl [this]</b>
+		desc:A pulse laser system to blast asteroids and enemy pirates.<//><b>For every level:</b><.>Produces 100 Credits per second.
+		cost:10000 bunnies
+		on tick:yield 100 bunnies
+		on tick:yield 100 talz
+		req:20000 talz
+		tag: buildings2
+ 
+	*pen|pens
+		name:Fuel Tank
+		text:Fuel Tank : <b>lvl [this]</b>
+		desc:Your ship can travel faster and longer with extra fuel.<//><b>For every level:</b><.>Produces 50 Credits per second.<.>Produces 1 Ore every hour.
+		cost:60000 bunnies
+		on tick:yield 50 bunnies
+		on tick:yield 50 talz
+		on tick:yield 0.000277778 goldenCarrot
+		on tick:yield 0.000277778 tsc
+		req:120000 talz
+			
+ 
+	*meadow|meadows
+		name:Engine Tuning
+		text:Engine Tuning : <b>lvl [this]</b>
+		desc:Your engines are tuned, so you travel faster.<//><b>For every level:</b><.>Produces 1,000 Credits per second.
+		cost:1700000 bunnies
+		on tick:yield 1000 bunnies
+		on tick:yield 1000 talz
+		//on tick:yield 1 goldenCarrot
+		req:1400000 talz
+		
+ 
+	*village|villages
+		name:Hull Plating
+		text:Hull Plating : <b>lvl [this]</b>
+		desc:With Hull Plating you can defeat more difficult enemies, and visit more dangerous systems.<//><b>For every level:</b><.>Produces 4,000 Credits per second.
+		cost:8000000 bunnies, 2 goldenCarrot
+		on tick:yield 4000 bunnies
+		on tick:yield 4000 talz
+		req:2000000 talz and independenceDay
+		
+ 
+	*city|cities
+		name:Missile Launcher
+		text:Missile Launcher : <b>lvl [this]</b>
+		desc:This weapon can destroy larger ships and asteroids.<//><b>For every level:</b><.>Produces 6,000 Credits per second.<.>Produces 1 Ore every minute.
+		cost:80000000 bunnies, 8 goldenCarrots
+		on tick:yield 6000 bunnies
+		on tick:yield 6000 talz
+		on tick:yield 0.01667 goldenCarrot
+		on tick:yield 0.01667 tsc
+		req:10000000 talz and independenceDay
+		tag: buildings2
+ 
+	*citadel|citadels
+		name:Shield Generator
+		text:Shield Generator : <b>lvl [this]</b>
+		desc:With this module the ship can take fire without damaging the hull, with no need of repairs.<//><b>For every level:</b><.>Produces 20,000 Credits per second.
+		cost:140000000 bunnies, 32 goldenCarrots
+		on tick:yield 20000 bunnies
+		on tick:yield 20000 talz
+		req:1700000000 talz and independenceDay
+	
+ 
+*Station|stations
+		name:Docking Computer
+		text:Docking Computer : <b>lvl [this]</b>
+		desc:The Docking Computer handles and optimizes station docking.<//><b>For every level:</b><.>Produces 40,000 Credits per second.
+		cost:400000000 bunnies
+		on tick:yield 40000 bunnies
+		on tick:yield 40000 talz
+		req:3500000000 talz and independenceDay
+		
+ 
+*Police|polices
+		name:Cargo Bay Extension
+		text:Cargo Bay Extension : <b>lvl [this]</b>
+		desc:Increases the Cargo Bay, so you can carry more goods.<//><b>For every level:</b><.>Produces 60,000 Credits per second.
+		cost:600000000 bunnies
+		on tick:yield 60000 bunnies
+		on tick:yield 60000 talz
+		req:400000000 talz and independenceDay
+		
+ 
+*Bomber|bombers
+		name:Mineral Scanner
+		text:Mineral Scanner : <b>lvl [this]</b>
+		desc:Scans the asteroids for more valuable ore.<//><b>For every level:</b><.>Produces 1 Ore every 10 seconds.
+		cost:5000000000 bunnies
+		on tick:yield 0.1 goldenCarrot
+		on tick:yield 0.1 tsc
+		req:4000000000 talz and independenceDay
+		
+ 
+
+		
+ 
+
+ 
+ 
+//Buildings2 Planets
+ 
+*TEMPLATE
+	on click:anim glow
+ 
+	*cage2|cages2
+		name:Seeker Missiles
+		text:Seeker Missiles : <b>lvl [this]</b>
+		desc:These missiles automatically chases down enemies.<//><b>For every level:</b><.>Produces 9,000 Credits every second.
+		cost:200000000 bunnies, 50 goldenCarrots
+		on tick:yield 9000 bunnies
+		on tick:yield 9000 talz
+		req: independenceDay and 1000000000 talz
+		tag: buildings2
+		
+ 
+ 
+	*hutch2|hutches2
+		name:Afterburner
+		text:Afterburner : <b>lvl [this]</b>
+		desc:The ship can enter a higher level of sub-light speed.<//><b>For every level:</b><.>Produces 50,000 Credits every second.<.>Produces 1 Ore every 5 seconds.
+		cost:300000000 bunnies, 1000 goldenCarrots
+		on tick:yield 50000 bunnies
+		on tick:yield 50000 talz
+		on tick:yield 0.2 goldenCarrot
+		on tick:yield 0.2 tsc
+		req:8000000000 talz and 10000 tsc and independenceDay
+		
+		
+ 
+	*coop2|coops2
+		name:Repair Droid
+		text:Repair Droid : <b>lvl [this]</b>
+		desc:Repairs the ship when damage is taken.<//><b>For every level:</b><.>Produces 100,000 Credits per second.<.>Produces 1 Ore every 10 seconds.
+		cost:600000000 bunnies
+		on tick:yield 100000 bunnies
+		on tick:yield 100000 talz
+		on tick:yield 0.1 goldenCarrot
+		on tick:yield 0.1 tsc
+		req:14000000000 talz and 30000 tsc 
+		
+		
+ 
+	*pen2|pens2
+		name:Bioscanner
+		text:Bioscanner : <b>lvl [this]</b>
+		desc:Scans for life aboard ships.<//><b>For every level:</b><.>Produces 250,000 Credits per second.
+		cost:700000000 bunnies, 800 goldenCarrots
+		on tick:yield 250000 bunnies
+		on tick:yield 250000 talz
+		req:60000000000 talz and 50000 tsc 
+		
+		
+		
+ 
+	*meadow2|meadows2
+		name:Recon Drone
+		text:Recon Drone : <b>lvl [this]</b>
+		desc:A small drone you can deploy to scout.<//><b>For every level:</b><.>Produces 300,000 Credits per second.<.>Produces 2 Ore per second.
+		cost:5000000000 bunnies
+		on tick:yield 300000 bunnies
+		on tick:yield 300000 talz
+		on tick:yield 2 goldenCarrot
+		on tick:yield 2 tsc
+		req:80000000000 talz and 100000 tsc
+		
+		
+ 
+ 
+	*village2|villages2
+		name:Laser Turret
+		text:Laser Turret : <b>lvl [this]</b>
+		desc:Automatic precision weapon.<//><b>For every level:</b><.>Produces 400,000 Credits per second.<.>Produces 1 Ore per second.
+		cost:15000000000 bunnies, 3000 goldenCarrots
+		on tick:yield 400000 bunnies
+		on tick:yield 400000 talz
+		on tick:yield 1 goldenCarrot
+		on tick:yield 1 tsc
+		req:50000000000 talz
+		tag: buildings2
+		
+ 
+	*city2|cities2
+		name:Cloaking Device
+		text:Cloaking Device : <b>lvl [this]</b>
+		desc:Hide your ship from sight and targeting systems.<//><b>For every level:</b><.>Produces 600,000 Credits per second.
+		cost:35000000000 bunnies, 40000 goldenCarrots
+		on tick:yield 600000 bunnies
+		on tick:yield 600000 talz
+		req:550000000000 talz and (citadels>=1)
+		
+		
+ 
+	*citadel2|citadels2
+		name:Gauss Cannon
+		text:Gauss Cannon : <b>lvl [this]</b>
+		desc:Fires ultra fast projectiles.<//><b>For every level:</b><.>Produces 1,000,000 Credits per second.<.>Produces 5 Ore per second.
+		cost:14000000000 bunnies, 100000 goldenCarrots
+		on tick:yield 1000000 bunnies
+		on tick:yield 1000000 talz
+		on tick:yield 5 goldenCarrot
+		on tick:yield 5 tsc
+		req:militaryProtection
+		tag: buildings2
+		
+ 
+*Station2|stations2
+		name:Shield Booster
+		text:Shield Booster : <b>lvl [this]</b>
+		desc:Can boost the shields for a short time when needed. Further reduces the need for repairs of your increasingly expensive parts.<//><b>For every level:</b><.>Produces 10,000,000 Credits per second.
+		cost:600000 goldenCarrots
+		on tick:yield 10000000 bunnies
+		on tick:yield 10000000 talz
+		req:1500000000000 talz and militaryProtection
+		
+		
+ 
+*Police2|polices2
+		name:Beam Laser
+		text:Beam Laser : <b>lvl [this]</b>
+		desc:The Beam Laser is a highly advanced weapon, which also can be used for heavy mining.<//><b>For every level:</b><.>Produces 27,000,000 Credits per second.<.>Produces 15 Ores per second.
+		cost:400000000000 bunnies, 900000 goldenCarrots
+		on tick:yield 27000000 bunnies
+		on tick:yield 27000000 talz
+		on tick:yield 15 goldenCarrot
+		on tick:yield 15 tsc
+		req:100 fortress
+		tag: buildings2
+		
+*Ionfrigate|ionfrigates
+		name:Mining Laser
+		text:Mining Laser : <b>lvl [this]</b>
+		desc:Greatly improves the mining capabilities of your ship.<//><b>For every level:</b><.>Produces 10 Ores per second.
+		cost:20000000000 bunnies, 1000 goldenCarrots
+		on tick:yield 10 goldenCarrot
+		on tick:yield 10 tsc
+		req:independenceDay and militaryProtection and militaryProtection2
+		
+ 
+*Battlecruiser|battlecruisers
+		name:Power Plant
+		text:Power Plant : <b>lvl [this]</b>
+		desc:The Power Plant powers up your ship components.<//><b>For every level:</b><.>Produces 20,000,000 Credits per second.
+		cost:200000000000 bunnies, 4000 goldenCarrots
+		on tick:yield 20000000 bunnies
+		on tick:yield 20000000 talz
+		req:70000000000 talz and independenceDay and militaryProtection and militaryProtection2
+ *fortress
+		name:Hyperdrive
+		text:Hyperdrive ([this]%)
+		desc:With the Hyperdrive you can travel further, and obtain technologies from distant systems.<//><b>The Hyperdrive is [this]% complete.</b>
+		cost:600000000 bunnies, 400 goldenCarrots
+		req:100000000000 talz and independenceDay and militaryProtection and militaryProtection2
+		cost increase:107%
+		limit:100
+		
+	*Superfreighter|Superfreighters
+		name:Plasma Accelerator
+		text:Plasma Accelerator : <b>lvl [this]</b>
+		desc:Thermal weapon for shooting larger ships and asteroids. <//><b>For every level:</b><.>Produces 140,000,000 Credits per second.<.>Produces 8 Ores per second.
+		cost:1000000000000 bunnies, 70000 goldenCarrots
+		on tick:yield 140000000 bunnies
+		on tick:yield 140000000 talz
+		on tick:yield 8 goldenCarrot
+		on tick:yield 8 tsc
+		req:100000000000 talz and independenceDay and militaryProtection and militaryProtection2 
+		tag: buildings2
+
+*Bomber2|bombers2
+		name:Shock Cannon
+		text:Shock Cannon : <b>lvl [this]</b>
+		desc:These cannons fire pure lightning energy.<//><b>For every level:</b><.>Produces 60,000,000 Credits per second.<.>Produces 30 Ores per second.
+		cost:1500000000000 bunnies, 3000000 goldenCarrots, 1 prestigio
+		on tick:yield 60000000 bunnies
+		on tick:yield 60000000 talz
+		on tick:yield 30 goldenCarrot
+		on tick:yield 30 tsc
+		req:100000000000 talz and 100 fortress
+		tag: buildings2
+
+ *Ionfrigate2|ionfrigates2
+		name:Mass Driver
+		text:Mass Driver : <b>lvl [this]</b>
+		desc:State of the art projectile weapon.<//><b>Effect:</b><.>Produces 350,000,000 Credits per second.<.>Produces 200 Ores per second.
+		cost:5000000000000 bunnies, 5 prestigio
+		on tick:yield 350000000 bunnies
+		on tick:yield 350000000 talz
+		on tick:yield 200 goldenCarrot
+		on tick:yield 200 tsc
+		req:100000000000 talz and independenceDay and buildingUpgrade42 and 100 fortress 
+		tag: buildings2
+
+	*Vanguard|Vanguards
+		name:EMP Bomb
+		text:EMP Bombs : <b>lvl [this]</b>
+		desc:The EMP Bomb is a powerful weapon that can immobilize a whole fleet.<//><b>For every level:</b><.>Produces 500,000,000 Credits per second.<.>Produces 600 Ores per second.
+		cost:2000000000000 bunnies, 1000000 goldenCarrots, 10 prestigio
+		on tick:yield 500000000 bunnies
+		on tick:yield 500000000 talz
+		on tick:yield 600 goldenCarrot
+		on tick:yield 600 tsc
+		req:100000000000 talz and independenceDay and militaryProtection and militaryProtection2 and buildingUpgrade42 and 100 fortress
+		tag: buildings2
+
+//Tier'd "upgrades"
+
+	*speedtoggle
+        name:Throttle
+        text:Throttle : [?(spt=0)|█][?(spt=1)|█ █ █][?(spt=2)|█ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █][?(spt=4)|█ █ █  █ █ █  █ █ █  █ █ █ <b>MAX</b>]
+        desc:Set the speed of the Spaceship.<//>Faster = More encounters.<//>Slower = More passive income.<//><b>Current Effect:</b><.>Encounter frequency: <b>[(100*((2+spt)/2))]%</b><.>Credits income: <b>[(20)-(spt*5)]%</b> increased.<.>Ore income: <b>[(20)-(spt*5)]%</b> increased.
+    on click:spt = speedtoggle
+        tag:speedtoggle
+    limit:5
+    
+  *dimtoggle
+        name:Light Switch
+        text:Light Switch : [?(dimc=0)|<b>ON</b>][?(dimc=1)|<b>OFF</b>]
+        desc:Toggle the cockpit lights.
+    on click:dimc = dimtoggle
+        tag:dimtoggle
+        limit:2
+        
+  *uichanger
+        name:HUD Color
+        text:<#ffffff>HUD Color :</#> <#fde73b>[?(uicol=0)|<b>Yellow</b>][?(uicol=1)|<b>Red</b>][?(uicol=2)|<b>Blue</b>][?(uicol=3)|<b>Green</b>][?(uicol=4)|<b>Pink</b>][?(uicol=5)|<b>Teal</b>]
+        desc:Change the cockpit HUD color.
+        on click:uicol = uichanger
+        tag:upgrades hudchanger
+        limit:7
+        
+  *chchanger
+        name:Crosshair Style
+        text:<#ffffff>Crosshair Style :</#> <#fde73b>[?(uiCH=0)|<b>Trigon</b>][?(uiCH=1)|<b>Hex</b>][?(uiCH=2)|<b>QuadLock</b>][?(uiCH=3)|<b>TargetSight</b>][?(uiCH=4)|<b>Crystal</b>][?(uiCH=5)|<b>Eclipse</b>]
+        desc:Change the crosshair style.
+        on click:uiCH = chchanger
+        tag:upgrades hudchanger
+        limit:6
+
+	*BountyAI
+		name:Artificial Intelligence
+		text:Artificial Intelligence : <b>lvl [this]</b>
+		desc:Integrate advanced AI into the ship computer, making a lot of actions automatical and highly efficient. Additionally makes the targeting system more precise for both mining and combat.<//><b>Effect:</b><.>With every level, gain 1 Ore every second for every Microchip ever earned (previous games included).<.>With every level, gain 1,000,000 Credits every second for every Microchip ever earned (previous games included).
+		cost:1000 prestigio
+		req:buildingUpgrade42
+		on tick:yield (taa*1) goldenCarrots
+		on tick:yield (taa*1) tsc
+		on tick:yield (taa*100000) bunnies
+		on tick:yield (taa*100000) talz
+		tags:buildings
+		cost increase:150%
+		
+
+Upgrades
+	*TEMPLATE
+		on click:anim glow
+	
+	//food upgrades
+	//inspiration : http://rabbit.org/suggested-vegetables-and-fruits-for-a-rabbit-diet/
+	
+  *OwnedUpgrades2
+	  name:Owned Software
+	  desc:Software you own.
+	  tag:auchouse zortMiddle upgrades2
+	  req:parsley or spinach or lettuce or buildingUpgrade1
+	  no click
+	  
+	*parsley
+		name:Sub-Light Amplifier
+		desc:Amplifies the efficiency of the thrusters.<//><b>Effect:</b><.>Thrusters production x2
+		cost:500 bunnies
+		passive:multiply yield of cage by 2
+		req:200 talz and (cages>=3)
+		tag: upgrades2
+
+	*spinach
+		name:Buyings Locator
+		desc:Your ship computer automatically scans for best deals to buy.<//><b>Effect:</b><.>Credits production +15%
+		cost:1000 bunnies
+		passive:multiply yield of bunnies by 1.15
+		passive:multiply yield of talz by 1.15
+		req:500 talz and parsley
+		tag: upgrades2
+
+	*lettuce
+		name:Sellings Locator
+		desc:Your ship computer automatically scans for best places to sell.<//><b>Effect:</b><.>Credits production +20%
+		cost:1800 bunnies
+		passive:multiply yield of bunnies by 1.20
+		passive:multiply yield of talz by 1.20
+		req:1000 talz and parsley and (cages>=20)
+		tag: upgrades2
+
+	//building upgrades
+	
+	*buildingUpgrade1
+		name:Fight Software
+		desc:With this software, the Pulse Laser targeting system is greatly improved.<//><b>Effect:</b><.>Pulse Laser production x2
+		cost:90000 bunnies
+		passive:multiply yield of coop by 2
+		req:80000 talz and (coops>=2)
+		tag: upgrades2
+
+	*buildingUpgrade2
+		name:Trading Software
+		desc:This software makes a lot of the trading processes and transactions for you.<//><b>Effect:</b><.>Credits production +25%
+		cost:1600000000 bunnies
+		passive:multiply yield of bunnies by 1.25
+		passive:multiply yield of talz by 1.25
+		req:230000000 talz and (citadels2>=5) and buildingUpgrade1
+		tag: upgrades2
+
+	*buildingUpgrade3
+		name:Explorer Software
+		desc:Your ship scans for asteroids and locations with high concentration of valuable minerals.<//><b>Effect:</b><.>Ore production +20%
+		cost:6000000000 bunnies
+		passive:multiply yield of goldenCarrots by 1.20
+		passive:multiply yield of tsc by 1.20
+		req:(polices2>=4) and buildingUpgrade2
+		tag: upgrades2
+
+	*buildingUpgrade4
+		name:Command Software
+		desc:You can enter commands for your ship autopilot.<//><b>Effect:</b><.>Fuel tank production x4<.>Engine tuning production x2
+		cost:25000000 bunnies
+		passive:multiply yield of pen by 4
+		passive:multiply yield of meadow by 2
+		req:(pens>=10 or meadows>=10)
+		tag: upgrades2
+
+	*buildingUpgrade5
+		name:Cargo Life Support System
+		desc:You can enter the cargo bay while in space, or transport lifeforms.<//><b>Effect:</b><.>Cargo Bay Extension production x4
+		cost:150000000 bunnies
+		passive:multiply yield of Police by 4
+		req:(polices>=10)
+		
+	*buildingUpgrade6
+		name:Cargo Bay Shield
+		desc:Invent the Hyper Drive to travel to distant galaxies.<//><b>Effect:</b><.>Cargo Bay Extension production x2<.>Shield Generator production x4
+		cost:100000000 bunnies
+		passive:multiply yield of citadel by 4
+		passive:multiply yield of Police by 2
+		req:(citadels>=10 or polices>=10)
+		
+	*buildingUpgrade7
+		name:Progressive Firewall Software
+		desc:You are less vulnerable to hacking from enemies.<//><b>Effect:</b><.>Docking Computer production x4<.>Mineral Scanner production x3
+		cost:500000000000 bunnies
+		passive:multiply yield of Bomber by 3
+		passive:multiply yield of Station by 4
+		req:(bombers>=30 or stations>=30) 
+		tag: upgrades2
+
+	*buildingUpgrade8
+		name:Pulse Wave Analyser
+		desc:Improves scanners so minerals are easier to distinguish.<//><b>Effect:</b><.>Mineral Scanner production x2<.>Tractor-Beam production x10
+		cost:1000000000 bunnies
+		passive:multiply yield of citadel by 2
+		passive:multiply yield of hutch by 10
+		req:10 citadels and buildingUpgrade5
+		tag: upgrades2
+
+	//golden carrot upgrades
+	
+	*goldenTouch
+		name:Mining Software
+		desc:You can now gain ore by shooting with the blaster.<//><b>Effect:</b><.>5% chance of gaining 1 Ore per Blaster shot.
+		cost:100 goldenCarrot
+		req:10 goldenCarrot:earned and buildingUpgrade1
+		tag: upgrades2
+		
+	*moonGardens
+		name:Deflector Shield
+		desc:Deflects enemy fire and asteroids.<//><b>Effect:</b><.>Shield Generator  production x7
+		cost:10000 goldenCarrots
+		passive:multiply yield of citadel by 7
+		req:(citadels>=1) and 50 goldenCarrots:earned
+		
+	*militaryProtection
+		name:Fusion Engine
+		desc:Your engine is upgraded with fusion power.<//><b>Effect:</b><.>Unlocks new technology.
+		cost:200000 goldenCarrots
+		req:12000000000 talz
+
+	*militaryProtection2
+		name:Defense Matrix
+		desc:Ensures maximum power to your weapons and shields.<//><b>Effect:</b><.>Unlocks high-tech weapon systems.
+		cost:2000000 goldenCarrots
+		req:42000000000 talz and militaryProtection
+		tag: upgrades2
+		
+	*supplyModules
+		name:Module Interaction AI
+		desc:Safely pushes all modules beyond standard limits. All ship module levels amplify your Ore income.<//><b>Effect:</b><.>Ores production increased by 1% per accumulated module level.
+		cost:200000000000000 bunnies
+		passive:multiply yield of goldenCarrots by (1+(totalModules*0.1))
+		passive:multiply yield of tsc by (1+(totalModules*0.1))
+		req:buildingUpgrade42 and 5 BountyAI
+    tag: upgrades2
+    
+	*supplyWeapons
+		name:Adaptive Fire Control
+		desc:Dynamically adjusts weapon firing patterns during combat. All weapon levels amplify your Credits income.<//><b>Effect:</b><.>Credits production increased by 1% per accumulated weapon level.
+		cost:100000000000000 bunnies
+		passive:multiply yield of bunnies by (1+(totalWeapons*0.1))
+		passive:multiply yield of talz by (1+(totalWeapons*0.1))
+		req:buildingUpgrade42 and 1 BountyAI
+    tag: upgrades2
+
+  *Upgrades2H
+	  name:Software
+	  desc:Software you own.
+	  tag:auchouse zortTop upgrades2
+	  no click
+
+	*TEMPLATE
+		on click:anim glow
+	
+//upgrades2
+  
+	//food upgrades
+	//inspiration : http://rabbit.org/suggested-vegetables-and-fruits-for-a-rabbit-diet/
+	*OwnedUpgrades
+	  name:Owned Upgrades
+	  desc:Upgrades you own.
+	  tag:auchouse zortMiddle
+	  req:parsley2 or spinach2 or broccoli2 or apple2
+	  no click
+	
+	*parsley2
+		name:Emergency Jump
+		desc:When your ship takes near fatal damage, the ship jumps to safety.<//><b>Effect:</b><.>Thrusters production x4
+		passive:multiply yield of cage by 4
+		cost:1000 bunnies
+		req: (cages>=5)
+		
+	*spinach2
+		name:Acceleration Module
+		desc:Thrusters accelerates a lot faster.<//><b>Effect:</b><.>Thrusters production x3
+		passive:multiply yield of cage by 3
+		cost:9000 bunnies
+		req: parsley2
+		
+	*broccoli2
+		name:Signal Supressor
+		desc:Supresses signals and noise, making the Tractor-Beam more accurate.<//><b>Effect:</b><.>Tractor-Beam production x4
+		cost:100000 bunnies
+		passive:multiply yield of hutch by 4
+		req: parsley2
+
+	*independenceDay
+		name:Supercomputer
+		desc:The Supercomputer makes the ship able to self-upgrade, using the Ore you have collected.<//><b>Effect:</b><.>Unlocks Ore-based constructions.
+		cost:1000 goldenCarrots
+		req:70 goldenCarrots:earned and (meadows>=1)
+
+	*apple2
+		name:Targeting Software
+		desc:Optimizes targeting for all weapons.<//><b>Effect:</b><.>Credits/click x10<.>Credit production +10%
+		cost:8000000000 bunnies
+		passive:multiply bunny yield of bunnyButton by 10
+		passive:multiply talz yield of bunnyButton by 10
+		passive:multiply yield of bunnies by 1.10
+		passive:multiply yield of talz by 1.10
+		req: (ionfrigates>=2)
+		tag: upgrades2
+		
+	*radish2
+		name:Warp Jamming
+		desc:Prevents enemy ships from warping.<//><b>Effect:</b><.>Tractor-Beam production x5<.>Pulse Laser production x5
+		cost:27000000 bunnies
+		passive:multiply yield of hutch by 5
+		passive:multiply yield of coop by 5
+		req: apple2
+		tag: upgrades2
+		
+	*mint2
+		name:Double Lasers
+		desc:Pulse Lasers are doubled and fire twice as fast.<//><b>Effect:</b><.>Pulse Laser production x4
+		cost:40000000 bunnies
+		passive:multiply yield of coop by 4
+		req: (coops>=2)
+		
+	*chard2
+		name:Quad Lasers
+		desc:Pulse Lasers are quadrubled and fire twice as fast.<//><b>Effect:</b><.>Pulse Laser production x8
+		cost:1000000000 bunnies
+		passive:multiply yield of coop by 8
+		req: mint2 and (coops>=4)
+		
+	*cherry2
+		name:Double Missle Launchers
+		desc:Missile Launchers are doubled and fire twice as fast.<//><b>Effect:</b><.>Missile Launcher production x4<.>Seeker Missiles production x4
+		cost:6000000000 bunnies
+		passive:multiply yield of city by 4
+		passive:multiply yield of cage2 by 4
+		req:50000000 talz and (cities>=2) and (cages2>=2)
+		
+	*carrot2
+		name:Quad Missile Launchers
+		desc:Missile Launchers are quadrubled and fire twice as fast.<//><b>Effect:</b><.>Missile Launcher production x8<.>Seeker Missiles production x8
+		cost:12000000000 bunnies
+		passive:multiply yield of city by 8
+		passive:multiply yield of cage2 by 8
+		req: cherry2 and (cities>=4) and (cages2>=4)
+	
+	//building upgrades
+	
+	*buildingUpgrade12
+		name:Double Cannons
+		desc:Gauss Cannons are doubled.<//><b>Effect:</b><.>Gauss Cannon production x2
+		cost:9000000000 bunnies
+		passive:multiply yield of citadel2 by 2
+		req:900000000 talz and (citadels2>=2) 
+		
+	*buildingUpgrade22
+		name:Quad Cannons
+		desc:Gauss Cannons are quadrubled.<//><b>Effect:</b><.>Gauss Cannon production x4
+		cost:1000000000000 bunnies
+		passive:multiply yield of citadel2 by 4
+		req: buildingUpgrade12 and (citadels2>=4) 
+		
+	*buildingUpgrade32
+		name:Sub-Surface Module 
+		desc:The Mining Laser can target minerals below the surface of the asteroids.<//><b>Effect:</b><.>Mining Laser production x4
+		cost:400000000000 bunnies
+		passive:multiply yield of Ionfrigate by 4
+		passive:multiply frequency of psIon by 0.5
+		passive:multiply frequency of psIon2 by 0.5
+		req: (ionfrigates>=1)
+		
+	*buildingUpgrade42
+		name:Warp Distorter
+		desc:The hyperdrive is upgraded, you can now explore the whole universe.<//><b>Effect:</b><.>Ore production +20%<.>Unlocks Alien technologies.
+		cost:10000000000000 bunnies, 10000000 goldenCarrots
+		passive:multiply yield of goldenCarrots by 1.20
+		passive:multiply yield of tsc by 1.20
+		req:5600000000 talz and 100 fortress
+		
+  *UpgradesH
+	  name:Upgrades
+	  desc:Upgrades you own.
+	  tag:auchouse zortTop
+	  no click
+	  
+	 *StatsDp
+	  name:Stats
+	  text:<#ffffff>Stats :</#> Spaceship Level : <b>[slvl]</b> <#ffffff>|</#> Pilot Level : <b>[ulvl]</b><//>[?(prestigio2 >= 1)| ֎ Victory Medals : <b>[prestigio2]</b> ֍ |]
+	  desc:<.>Spaceship Level : <b>[slvl]</b><.>Pilot Level : <b>[ulvl]</b>[?(prestigio2 >= 1)|<.>Victory Medals : <b>[prestigio2]</b>|]<.>Max AI level reached : <b>[BountyAI:max]</b>[?(prestigio2 >= 1)|<.>Total Ores collected since last Victory Medal : <b>[tsc]</b>|]<.>Total Module Level : <b>[totalModules]</b><.>Total Weapon Level : <b>[totalWeapons]</b><.>Total Component Level : <b>[totalModules+totalWeapons]</b>[?((tsc*0.000001) >= 2)|<.>Ship Value :<#ffffff><b> [tsc*0.000001] </#>Microchips</b>|]
+	  tag:auchouse zortTop statsdp
+	  tooltip origin:right
+	  start with
+	  
+	  
+	*ResetPrestige
+		name:Sell Your Ship
+		text:Sell Your Ship <#ffffff>|</#> Ship Value :<#ffffff><b> [tsc*0.000001]</b> </#>Microchips
+		desc:Sell your ship for <b>[tsc*0.000001]</b> Microchips.<//><b>Effect:</b><.>Gain 1 Microchip per 1,000,000 Ores collected (ore earned in previous ships included).
+		tag:prestige upgrades2 zortMax
+		req:buildingUpgrade42 and taa<1000000000000000000000000000000000000000000 
+		on earn:log <b><#e6e8d8>Ship sold.<//>
+		on earn:log <b><#e6e8d8>New ship bought.<//>
+		on earn:log <b>[tsc*0.000001] Microchips</b> earned.
+		on earn:
+			lose notTag:prestige
+			yield (tsc*0.000001) prestigio
+			yield (taa+tsc*0.000001) taa
+			lose ResetPrestige
+		end
 
 
+*ResetPrestige2
+		name:Gain the Victory Medal
+		desc:Reset everything, <b>even your Microchips</b>, gaining <b>1</b> Victory Medal.<//><b>Effect:</b><.>Complete the game and start from scratch with a Victory Medal.
+		tag:prestige upgrades2 zortMax
+		req:1000000000000000000000000000000000000000000 taa and buildingUpgrade42
+		on earn:log <b><#e6e8d8>You are awarded a Victory Medal.
+		on earn:
+			lose notTag:prestige2
+			yield 1 prestigio2
+			lose ResetPrestige2
+		end
 
-.building
-{
-	padding-left: 2% !important;
-	border-top-left-radius:20px;
-	border-bottom-left-radius:20px;
-	display:block;
-	padding-right: auto;
-	margin-right:auto;
-	font-size:14px;
-	transition: 0.4s;
-}
+Achievements
+	*TEMPLATE
+		on click:anim glow
+		
+	*shipAchiev1
+		name:Beam me up!
+		desc:Buy the Tractor-Beam.
+		req:(hutches>=1)
+		tag:prestige prestige2
+	*shipAchiev5
+		name:Plasma
+		desc:Buy a Plasma Accelerator.
+		req:(Superfreighters>=1)
+		tag:prestige prestige2
+	*shipAchiev6
+		name:Ionized
+		desc:Have a lvl <b>10</b> Plasma Accelerator.
+		req:(Superfreighters>=10)
+		tag:prestige prestige2
+	*shipAchiev7
+		name:State of Matter
+		desc:Have <b>100</b> Plasma Accelerator.
+		req:(Superfreighters>=100)
+		tag:prestige prestige2
+	*shipAchiev2
+		name:EMP
+		desc:Buy an EMP Bomb.
+		req:(Vanguards>=1)
+		tag:prestige prestige2
+	*shipAchiev3
+		name:Disturbance
+		desc:Have a lvl <b>10</b> EMP Bomb.
+		req:(Vanguards>=10)
+		tag:prestige prestige2
+	*shipAchiev4
+		name:Magnetic
+		desc:Have a lvl <b>100</b> EMP Bomb.
+		req:(Vanguards>=100)
+		tag:prestige prestige2
 
+	*bunnyAchievm1
+		name:The Start of the Journey
+		desc:Start a new game.
+		passive:yield 1*((2+spt)/2) comm
+		passive:multiply frequency of psDrones by 5
+		passive:multiply frequency of psHaulers by 50
+		passive:multiply frequency of psTransp by 50
+		passive:multiply frequency of psFrei by 50
+		passive:multiply frequency of psSCS by 50
+		passive:multiply frequency of psOrca by 50
+		passive:multiply frequency of psMam by 50
+		passive:multiply frequency of psTitan by 50
+		passive:multiply frequency of psPS by 50
+		passive:multiply frequency of psBE by 50
+		passive:multiply frequency of psIon by 50
+		passive:multiply frequency of psBC by 50
+		passive:multiply frequency of psSuperF by 50
+		passive:multiply frequency of psVG by 50
+		passive:multiply frequency of psDrones2 by 5
+		passive:multiply frequency of psHaulers2 by 50
+		passive:multiply frequency of psTransp2 by 50
+		passive:multiply frequency of psFrei2 by 50
+		passive:multiply frequency of psSCS2 by 50
+		passive:multiply frequency of psOrca2 by 50
+		passive:multiply frequency of psMam2 by 50
+		passive:multiply frequency of psTitan2 by 50
+		passive:multiply frequency of psPS2 by 50
+		passive:multiply frequency of psBE2 by 50
+		passive:multiply frequency of psIon2 by 50
+		passive:multiply frequency of psBC2 by 50
+		passive:multiply frequency of psSuperF2 by 50
+		passive:multiply frequency of psVG2 by 50
+		passive:multiply frequency of particleShips by 50
+		passive:multiply frequency of particleShips2 by 50
+		on earn:tsc is goldenCarrots:earned
+		on earn:taa is prestigio:earned
+		req:0 bunnies
+		tag:prestige prestige2
+	*bunnyAchiev2
+		name:Space Trucker
+		desc:Have <b>1,000</b> Credits.
+		req:1000 bunnies
+		tag:prestige prestige2
+	*bunnyAchiev3
+		name:Millionaire
+		desc:Have <b>1,000,000</b> Credits.
+		req:1000000 bunnies
+		tag:prestige prestige2
+	*bunnyAchiev4
+		name:Billionaire
+		desc:Have <b>1,000,000,000</b> Credits.
+		req:1000000000 bunnies
+		tag:prestige prestige2
+	*bunnyAchiev5
+		name:Trillionaire
+		desc:Have <b>1,000,000,000,000</b> Credits.
+		req:1000000000000 bunnies
+		tag:prestige prestige2
+		
+	*bunnyPsAchiev1
+		name:Autopilot
+		desc:Produce <b>10</b> Credits per second.
+		req:10 bunnies per second
+		tag:prestige prestige2
 
+	*bunnyPsAchiev2
+		name:Profit
+		desc:Produce <b>100</b> Credits per second.
+		req:100 bunnies per second
+		tag:prestige prestige2
+	*bunnyPsAchiev3
+		name:Revenue
+		desc:Produce <b>1,000</b> Credits per second.
+		req:1000 bunnies per second
+		tag:prestige prestige2
+	*bunnyPsAchiev4
+		name:Income
+		desc:Produce <b>10,000</b> Credits per second.
+		req:10000 bunnies per second
+		tag:prestige prestige2
+	*bunnyPsAchiev5
+		name:Cash Flow
+		desc:Produce <b>100,000</b> Credits per second.
+		req:100000 bunnies per second
+		tag:prestige prestige2
+	*bunnyPsAchiev6
+		name:Royalty
+		desc:Produce <b>1,000,000</b> Credits per second.
+		req:1000000 bunnies per second
+		tag:prestige prestige2
+		
+	*carrotAchiev1
+		name:A New Business Form
+		desc:Have <b>10</b> Ores.
+		req:10 goldenCarrot
+		tag:prestige prestige2
+	*carrotAchiev2
+		name:Mineral Deposit
+		desc:Have <b>100</b> Ores.
+		req:100 goldenCarrot
+		tag:prestige prestige2
+	*carrotAchiev3
+		name:Ore Miner
+		desc:Have <b>1,000</b> Ores.
+		req:1000 goldenCarrot
+		tag:prestige prestige2
+	*carrotAchiev4
+		name:Ore Vein
+		desc:Have <b>10,000</b> Ores.
+		req:10000 goldenCarrot
+		tag:prestige prestige2
+	*carrotAchiev5
+		name:Mineral Madness
+		desc:Have <b>100,000</b> Ores.
+		req:100000 goldenCarrot
+		tag:prestige prestige2
+	*carrotAchiev6
+		name:Pressurized Cargo
+		desc:Have <b>1,000,000</b> Ores.
+		req:1000000 goldenCarrot
+		tag:prestige prestige2
+	
+	*fortressAchiev
+		name:Freedom!
+		desc:Complete building the <b>Hyperdrive</b>.<//>
+		req:100 fortress
+		tag:prestige prestige2
 
-
-//---------------------------------------------------------------------------------------------------------
-
-
-
-
-
+	*aaAchiev
+		name:What A Bargain
+		desc:Sell your ship.<//>
+		req:1 prestigio
+		tag:prestige prestige2
+	*aaAchiev2
+		name:Computer Power
+		desc:Have <b>100 Microchips</b>.<//>
+		req:100 prestigio
+		tag:prestige prestige2
+	*aaAchiev3
+		name:OpenAI
+		desc:Have <b>1,000 Microchips</b>.<//>
+		req:1000 prestigio
+		tag:prestige prestige2
+	*aaAchiev4
+		name:Mainframe
+		desc:Have <b>10,000 Microchips</b>.<//>
+		req:10000 prestigio
+		tag:prestige prestige2
+	*aaAchiev5
+		name:Hybrid Intelligence
+		desc:Have <b>100,000 Microchips</b>.<//>
+		req:100000 prestigio
+		tag:prestige prestige2
+	*aaAchiev6
+		name:Digital World
+		desc:Have <b>1,000,000 Microchips</b>.<//>
+		req:1000000 prestigio
+		tag:prestige prestige2
+	*aaAchiev7
+		name:RAID
+		desc:Have <b>1,000,000,000 Microchips</b>.<//>
+		req:1000000000 prestigio
+		tag:prestige prestige2
+	*aaAchiev8
+		name:Data Control
+		desc:Have <b>1,000,000,000,000 Microchips</b>.<//>
+		req:1000000000000 prestigio
+		tag:prestige prestige2
+	*doAchiev1
+		name:Victory
+		desc:Have a <b>Victory Medal</b>.
+		req:1 prestigio2
+		tag:prestige prestige2
+	
+	
+CSS
 #game
   {
     background:#24656B;
     background-size: cover;
+   
     font-family: Kanit, sans-serif !important;
     letter-spacing: 0px;
- 	//font-size: 12px;
+ 
     font-stretch: ultra-expanded
-   
-   // font-family: Kanit, sans-serif;
+   transition
+   // font-family: Kanit, sans-serif !important;
     //font-weight:100;
-    color:#000000;
-    transition: 0.4s;
-  }
-.upgrade, .building
-  {
-
-background-repeat: no-repeat;
-    font-weight:100 !important;
-    margin-top:0px;
-    padding: 2% 2%;
-    text-align: left;
-    //height: 48px;
-    border-radius:0px;
-    //background:#002130;
-    border: 1px solid #002130;
-    background:rgba(255,255,255,0.0);
-    
-	width: 100%;
-
-  transition: all .15s linear 0s;
-  position: relative;
-  display: inline-block;
-  
-  background-color: $yellow;
-  color: $brown;
-  
-  transition: 0.4s;
-  
-  box-shadow: -6px 6px 0 $brown;
-  text-decoration: none;
-  
-  &:hover {
-    top: 3px;
-    left: -3px;
-    box-shadow: -3px 3px 0 $brown;
-    
-    &::after {
-      top: 1px;
-      left: -2px;
-      width: $angle-o;
-      height: $angle-o;
-    }
-    
-    &::before {
-      bottom: -2px;
-      right: 1px;
-      width: $angle-o;
-      height: $angle-o;
-    }
-  }
-  
-  &::after {
-    transition: all .15s linear 0s;
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: -4px;
-    width: $angle;
-    height: $angle;
-    background-color: $brown;
-    transform: rotate(45deg);
-    z-index: -1;
-    
-  }
-  
-  &::before {
-    transition: all .15s linear 0s;
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    right: 2px;
-    width: $angle;
-    height: $angle;
-    background-color: $brown;
-    transform: rotate(45deg);
-    z-index: -1;
-  }
-}
-
-.thing-text
-{
-
-
-
-}
-.thing-icon
-{
- 	
- }
-
-
-#thing-0
-  {
-   	transform: translate(-50%, -50%) !important;
-	left: 50% !important;
-    background-repeat: no-repeat;
-    border-radius:50%;
-    background:#00000000;
-	 
-	
- 
-/*-webkit-animation-name: spin;
-    -webkit-animation-duration: 4000ms;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    -moz-animation-name: spin;
-    -moz-animation-duration: 4000ms;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-timing-function: linear;
-    -ms-animation-name: spin;
-    -ms-animation-duration: 4000ms;
-    -ms-animation-iteration-count: infinite;
-    -ms-animation-timing-function: linear;
-   
-    animation-name: spin;
-    animation-duration: 910000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;*/
-}
-/*@-ms-keyframes spin {
-    from { -ms-transform: rotate(0deg); }
-    to { -ms-transform: rotate(360deg); }
-}
-@-moz-keyframes spin {
-    from { -moz-transform: rotate(0deg); }
-    to { -moz-transform: rotate(360deg); }
-}
-@-webkit-keyframes spin {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
-}
-@keyframes spin {
-    from {
-        transform:rotate(0deg);
-    }
-    to {
-        transform:rotate(360deg);
-    }
-}*/
- 
- 
- 
-#thing-0:hover
-  {
-   	
-    //background-image: linear-gradient(to right, #00000000 , #4286f466 , #93f8ff99);
-   
-  }
- 
-.thing-text{
- 
-font-weight:100;
- 
-}
- 
-#thing-5
-  {	
-	float:left;
-	width: 100%;
-	
-  }
-#thing-3
-  {
-	float:left;
-	width: 100%;
-  }
- 
-#thing-4
-  {
-float:left;
-	width: 100%;
-  }
-
-#thing-6
-  {	
-	float:left;
-	width: 100%;
-  }
- 
- 
-.building:hover {
- 
-    //transform: skew(30deg);
-	
-}
- 
-.thing:hover
-  {
-    //background:#002130;
     color:#93f8ff;
-    background:rgba(0,55,79,0.00);
-    background-color: #999999;
-	
+    transition: 0.4s;
   }
 
- 
-.upgrade.owned, .achiev.owned {
-    //width: 100%;
-    //padding: 2% 2%;
-    text-align: left;
-    //height: 48px;
-    border-radius:0px;
-    //background:#002130;
-    border: 1px solid #002130;
-    background:rgba(255,255,255,0.0);
-    background-color: #qqqqqq;
-    transition: 0.4s;
+.tag-hideres{
+  display: none !important;
+  visibility :hidden !important;
 
 }
-.upgrade:hover{
-    //width: 100%;
-    //background:#002130;
-    color:#93f8ff;
-    transition: 0.2s;
-    background-color: #999999;
-}
-.upgrade.owned:hover{
-    //width: 100%;
-    //height: 48px;
-    //background:#002130;
-    background:rgba(255,255,255,0.0);
-    background-color: #999999;
-    transition: 0.2s;
-}
-.upgrade.cantAfford {
-    //width: 100%;
-    float: left;
-    padding: 2% 2%;
-    text-align: left;
-    //height: 48px;
-    border-radius:0px;
-    //background:#002130;
-    border: 0px solid #002130;
-    background:rgba(255,255,255,0.0);
-    background-color: #eeeeee;
-    box-shadow: 0px 0px 0px #39f;
-}
-.upgrade {
-    width: 100%;
-    float: left;
-    padding: 2% 2%;
-	padding-left: 10% !important;
-    text-align: left;
-    //height: 48px;
-    border-radius:0px;
-    //background:#002130;
-    border: 1px solid #002130;
-    background:rgba(255,255,255,0.0);
-    background-color: #eeeeee;
-    box-shadow: 0px 0px 0px #39f;
-	font-family: Kanit, sans-sherif !important;
-	font-size: 14px;
-transition: 0.4s;
-}
-.upgrade.notOwned {
-    width: 100% !important;
-    float: left;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 2% 2%;
-    text-align: left;
-    //height: 48px;
-    //background:#002130;
-    transition: 0.4s;
-    background:rgba(255,255,255,0.0);
-    background-color: #999999;
-    box-shadow: 0px 0px 0px #39f;
-border: 1px solid #002130;
-border-style: solid !important;
-}
- 
-.upgrade.notOwned:hover{
-    transition: 0.2s;
-    //float: left;
-    //background:#002130;
-    color:#93f8ff;
-    background-color: #999999;
-border: 1px solid #002130;
-border-style: solid !important;
-}
- 
- 
-.thing,.box-header,.box-footer,.box-bit
-{
-   
-    
-    //font-family: Kanit, sans-serif !important;
-    //font-weight:300;
-    //color:#93f8ff;
-    background:#24656B;
-    background:rgba(255,255,255,0.0);
-    
-}
- 
-.glow {
-    animation: glow 0.0s;
-}
- 
- 
- 
-.box-header {
-	
-    margin-bottom:1px;
-    padding: 15px 15px;
-    height: 40px;
-    border: 0px solid #000000;
-    border-radius: 0px;
-    //font-family: Kanit, sans-serif !important;
-    font-size: 18px;
-    //color: #93f8ff;
-    transition: 0.4s;
-	text-align: center;
-}
- 
- 
-#bulkDisplay {
-    position: relative;
-    top: 0px;
-    margin: 0px 0px 0px 0px;
-    margin-bottom: 0px;
-}
- 
-#box-things-Buildings {
-position: relative;
-    
- 
-}
- 
-
- 
- 
-.popup, #tooltip {
-color: #ffde00EE;
-border: 2px !important;
-border-color: #ffde00EE !important;
-background-color: #0a3a4dEE !important;
-border-style: dashed dashed dashed dashed !important;
- 
-}
- .toast{
-background-color: #0a3a4dAA !important;
-}
- 
-#tooltipContent{
-color: #ffde00EE;
-border: 0px !important;
-border-color: #ffde0000 !important;
-background-color: #0a3a4d00 !important;
-border-style: dashed dashed dashed dashed !important;
- 
-}
- 
-::-webkit-scrollbar-thumb {
-    background: #eeeeee;
-	//background: #1f546a;
-	border: 2px outset #FFFFFFFF;
-    //background-image: linear-gradient(to left, #00000000 , #93f8ff55);
-    box-shadow: 0px 0px 0px 0px #333 inset, 0px 0px 0px 0px #999 inset, 0px 0px 0px 0px #fff inset;
-    transition: 0.4s;
-}
- 
-::-webkit-scrollbar-track {
-    background: #EEEEEE00;
-	box-shadow: 0px 0px 0px 0px #00000000 inset, 0px 0px 0px 0px #444 inset, 0px 0px 0px 0px #222 inset;
-	width: 20px !important;
-	border: 1px !important;
-border-color: #999999;
-margin-bottom: -1px !important;
-margin-right: 0px !important; 
-border-style: solid solid solid none;
-transition: 0.4s;
-}
-::-webkit-scrollbar-thumb {
-width: 22px !important;
-    background: #eeeeee;
-	//background: #1f546a;
-	border: 2px outset #FFFFFFFF;
-margin: -1px;
-left: -1px !important;
-    //background-image: linear-gradient(to left, #00000000, #93f8ff55);
-    box-shadow: inset 0 0 0px #000000; 
-
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #aaaaaa;
-	//background: #5cb2c5;
-}
-.achiev, .achiev:hover{
-    padding:5px 5px;
-    background-image: linear-gradient(to right, #00000000 , #4286f400 , #93f8ff00);
-    
-}
-title {
-    display: none;
-}
- 
-.my-anim {
-    animation-name: my-anim;
-    animation-duration: 0s;
-}
- 
-.thing.bigButton, .thing-icon {
-
-background-repeat: no-repeat;
-    
-	
-}
-
-.thing.bigButton{
-
-
-}
-#thing-icon-0{
-z-index: -2 !important;
-
-}
-#game.filtersOn .shadowed {
-    filter: drop-shadow(0px 0px 0px rgba(0,0,0,0.0));
-}
- 
-.wobble {
-    animation: wobble 0.5s;
-    
-    animation-duration: 1s;
-    transition: transform 1.00s ease-out;
-    transition: transform 1.00s ease-in;
-}
- 
-@keyframes wobble {
-0% {
-    opacity: 0.7;
-    transform: scale(1);
-}
-10% {
-    opacity: 1;
-    transform: scale(1.4);
-}
-100%
-    opacity: 1;
-    transform: scale(1);
-}
-}
- 
-
-div {
-    display: visible !important;
-}
-
-#bulkDisplay {
-    position: relative;
-    top: 0px;
-    margin: 0px 0px 0px 0px;
-    margin-top: 5px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    margin-bottom: 0px;
-	visibility: visible !important;
-	
-	text-align: right;
-}
-
-
-
-
-.popup{
-    position: relative;
-	left: 50%;
-	top: 50%;
-	width: 30%;
-    pointer-events: auto;
-    transition: opacity 0.15s,left 0.15s,top 0.15s;
-    color: #ffde00EE;
-border: 2px !important;
-border-color: #ffde00EE !important;
-background-color: #0a3a4dDD !important;
-border-style: dashed dashed dashed dashed !important;
-}
-.box{
-margin: 0px !important;
-padding: 0px !important;
-}
-
-#fpsGraph {
-    background: #333;
-    color: #93f8ff33;
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    padding: 3px;
-    width: 128px;
-    height: 64px;
-    z-index: 10000000;
-    opacity: 0.5;
-    transition: 0.4s;
-    pointer-events: none;
-}
-
-
-
-#box-upgrades::-webkit-scrollbar, #box-buildings::-webkit-scrollbar, #box-upgrades2::-webkit-scrollbar, #box-buildings2::-webkit-scrollbar {
-    width: 10px !important;
-margin-bottom: -1px !important;
-margin-right: 0px !important;
-
-}
-
-#box-upgrades, #box-buildings, #box-upgrades2, #box-buildings2{
-    top: 35px;
-	overflow-y: visible !important;
-	transition: 0.4s;
-}
-
-#box-upgrades{
-width: 23.5%;
-}
-
-
-
-.outFrame #game {
-    right: 0% !important;
-    bottom: 0px;
-}
-div#bulkDisplay.box-bit
-{
-
-}
-#box-store{
-
-top: 0px !important;
-}
-
-#box-buildings2Header{
-
-right:0%;
-
-
-}
-#box-upgrades2Header{
-
-right:25%;
-
-
-}
-#box-upgradesHeader{
-
-right:50%;
-
-
-}
-#box-buildingsHeader{
-
-right:75%;
-
-
-}
-
-#box-buildings2Header, #box-upgrades2Header, #box-upgradesHeader, #box-buildingsHeader{
-top: 0px;
-position:absolute;
-width: 23.5%;
-height: 0px;
-}
-
-#toasts {
-position: absolute !important;
-top: 52% !important;
-
-z-index: 1000 !important;
-
-}
-#fpsCounter, #fpsGraph{
-position: absolute !important;
-bottom: 60px !important;
-left: 40px !important;
-width: 128px !important;
-height: 64px !important;
-}
-
-#thing-8{
-visibility: hidden !important;
-position: absolute !important;
-top: -37vh;
-font-size: 2.8vh;
-left: 1vw;
-color: #ffffff44;
-background-color: #00000000;
-background-color: #999999;
-
-}
-
-#thing-text-8{
-font-weight: 900 !important;
-}
-
-#thing-9{
-visibility: hidden !important;
-position: absolute !important;
-top: -35vh;
-font-size: 1.8vh;
-left: 1vw;
-color: #93f8ff44;
-background-color: #00000000;
-background-color: #999999;
-
-
-}
-
-.thing{
-border: 2px #FFFFFFFF !important;
-color: #999999;
-border-style: outset !important;
-background-color: #eeeeee !important;
-margin-bottom: -1px !important;
-font-family: Kanit, sans-serif !important;
-text-shadow: 0px 0px !important;
-
-}
-.thing:hover{
-background-color: #FFFFFFFF;
-
-}
-.box-header{
-border: 0px !important;
-margin-bottom: -1px !important;
-margin-left: 0px !important;
-border-style: solid none solid solid !important;
-}
-.box-header:hover{
-
-
-}
-.box{
-
-}
-#box-buildings,#box-upgrades,#box-buildings2,#box-upgrades2
-{
-border: 0px;
-
-border-color: #555555 !important;
-border-style: none solid none none !important;
-overflow-y: scroll !important;
-background-color: #eeeeee !important;
-transition: 0.4s;
-}
-
-#box-upgrades{
-transform: skew(0deg, 10deg);
-top: -0.01vw !important;
-height: 86% !important;
-}
-#box-upgrades2{
-transform: skew(0deg, -10deg);
-top: -0.01vw !important;
-height: 86% !important;
-}
-#box-buildingsHeader{
-transform: skew(0deg, 10deg);
-top: -3.4vw !important;
-}
-#box-buildings2Header{
-transform: skew(0deg, -10deg);
-top: -3.4vw !important;
-}
- #thing-1{
-//transform: skew(0deg, 10deg);
-//top: -3.4vw !important;
-}
- #thing-4{
-//transform: skew(0deg, -10deg);
-//top: -3.4vw !important;
-}
-.box.sep3, .box.sep4, .box.sepOne, .box.sepTwo{
-height: 7%;
-}
-.box.sepOne,.box.sepOne:hover{
-height: 100% !important;
-width: 100% !important;
-color: #eeeeee !important;
-border: 0px;
-border: 0px;
-top: 0px;
-left:0px;
-background-size: fill !important;
-z-index:-1000;
-background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpt5-2.png");
-background-size: 100% 100% !important;
-background-repeat: no-repeat;
-
-transition: 0.4s;
-}
-.box.sepTwo,.box.sepTwo:hover{
-
-width: 200%;
-color: #eeeeee !important;
-border: 0px;
-border: 0px;
-z-index:-1000;
-background: rgb(2,0,36);
-background-image: linear-gradient(to right,  rgba(196,184,107,1) 26%, rgba(237,237,237,1) 71%);
-transition: 0.4s;
-}
-.box.sep3,.box.sep3:hover{
-
-width: 200%;
-color: #eeeeee !important;
-border: 0px;
-border: 0px;
-z-index:-1000;
-background: rgb(2,0,36);
-background-image: linear-gradient(to right,  rgba(196,184,107,1) 26%, rgba(237,237,237,1) 71%);
-transition: 0.4s;
-}
-.box.sep4,.box.sep4:hover{
-
-width: 200%;
-color: #eeeeee !important;
-border: 0px;
-border: 0px;
-z-index:-1000;
-background: rgb(2,0,36);
-background-image: linear-gradient(to left,  rgba(196,184,107,1) 26%, rgba(237,237,237,1) 71%);
-transition: 0.4s;
-}
-
-#box-sepOne{
-
-}
-#box-sep3{
-top: 58%;
-left: -40%;
-transform: rotate(-35deg); 
-}
-
-#box-sepTwo{
-top: 63%;
-right: 59%;
-transform: rotate(35deg); 
-}
-#box-sep4{
-top: 52%;
-right: 59%;
-transform: rotate(35deg); 
-}
-
-
-body{
-text-shadow: 0px 0px !important;
-}#game{
-text-shadow: 0px 0px !important;
-}
-
-#box-store{
-
-background-color: #eeeeee !important;
-width: 100% !important;
-height: 40% !important;
-top: 60% !important;
-transition: 0.4s;
-}
-#game{
-background-position: center center;}
-
-.thing.shiny.noClick.noText{
-visibility: hidden !important;
-}
-
-#thing-0{
-	transform: translate(0px, -128px) rotate(0deg) !important;
-	transition: 0.3s !important;
-	transition-timing-function: ease-in-out;
-	left: 50% !important;
-    background-repeat: no-repeat;
-    border-radius:50%;
-    background:#00000000;
-border: 2px !important;
-border-color: #ffde00EE !important;
-background-color: #eeeeee00 !important;
-border-style: dashed dashed dashed dashed !important;
-
-}
-#thing-0:hover{
-transition-timing-function: ease-in-out;
-border: 2px !important;
-border-color: #ffde00EE !important;
-background-color: #eeeeee00 !important;
-border-style: solid solid solid solid !important;
-}
-#thing-0:active{
-
-	left: 50% !important;
-border: 4px !important;
-border-color: #ff7800EE !important;
-background-color: #eeeeee00 !important;
-border-style: solid solid solid solid !important;
-}
-.shiny{
-width: 40px !important;
-height: 40px !important;
-border: 2px !important;
-border-color: #ffde00EE !important;
-background-color: #eeeeee00 !important;
-border-style: dashed dashed dashed dashed !important;
-}
-.stationSh{
-width: 250px !important;
-height: 250px !important;
-}
-.shiny:hover{
-
-border: 2px !important;
-border-color: #ffde00EE !important;
-background-color: #eeeeee00 !important;
-border-style: solid solid solid solid !important;
-}
-.shiny:active{
-
-border: 4px !important;
-border-color: #ff7800EE !important;
-background-color: #eeeeee00 !important;
-border-style: solid solid solid solid !important;
-}
-
-.box-things
-{
-}
-
-.toast.popInVertical{
-color: #ffde00EE;
-border: 2px !important;
-border-color: #ffde00EE !important;
-background-color: #18546cAA !important;
-border-style: dashed dashed dashed dashed !important;
-border-radius: 0px;
-z-index: 100 !important;
-transition: 0.4s;
-}
-.building{
-border: 8px !important;
-background-color: #eeeeeeFF !important;
-border-style: solid !important;
-border-left-color: #ffffff !important;
-border-right-color: #aaaaaa !important;
-border-top-color: #ffffff !important;
-border-bottom-color: #aaaaaa !important;
-transition: 0.4s;
-}
-.building:hover{
-top: 0px !important;
-right: 0px !important;
-left: 0px !important;
-color: #ffe33b;
-background-color: #FFFFFFFF !important;
-
-}
-.building:active{
-background-color: #EEEEEEFF !important;
-border-color: #FFFFFFFF !important;
-border-style: inset !important;
-}
-.upgrade{
-border: 1px solid #002130;
-border-style: solid;
-background-color: #eeeeeeFF;
-border-color: #aaaaaaAA;
-transition: 0.4s;
-}
-.upgrade:hover{
-top: 0px;
-left: 0px;
-right: 0px;
-color: #ffe33b;
-background-color: #FFFFFFFF;
-border-color: #FFFFFFFF;
-transition: 0.2s;
-}
-.upgrade:active{
-background-color: #EEEEEEFF!important;
-border-color: #FFFFFFFF !important;
-border-style: solid !important;
-}
-#box-log{
-position: absolute !important;
-top: 65%;
-right: 25.04%;
-height: 30%;
-width: 14%;
-border-radius: 5%;
-border: 10px !important;
-border-color: #FFFFFFFF !important;
-border-style: outset !important;
-
-background-image: linear-gradient(0deg, rgba(118,101,0,1) 0%, rgba(37,69,82,1) 100%);
-transition: 0.4s;
-}
-
-#log::-webkit-scrollbar {
-  display: none;
-}
-
-#logOuter{
-display: table;
-width: 100% !important;
-height: 100% !important;
-
-}
-#logInner{
-padding: 5%;
-color: #ffe33b;
-width: 110% !important;
-height: 110% !important;
-font-family: 'Courier Prime', monospace !important;
-transition: 0.4s;
-
-}
-#bulkDisplay{
-visibility: hidden !important;
-}
-
-.cost.hasEnough{
-
-color: #a7c000;
-
-}
-.cost.notEnough{
-
-color: #e67700;
-
-}
-#box-things-sortup, #box-things-sortup2, #box-things-Upgrades, #box-things-upgrades2  /*if necessary, change this to the name of the box containing your upgrades. it should start with "box-things" and you can use inspect element to find it*/
-{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center; /*you can change this to "flex-start" if you want upgrades aligned to the left*/
-	flex-direction: column-reverse;
-}
-
-#box-things-Buildings, #box-things-buildings2{
-	display:flex;
-    flex-wrap:wrap;
-    justify-content:center; /*you can change this to "flex-start" if you want upgrades aligned to the left*/
-
-	flex-direction: column-reverse;
-}
-
-.tag-sortup, .tag-sortup2, .building, .thing-77, .upgrade2.notOwned, .upgrade2.cantAfford{
-    order:3;
-}
-.upgrade.notOwned {
-    order:2;
-}
-.upgrade.owned, .upgrade2.owned
-{
-    order:1;
-}
-#box-upgrades, #box-upgrades2 {
-    border: 5px solid #ddddddFF !important;
-    
-    outline: 20px solid #eeeeeeFF !important;
-	border-bottom-color: #FeFeFe !important;
-	border-right-color: #FeFeFe !important;
-	transition: 0.4s;
-	
-}
-
-#box-upgrades{border-radius: 0% 0% 0% 0%;}
-#box-upgrades2{border-radius: 0% 0% 0% 0%;}
-
-
-#box-buildings {
- 
-    z-index: 100;}
-
-#box-upgrades, #box-buildings, #box-upgrades2{
-    
-	overflow-y: auto !important;
-}
-
-#box-upgrades2, #box-upgrades{
-
-background-image: linear-gradient(0deg, rgba(118,101,0,1) 0%, rgba(37,69,82,1) 100%) !important;
-}
-.tag-upgrades2,.upgrade{
-
-background-color: #00000000 !important;
-border-style: solid !important;
-border-width:  0.1em !important;
-border-color: #ffe33b !important;
-color: #ffe33b !important;
-transition: 0.4s;
-}
-.tag-upgrades2,.upgrade{
-transition: 0s !important;
-}
-.tag-upgrades2:hover, .upgrade:hover{
-
-background-color: #ffe33bFF !important;
-border-style: solid !important;
-border-width:  0.1em !important;
-border-color: #ffe33b !important;
-color: #00000066 !important;
-transition: 0.2s !important;
-}
-
-#box-upgrades, #box-buildings, #box-upgrades2{
-    
-    overflow-y: auto !important;
-}
-
-#box-upgrades2::-webkit-scrollbar, #box-upgrades::-webkit-scrollbar  {
-  display: none;
-}
-#box-upgrades{border-radius: 5% 20% 5% 10%;}
-#box-upgrades2{border-radius: 20% 5% 10% 5%;}
-
-#box-upgrades{border-radius: 0% 0% 0% 0%;}
-#box-upgrades2{border-radius: 0% 0% 0% 0%;}
-
-.upgrade, .tag-upgrades2 {
-    padding: 2% 2% 2% 13% !important;
-	background-color: #00000000 !important;
-}
-#fpsCounter, #fpsGraph{
-border-style: outset;
-    border-width: 10px;
-    border-color: #FFFFFFFF !important;
-    opacity: 1;
-    background-image: linear-gradient(0deg, rgba(118,101,0,1) 0%, rgba(37,69,82,1) 100%) !important;
-    border-bottom-color: #FFFFFF !important;
-    border-right-color: #FFFFFF !important;
-    
-    }
-    #fpsGraph {
-    opacity: 0.20;
-    background-color: #FFFFFF;
-    z-index: 10000002;
-    transition: 0.4s;
-}
-
-#fpsCounter, #fpsGraph{
-    bottom: 40% !important;
-    left: 24% !important;
-    width: 128px !important;
-    height: 64px !important;
-    transform: skew(15deg, 0deg);
-border-radius: 5px;
-    }
-
-#box-upgrades2, #box-upgrades{
-
-background-image: linear-gradient(0deg, rgba(118,101,0,1) 0%, rgba(37,69,82,1) 100%) !important;
-
-/*background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/upTechAnim5.gif) !important;*/
-background-size: 100% 100% !important;
-}
-#fpsCounter {
-    font-family: 'Courier Prime', monospace !important;
-    color: #ffe33b66 !important;
-    
-    left: 50%;
-   
-    font-size: 14px;
-    font-weight: 00;
-    
-    padding-top: 18px;
-    padding-left: 30px;
-    transition: 0.4s;
-}
-#game{
-
-  background-position: bottom 42.65% center !important;
-}
-
-.building{
-padding: 10px !important;
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech3.png) !important;
-
-background-size: 100.1% 100.1% !important;
-transition: 0s;
-}
-.building:hover{
-transition: 0.2s;
-}
-.building:active{
-
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech3Down.png) !important;
-
-background-size: 100% 100% !important;
-
-transition: 0s;
-
-}
-
-#box-log{
-padding: 1em !important;
-
-background-image: linear-gradient(0deg, rgba(118,101,0,1) 0%, rgba(37,69,82,1) 100%) !important;
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/logTechC2.png) !important;
-
-
-background-size: 100.1% 100.1% !important;
-transition: 0s;
-}
-
-
-#box-buildings2, #box-buildings{
- -webkit-box-shadow:inset 0px 0px 0px 2px #ffffff;
-  -moz-box-shadow:inset 0px 0px 0px 4px #ffffff;
-  box-shadow:inset 0px 4px 6px 2px #cecece;
-       padding-right: 1px !important;
-overflow: auto !important;
-     padding-left: 1px !important;
-}
-
-#box-sep4, #box-sepTwo, #box-sep3{
-
-visibility: hidden !important;
-
-}
-.tag-sortup, .tag-sortup2, .upgrade,.upgrade2, .upgrade2.notOwned, .upgrade2.cantAfford{
-    order:4;
-}
-.upgrade.notOwned, .upgrade2.notOwned {
-    order:4;
-}
-.tag-zortMiddle{
-
-  order: 3 !important;
-  color:#ffe33b !important;
-  background-color: #ffe33b55 !important;
-  border: 1px solid #93f8f !important;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-  transition: 0.4s;
-}
-.tag-zortTop{
-
-  order: 5 !important;
-  color:#ffe33b !important;
-  background-color: #ffe33b55 !important;
-  border: 1px solid #93f8f !important;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-  transition: 0.4s;
-}
-.tag-zortMax{
-
-  order: 6 !important;
-  
-}
-.upgrade.owned, .upgrade2.owned
-{
-    order:1;
-}
-
-.popup, #tooltip, .toast {
-    background: #00110e;
-    color: #ffc000 ;
-    
-    box-sizing: border-box;
-    border-radius: 10px !important;
- 	
-	box-shadow: none !important;
-	text-shadow: none !important;
-
-}
-
-.tooltipPoint{
-border: 0px !important;
-box-shadow: none !important;
-text-shadow: none !important;
-color: #ffc000;
-visibility: hidden;
-}
-.closeButton{
-
-visibility: hidden;
-}
-
-:root{
-  --curve:cubic-bezier(0.5,0.125,0.75,0.5);
-}
-    
-body {
-  margin:0px;
-  height:100vh;
-  width:100vw;
-  background:#000;
-  overflow:hidden;
-}
-
-.smallest, .smaller, .small, .regular, .big {
-  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars8.png");
-  background-size:100% 200%;
-  height:200%;
-  width:100%;
-  display:inline-block;
-  position:absolute;
-  
-  
-  height: 200% !important;
-width: 100% !important;
-color: #eeeeee !important;
-border: 0px;
-border: 0px;
-top: -60%;
-left:0px;
-
-
-background-size: 100% 100% !important;
-background-repeat: no-repeat;
-}
-
-.smallest {
-  animation: smallest 5s var(--curve) 0s infinite normal;
-  z-index:-1005;
-}
-.smaller {
-  animation: smaller 5s var(--curve) 0s infinite normal;
-  z-index:-1004;
-}
-.small {
-  animation: small 5s var(--curve) 0s infinite normal;
-  z-index:-1003;
-}
-.regular{
-  animation: regular 20s var(--curve) 0s infinite normal;
-  z-index:-1002;
-}
-.big{
-  animation: big 20s var(--curve) 0s infinite normal;
-  right:0;
-  z-index:-1001;
-}
-
-
-
-  
-
-@keyframes smallest {
-  from {
-    transform:scale(0.0001,0.0001);
-    opacity:0;
-  }
-  to {transform:scale(0.001,0.001);}
-}  
-
-@keyframes smaller {
-  from {transform:scale(0.001,0.001);}
-  to {transform:scale(0.01,0.01);}
-}  
-
-@keyframes small {
-  from {transform:scale(0.01,0.01);}
-  to {transform:scale(0.1,0.1);}
-}  
-
-
-@keyframes regular {
-  from {transform:scale(0.1,0.1);  opacity: 0;}
-  to {transform:scale(1,1);  opacity: 1;}
-}  
-
-@keyframes big {
-  from {transform:scale(1,1); opacity: 1;}
-  to {transform:scale(10,10);  opacity: 0;}
-  
-}
-
-.smallest2, .smaller2, .small2, .regular2, .big2 {
-  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars8.png");
-  background-size:100% 200%;
-  height:200%;
-  width:100%;
-  display:inline-block;
-  position:absolute;
-  
-  
-  height: 200% !important;
-width: 100% !important;
-color: #eeeeee !important;
-border: 0px;
-border: 0px;
-top: -60%;
-left:0px;
-
-
-background-size: 100% 100% !important;
-background-repeat: no-repeat;
-}
-
-.smallest2 {
-  animation: smallest2 10s var(--curve) 0s infinite normal;
-  z-index:-1005;
-}
-.smaller2 {
-  animation: smaller2 10s var(--curve) 0s infinite normal;
-  z-index:-1004;
-}
-.small2 {
-  animation: small2 10s var(--curve) 0s infinite normal;
-  z-index:-1003;
-}
-.regular2{
-  animation: regular2 40s var(--curve) 0s infinite normal;
-  z-index:-1002;
-}
 
-.big2{
-  animation: big2 40s var(--curve) 0s infinite normal;
-  right:0;
-  z-index:-1001;
-}
-
-  
-
-@keyframes smallest2 {
-  from {
-    transform:scale(0.0001,0.0001) rotate(140deg);
-    opacity:0;
-  }
-  to {transform:scale(0.001,0.001) rotate(140deg);}
-}  
-
-@keyframes smaller2 {
-  from {transform:scale(0.001,0.001) rotate(140deg);}
-  to {transform:scale(0.01,0.01) rotate(140deg);}
-}  
-
-@keyframes small2 {
-  from {transform:scale(0.01,0.01) rotate(140deg);}
-  to {transform:scale(0.1,0.1) rotate(140deg);}
-}  
-
-
-@keyframes regular2 {
-  from {transform:scale(0.1,0.1) rotate(140deg); opacity: 0;}
-  to {transform:scale(1,1) rotate(140deg); opacity: 1;}
-}  
-
-@keyframes big2 {
-  from {transform:scale(1,1) rotate(140deg); opacity: 1;}
-  to {transform:scale(10,10) rotate(140deg);  opacity: 0;}
-  
-}
-
-.smallest3, .smaller3, .small3, .regular3, .big3 {
-  background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars8.png");
-  background-size:100% 200%;
-  height:200%;
-  width:100%;
-  display:inline-block;
-  position:absolute;
-  
-  
-  height: 200% !important;
-width: 100% !important;
-color: #eeeeee !important;
-border: 0px;
-border: 0px;
-top: -60%;
-left:0px;
-
-
-background-size: 100% 100% !important;
-background-repeat: no-repeat;
-}
-
-.smallest3 {
-  animation: smallest3 14s var(--curve) 0s infinite normal;
-  z-index:-1005;
-}
-.smaller3 {
-  animation: smaller3 14s var(--curve) 0s infinite normal;
-  z-index:-1004;
-}
-.small3 {
-  animation: small3 14s var(--curve) 0s infinite normal;
-  z-index:-1003;
-}
-.regular3{
-  animation: regular3 80s var(--curve) 0s infinite normal;
-  z-index:-1002;
-}
-
-.big3{
-  animation: big3 80s var(--curve) 0s infinite normal;
-  right:0;
-  z-index:-1001;
-}
-
-  
-
-@keyframes smallest3 {
-  from {
-    transform:scale(0.0001,0.0001) rotate(230deg);
-    opacity:0;
-  }
-  to {transform:scale(0.001,0.001) rotate(230deg);}
-}  
-
-@keyframes smaller3 {
-  from {transform:scale(0.001,0.001) rotate(230deg);}
-  to {transform:scale(0.01,0.01) rotate(230deg);}
-}  
-
-@keyframes small3 {
-  from {transform:scale(0.01,0.01) rotate(230deg);}
-  to {transform:scale(0.1,0.1) rotate(230deg);}
-}  
-
-
-@keyframes regular3 {
-  from {transform:scale(0.1,0.1) rotate(230deg); opacity: 0;}
-  to {transform:scale(1,1) rotate(230deg); opacity: 1;}
-}  
-
-@keyframes big3 {
-  from {transform:scale(1,1) rotate(230deg); opacity: 1;}
-  to {transform:scale(10,10) rotate(230deg);  opacity: 0;}
-  
-}
-
-.box-header{
-
-visibility: hidden;
-}
-
-.mainPopup{
-
-top: 225px !important;
-
-}
-
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .big {
-    animation: big 20s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .regular {
-    animation: regular 20s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .big2 {
-    animation: big2 40s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .regular2 {
-    animation: regular2 40s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .big3 {
-    animation: big3 80s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001010"]) .regular3 {
-    animation: regular3 80s var(--curve) 0s infinite normal !important;
-}
-
-
-
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .big {
-    animation: big 2s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .regular {
-    animation: regular 2s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .big2 {
-    animation: big2 4s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .regular2 {
-    animation: regular2 4s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .big3 {
-    animation: big3 8s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001011"]) .regular3 {
-    animation: regular3 8s var(--curve) 0s infinite normal !important;
-}
-
-
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .big {
-    animation: big 1s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .regular {
-    animation: regular 1s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .big2 {
-    animation: big2 2s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .regular2 {
-    animation: regular2 2s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .big3 {
-    animation: big3 4s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001012"]) .regular3 {
-    animation: regular3 4s var(--curve) 0s infinite normal !important;
-}
-
-
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .big {
-    animation: big 0.5s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .regular {
-    animation: regular 0.5s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .big2 {
-    animation: big2 1s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .regular2 {
-    animation: regular2 1s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .big3 {
-    animation: big3 2s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001013"]) .regular3 {
-    animation: regular3 2s var(--curve) 0s infinite normal !important;
-}
-
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .big {
-    animation: big 0.25s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .regular {
-    animation: regular 0.25s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .big2 {
-    animation: big2 0.5s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .regular2 {
-    animation: regular2 0.5s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .big3 {
-    animation: big3 1s var(--curve) 0s infinite normal !important;
-}
-#content:has(#box-main .hexHandler .thing-text span[style*="color:#001014"]) .regular3 {
-    animation: regular3 1s var(--curve) 0s infinite normal !important;
-}
-
-#thing-11, #thing-10{
-
-display: none !important;
-
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]){
-   
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-store{
-    background-color: #0f0f0f !important;
-    transition: 0.4s;
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .box.sepOne, #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .box.sepOne:hover{
-
-background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpDark1.png") !important;
-transition: 0.4s;
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .thing{
-background-color: #0f0f0f !important;
-transition: 0.4s;
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #thing-0{
-background-color: #0f0f0f00 !important;
-transition: 0.4s;
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .upgrade{
-
-background-color: #00000000 !important;
-transition: 0.4s;
-}
-
-
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"])  #box-log{
-
-
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/logTechDark3.png) !important;
-
-border-radius: 5%;
-border: 10px !important;
-
-border-style: solid !important;
-border-left-color: #1f1f1fff !important;
-border-right-color: #000000FF !important;
-border-top-color: #1f1f1fff !important;
-border-bottom-color: #000000FF !important;
-
-background-image: linear-gradient(0deg, rgba(118,101,0,1) 0%, rgba(37,69,82,1) 100%);
-transition: 0.4s;
-}
-
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"])  .thing.res{
-border: 2px #0f0f0fff !important;
-color: #999999;
-border-style: solid !important;
-border-left-color: #2f2f2f !important;
-border-right-color: #000000FF !important;
-border-top-color: #2f2f2f !important;
-border-bottom-color: #000000FF !important;
-background-color: #0f0f0f !important;
-margin-bottom: -1px !important;
-font-family: Kanit, sans-serif !important;
-text-shadow: 0px 0px !important;
-transition: 0.4s;
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .thing:hover{
-  
-    //background:#002130;
-    color:#93f8ff;
-    background-color: #636363;
-	transition: 0.4s;
-  }
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .building{
-
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech3dark.png) !important;
-border-style: solid !important;
-border-left-color: #2f2f2f !important;
-border-right-color: #000000FF !important;
-border-top-color: #2f2f2f !important;
-border-bottom-color: #000000FF !important;
-transition: 0.4s;
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .building:active{
-
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/buttonTech3darkDOWN.png) !important;
-
-background-color: #eeeeeeFF !important;
-border-color: #0f0f0fff !important;
-transition: 0.4s;
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-buildings, 
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-upgrades, 
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-buildings2, 
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-upgrades2{
-background-color: #0f0f0fff !important;
-transition: 0.4s;
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-upgrades, 
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-upgrades2 {
-    border: 5px solid #0f0f0fff !important;
-    outline: 20px solid #0f0f0fff !important;
-    border-left-color: #000000 !important;
-border-right-color: #2f2f2f !important;
-border-top-color: #000000 !important;
-border-bottom-color: #2f2f2f !important;
-    transition: 0.4s;
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .building:active{
-background-color: #0f0f0fff !important;
-border-style: solid !important;
-border-right-color: #2f2f2f !important;
-border-left-color: #000000FF !important;
-border-bottom-color: #2f2f2f !important;
-border-top-color: #000000FF !important;
-transition: 0.4s;
-}
-
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .upgrade:hover{
-
-color: #00000066;
-background-color: #ffe33b !important;
-transition: 0.4s;
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .upgrade:active{
-background-color: #ffe33b00 !important;
-
-color: #00000066 !important;
-transition: 0.4s;
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-buildings2, 
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-buildings{
- -webkit-box-shadow:inset 0px 0px 0px 2px #000000ff;
-  -moz-box-shadow:inset 0px 0px 0px 4px #000000ff;
-  box-shadow:inset 0px 4px 6px 2px #000000ff;
-  transition: 0.4s;
-      
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) ::-webkit-scrollbar-thumb {
-    background: #0f0f0fff;
-	//background: #1f546a;
-	border: 2px solid #0f0f0fff;
-	border-left-color: #2f2f2f !important;
-border-right-color: #000000FF !important;
-border-top-color: #2f2f2f !important;
-border-bottom-color: #000000FF !important;
-    //background-image: linear-gradient(to left, #00000000 , #93f8ff55);
-    box-shadow: 0px 0px 0px 0px #636363 inset, 0px 0px 0px 0px #000 inset, 0px 0px 0px 0px #636363 inset;
-    transition: 0.4s;
-}
- 
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) ::-webkit-scrollbar-track {
-    background: #EEEEEE00;
-	box-shadow: 0px 0px 0px 0px #00000000 inset, 0px 0px 0px 0px #444 inset, 0px 0px 0px 0px #636363 inset;
-	
-border-color: #0f0f0fff;
-transition: 0.4s;
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) ::-webkit-scrollbar-thumb {
-
-    background: #0f0f0fff;
-	transition: 0.4s;
 
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) ::-webkit-scrollbar-thumb:hover {
-    background: #2f2f2f;
-    transition: 0.4s;
-}
-
-#game:has(#content #box-main .hexHandler2 .thing-text span[style*="color:#001019"]) {
-    background: #000000;
-    transition: 0.4s;
-    }
-    
-    #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-zortTop, #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"])  .tag-zortMiddle
-    #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-things-sortup, #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #box-things-sortup2, #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"])  .tag-auchouse{
-
-background-color: #ffe33b55 !important;
-transition: 0.4s;
-
-}
-
-#wrap:has(#game #content #box-main .hexHandler2 .thing-text span[style*="color:#001019"])  #fpsCounter, #wrap:has(#game #content #box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #fpsGraph{
-
-    
-    border-color: #0f0f0fff !important;
-    border-bottom-color: #0f0f0fff !important;
-    border-right-color: #0f0f0fff !important;
-    color: #ffe33b66 !important;
-    transition: 0.4s;
-    }
-    #wrap:has(#game #content #box-main .hexHandler2 .thing-text span[style*="color:#001019"]) #fpsGraph {
-    
-    background-color: #ffffff;
-    
-    transition: 0.4s;
-    color: #ffe33b66 !important;
-}
-
-.tag-statsdp, #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-statsdp{
-
-background-color: #00000000 !important;
-
-}
-#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002001"]){
-
-
-filter: hue-rotate(0deg) contrast(100%) brightness(1) saturate(100%);
-
-}
-#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002002"]){
-
-
-filter: hue-rotate(-48deg) contrast(100%) brightness(1) saturate(180%);
-
-}
-#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002003"]){
-
-
-filter: hue-rotate(180deg) contrast(100%) brightness(1) saturate(130%);
-
-}
-#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002004"]){
-
-
-filter: hue-rotate(48deg) contrast(100%) brightness(1) saturate(120%);
-
-}
-#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002005"]){
-
-
-filter: hue-rotate(-107deg) contrast(100%) brightness(1) saturate(100%);
-
-}
-#wrap:has(#game #content #box-main .hexHandler3 .thing-text span[style*="002006"]){
-
-
-filter: hue-rotate(125deg) contrast(100%) brightness(1) saturate(100%);
-
-}
-
-
-
-.tag-hudchanger:hover{
-
-background-color: #ffe33b77 !important;
-
-}
-
-.tag-hudchanger:active{
-
-
-background-image: none !important;
-background-color: #00000000 !important;
-}
-
-.tag-hudchanger{
-
-border: 1.5px solid !important;
-border-color: #ffe33b !important;
-background-image: none !important;
-background-color: #00000000 !important;
-padding-top: 0px !important;
-padding-bottom: 0px !important;
-padding-left: 13% !important;
-}
-
-
-.tag-hudchanger:hover{
-
-background-color: #ffe33b77 !important;
-
-}
-
-.tag-hudchanger:active{
-
-
-background-image: none !important;
-background-color: #00000000 !important;
-}
-
-.tag-hudchanger{
-
-border: 1.5px solid !important;
-border-color: #ffe33b !important;
-background-image: none !important;
-background-color: #00000000 !important;
-padding-top: 0px !important;
-padding-bottom: 0px !important;
-padding-left: 13% !important;
-}
-
-
 
 
 
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-hudchanger{
 
-border: 1.5px solid !important;
-border-color: #ffe33b !important;
-background-image: none !important;
-background-color: #00000000 !important;
-padding-top: 0px !important;
-padding-bottom: 0px !important;
-padding-left: 13% !important;
 
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]) .tag-hudchanger:hover{
-
-background-color: #ffe33b77 !important;
-
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-hudchanger:hover{
-
-background-color: #ffe33b77 !important;
-
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]) .tag-hudchanger:active{
-
-
-background-image: none !important;
-background-color: #00000000 !important;
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-hudchanger:active{
-
-
-background-image: none !important;
-background-color: #00000000 !important;
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]) .tag-hudchanger{
-
-border: 1.5px solid !important;
-border-color: #ffe33b !important;
-background-image: none !important;
-background-color: #00000000 !important;
-padding-top: 0px !important;
-padding-bottom: 0px !important;
-padding-left: 13% !important;
-}
-
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-hudchanger{
-
-border: 1.5px solid !important;
-border-color: #ffe33b !important;
-background-image: none !important;
-background-color: #00000000 !important;
-padding-top: 0px !important;
-padding-bottom: 0px !important;
-padding-left: 13% !important;
-
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]) .tag-hudchanger:hover{
-
-background-color: #ffe33b77 !important;
-
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-hudchanger:hover{
-
-background-color: #ffe33b77 !important;
-
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]) .tag-hudchanger:active{
-
-
-background-image: none !important;
-background-color: #00000000 !important;
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]) .tag-hudchanger:active{
-
-
-background-image: none !important;
-background-color: #00000000 !important;
-}
-#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]) .tag-hudchanger{
-
-border: 1.5px solid !important;
-border-color: #ffe33b !important;
-background-image: none !important;
-background-color: #00000000 !important;
-padding-top: 0px !important;
-padding-bottom: 0px !important;
-padding-left: 13% !important;
-}
-
-
-
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003001"]) #thing-0 .thing-icon{
-
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/main/crosshai2r.png) !important;
-transition: transform 0.5s ease-out;
-animation-duration: 0s;
-transform: none;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003001"]) #thing-0:not(:active):hover .thing-icon{
- transform:  scale(1.1) rotate(60deg) !important;
- transition: transform 0.5s ease-out;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003001"]) #thing-0:active .thing-icon{
-  
- transform: scale(1.3) rotate(60deg) !important;
-transition: transform 0.1s  ease-out;
-}
-
-
-
-
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003002"]) #thing-0 .thing-icon{
-
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/crosshairX1.png) !important;
-transition: transform 0.5s ease-out;
-animation-duration: 0s;
-transform: none;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003002"]) #thing-0:not(:active):hover .thing-icon{
- transform:  scale(1.1) rotate(30deg) !important;
- transition: transform 0.5s ease-out;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003002"]) #thing-0:active .thing-icon{
-  
- transform: scale(1.3) rotate(30deg) !important;
-transition: transform 0.1s  ease-out;
-}
 
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003003"]) #thing-0 .thing-icon{
 
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/crosshairX2.png) !important;
-transition: transform 0.5s ease-out;
-animation-duration: 0s;
-transform: none;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003003"]) #thing-0:not(:active):hover .thing-icon{
- transform:  scale(1) rotate(90deg) !important;
- transition: transform 0.5s ease-out;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003003"]) #thing-0:active .thing-icon{
-  
- transform: scale(1.25) rotate(90deg) !important;
-transition: transform 0.1s  ease-out;
-}
-
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003004"]) #thing-0 .thing-icon{
-
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/crosshairX3.png) !important;
-transition: transform 0.5s ease-out;
-animation-duration: 0s;
-transform: none;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003004"]) #thing-0:not(:active):hover .thing-icon{
- transform:  scale(1.1) rotate(45deg) !important;
- transition: transform 0.5s ease-out;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003004"]) #thing-0:active .thing-icon{
-  
- transform: scale(1.3) rotate(45deg) !important;
-transition: transform 0.1s  ease-out;
-}
 
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003005"]) #thing-0 .thing-icon{
-
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/crosshairX4.png) !important;
-transition: transform 0.5s ease-out;
-animation-duration: 0s;
-transform: none;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003005"]) #thing-0:not(:active):hover .thing-icon{
- transform:  scale(1.15) rotate(45deg) !important;
- transition: transform 0.5s ease-out;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003005"]) #thing-0:active .thing-icon{
-  
- transform: scale(1.6) rotate(45deg) !important;
-transition: transform 0.1s  ease-out;
-}
-
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003006"]) #thing-0 .thing-icon{
-
-background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/crosshairX5.png) !important;
-transition: transform 0.5s ease-out;
-animation-duration: 0s;
-transform: none;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003006"]) #thing-0:not(:active):hover .thing-icon{
- transform:  scale(1.1) rotate(30deg) !important;
- transition: transform 0.5s ease-out;
-}
-#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003006"]) #thing-0:active .thing-icon{
-  
- transform: scale(1.25) rotate(30deg) !important;
-transition: transform 0.1s  ease-out;
-}
 
