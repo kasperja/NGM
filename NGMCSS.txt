@@ -330,7 +330,7 @@ background-repeat: no-repeat;
     animation-iteration-count: infinite;
     animation-timing-function: linear;*/
 }
-@-ms-keyframes spin {
+/*@-ms-keyframes spin {
     from { -ms-transform: rotate(0deg); }
     to { -ms-transform: rotate(360deg); }
 }
@@ -349,7 +349,7 @@ background-repeat: no-repeat;
     to {
         transform:rotate(360deg);
     }
-}
+}*/
  
  
  
@@ -633,7 +633,7 @@ z-index: -2 !important;
  
 .wobble {
     animation: wobble 0.5s;
-    transform: scale(1);
+    
     animation-duration: 1s;
     transition: transform 1.00s ease-out;
     transition: transform 1.00s ease-in;
@@ -646,7 +646,7 @@ z-index: -2 !important;
 }
 10% {
     opacity: 1;
-    transform: scale(1.3);
+    transform: scale(1.4);
 }
 100%
     opacity: 1;
@@ -654,9 +654,6 @@ z-index: -2 !important;
 }
 }
  
-.thing.bigButton .thing-icon{transform:scale(1);}
-.thing.bigButton:hover .thing-icon{transform:scale(1);}
-.thing.bigButton:active .thing-icon{transform:scale(1);}
 
 div {
     display: visible !important;
@@ -996,8 +993,6 @@ border-style: dashed dashed dashed dashed !important;
 
 }
 #thing-0:hover{
-transform:  translate(0, -129px) rotate(60deg) !important;
-transition: 0.3s !important;
 transition-timing-function: ease-in-out;
 border: 2px !important;
 border-color: #ffde00EE !important;
@@ -1005,7 +1000,7 @@ background-color: #eeeeee00 !important;
 border-style: solid solid solid solid !important;
 }
 #thing-0:active{
-transform: translate(-2px, -129px) rotate(60deg) !important;
+
 	left: 50% !important;
 border: 4px !important;
 border-color: #ff7800EE !important;
@@ -2147,4 +2142,109 @@ padding-left: 13% !important;
 }
 
 
+
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003001"]) #thing-0 .thing-icon{
+
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/main/crosshai2r.png) !important;
+transition: transform 0.5s ease-out;
+animation-duration: 0s;
+transform: none;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003001"]) #thing-0:not(:active):hover .thing-icon{
+ transform:  scale(1.1) rotate(60deg) !important;
+ transition: transform 0.5s ease-out;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003001"]) #thing-0:active .thing-icon{
+  
+ transform: scale(1.3) rotate(60deg) !important;
+transition: transform 0.1s  ease-out;
+}
+
+
+
+
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003002"]) #thing-0 .thing-icon{
+
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/crosshairX1.png) !important;
+transition: transform 0.5s ease-out;
+animation-duration: 0s;
+transform: none;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003002"]) #thing-0:not(:active):hover .thing-icon{
+ transform:  scale(1.1) rotate(30deg) !important;
+ transition: transform 0.5s ease-out;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003002"]) #thing-0:active .thing-icon{
+  
+ transform: scale(1.3) rotate(30deg) !important;
+transition: transform 0.1s  ease-out;
+}
+
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003003"]) #thing-0 .thing-icon{
+
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/crosshairX2.png) !important;
+transition: transform 0.5s ease-out;
+animation-duration: 0s;
+transform: none;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003003"]) #thing-0:not(:active):hover .thing-icon{
+ transform:  scale(1) rotate(90deg) !important;
+ transition: transform 0.5s ease-out;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003003"]) #thing-0:active .thing-icon{
+  
+ transform: scale(1.25) rotate(90deg) !important;
+transition: transform 0.1s  ease-out;
+}
+
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003004"]) #thing-0 .thing-icon{
+
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/crosshairX3.png) !important;
+transition: transform 0.5s ease-out;
+animation-duration: 0s;
+transform: none;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003004"]) #thing-0:not(:active):hover .thing-icon{
+ transform:  scale(1.1) rotate(45deg) !important;
+ transition: transform 0.5s ease-out;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003004"]) #thing-0:active .thing-icon{
+  
+ transform: scale(1.3) rotate(45deg) !important;
+transition: transform 0.1s  ease-out;
+}
+
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003005"]) #thing-0 .thing-icon{
+
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/crosshairX4.png) !important;
+transition: transform 0.5s ease-out;
+animation-duration: 0s;
+transform: none;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003005"]) #thing-0:not(:active):hover .thing-icon{
+ transform:  scale(1.15) rotate(45deg) !important;
+ transition: transform 0.5s ease-out;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003005"]) #thing-0:active .thing-icon{
+  
+ transform: scale(1.6) rotate(45deg) !important;
+transition: transform 0.1s  ease-out;
+}
+
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003006"]) #thing-0 .thing-icon{
+
+background-image: url(https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/crosshairX5.png) !important;
+transition: transform 0.5s ease-out;
+animation-duration: 0s;
+transform: none;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003006"]) #thing-0:not(:active):hover .thing-icon{
+ transform:  scale(1.1) rotate(30deg) !important;
+ transition: transform 0.5s ease-out;
+}
+#content:has(#box-main .hexHandler4 .thing-text span[style*="color:#003006"]) #thing-0:active .thing-icon{
+  
+ transform: scale(1.25) rotate(30deg) !important;
+transition: transform 0.1s  ease-out;
+}
 
