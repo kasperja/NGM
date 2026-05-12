@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:23/03/2026
-	version:1.70
+	version:1.71
 
 Settings
 	
@@ -104,14 +104,18 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.70</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.71</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
 		on start:uicol = random(0,5)
 		on start:uiCH = random(0,5)
 		on start:uiCP = random(0,2)
 		on start:dimc = random(0,1)
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.70</#>
+  	on start:uichanger = uicol
+	  on start:chchanger = uiCH
+	  on start:cpchanger = uiCP
+	  on start:dimtoggle = dimc
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.71</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
@@ -1649,6 +1653,10 @@ Buildings
 		    on click:uiCH = random(0,5)
 		    on click:uiCP = random(0,2)
 		    on click:dimc = random(0,1)
+		    on click:uichanger = uicol
+		    on click:chchanger = uiCH
+		    on click:cpchanger = uiCP
+		    on click:dimtoggle = dimc
         tag:upgrades hudchanger
         limit:0
 
@@ -1991,6 +1999,10 @@ Upgrades
 		  uiCH = random(0,5)
 		  uiCP = random(0,2)
 		  dimc = random(0,1)
+		  uichanger = uicol
+		  chchanger = uiCH
+  		cpchanger = uiCP
+		  dimtoggle = dimc
 		end
 
 
@@ -2008,6 +2020,10 @@ Upgrades
 		  uiCH = random(0,5)
 		  uiCP = random(0,2)
 		  dimc = random(0,1)
+		  uichanger = uicol
+		  chchanger = uiCH
+		  cpchanger = uiCP
+		  dimtoggle = dimc
 		end
 
 Achievements
