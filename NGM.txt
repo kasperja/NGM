@@ -107,6 +107,10 @@ Buttons
 		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.70</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
+		on start:uicol = random(0,5)
+		on start:uiCH = random(0,5)
+		on start:uiCP = random(0,2)
+		on start:dimc = random(0,1)
 		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.70</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
@@ -1637,6 +1641,22 @@ Buildings
         tag:upgrades hudchanger
         limit:6
 
+  *randomStyle
+        name:Ship Randomizer
+        text:<#ffffff>Ship Randomizer</#>
+        desc:Randomize the looks of the ship.
+        on click:uicol = random(0,5)
+		    on click:uiCH = random(0,5)
+		    on click:uiCP = random(0,2)
+		    on click:dimc = random(0,1)
+        tag:upgrades hudchanger
+        limit:0
+
+on click:uicol = random(0,5)
+		on click:uiCH = random(0,5)
+		on click:uiCP = random(0,2)
+		on click:dimc = random(0,1)
+
 	*BountyAI
 		name:Artificial Intelligence
 		text:Artificial Intelligence : <b>lvl [this]</b>
@@ -1967,6 +1987,10 @@ Upgrades
 			yield (tsc*0.000001) prestigio
 			yield (taa+tsc*0.000001) taa
 			lose ResetPrestige
+			uicol = random(0,5)
+		  uiCH = random(0,5)
+		  uiCP = random(0,2)
+		  dimc = random(0,1)
 		end
 
 
@@ -1980,6 +2004,10 @@ Upgrades
 			lose notTag:prestige2
 			yield 1 prestigio2
 			lose ResetPrestige2
+			uicol = random(0,5)
+		  uiCH = random(0,5)
+		  uiCP = random(0,2)
+		  dimc = random(0,1)
 		end
 
 Achievements
@@ -2219,7 +2247,6 @@ CSS
   visibility :hidden !important;
 
 }
-
 
 
 
