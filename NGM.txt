@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:23/03/2026
-	version:1.68
+	version:1.70
 
 Settings
 	
@@ -104,10 +104,10 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.68</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.70</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.68</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.70</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
@@ -847,6 +847,12 @@ Resources
     class:hidden hexHandler4
     tag:hexHandler4
     
+  *hexHandler5
+    hidden
+    text:[?(uiCP=0)|<#004001></#>][?(uiCP=1)|<#004002></#>][?(uiCP=2)|<#004003></#>][?(uiCP=3)|<#004004></#>][?(uiCP=4)|<#004005></#>][?(uiCP=5)|<#004006></#>]
+    class:hidden hexHandler5
+    tag:hexHandler5
+    
   *uicol
     passive: 
       if (uicol>5) 
@@ -862,6 +868,16 @@ Resources
       if (uiCH>5) 
 				uiCH is 0
 				chchanger is 0
+			end
+		end
+    hidden
+    tag:prestige prestige2
+    
+  *uiCP
+    passive: 
+      if (uiCP>2) 
+				uiCP is 0
+				cpchanger is 0
 			end
 		end
     hidden
@@ -1590,6 +1606,13 @@ Buildings
         tag:dimtoggle
         limit:2
         
+  *ShipSettings
+	  name:Ship Configuration
+	  text:Ship Configuration
+	  desc:Customize the ship.
+	  tag:auchouse zortMiddle upgrades hud2
+	  no click
+        
   *uichanger
         name:HUD Color
         text:<#ffffff>HUD Color :</#> <#fde73b>[?(uicol=0)|<b>Yellow</b>][?(uicol=1)|<b>Red</b>][?(uicol=2)|<b>Blue</b>][?(uicol=3)|<b>Green</b>][?(uicol=4)|<b>Pink</b>][?(uicol=5)|<b>Teal</b>]
@@ -1603,6 +1626,14 @@ Buildings
         text:<#ffffff>Crosshair Style :</#> <#fde73b>[?(uiCH=0)|<b>Trigon</b>][?(uiCH=1)|<b>Hex</b>][?(uiCH=2)|<b>QuadLock</b>][?(uiCH=3)|<b>TargetSight</b>][?(uiCH=4)|<b>Crystal</b>][?(uiCH=5)|<b>Eclipse</b>]
         desc:Change the crosshair style.
         on click:uiCH = chchanger
+        tag:upgrades hudchanger
+        limit:6
+        
+  *cpchanger
+        name:Cockpit Type
+        text:<#ffffff>Cockpit Type :</#> <#fde73b>[?(uiCP=0)|<b>Explorer</b>][?(uiCP=1)|<b>Freighter</b>][?(uiCP=2)|<b>Hauler</b>][?(uiCP=3)|<b></b>][?(uiCP=4)|<b>Crystal</b>][?(uiCP=5)|<b>Eclipse</b>]
+        desc:Change the cockpit type.
+        on click:uiCP = cpchanger
         tag:upgrades hudchanger
         limit:6
 
@@ -2188,7 +2219,6 @@ CSS
   visibility :hidden !important;
 
 }
-
 
 
 
