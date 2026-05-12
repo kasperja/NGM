@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:23/03/2026
-	version:1.71
+	version:1.72
 
 Settings
 	
@@ -104,7 +104,7 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.71</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.72</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
 		on start:uicol = random(0,5)
@@ -115,14 +115,14 @@ Buttons
 	  on start:chchanger = uiCH
 	  on start:cpchanger = uiCP
 	  on start:dimtoggle = dimc
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.71</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.72</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
 		on click:yield 1 talz
 		//on click:yield 1 prestigio2
 		//on click:yield 500000000000000000000000000 bunnies
-		//on click:yield 500000000000000000000000000 talz
+	  //on click:yield 500000000000000000000000000 talz
 		//on click:yield 500000000000000000000000000 goldenCarrots
 		//on click:yield 500000000000000000000000000 tsc
 		//on click:yield 50000000000000000000000000000000000000000000000 prestigio
@@ -1610,7 +1610,7 @@ Buildings
         name:Light Switch
         text:Light Switch : [?(dimc=0)|<b>ON</b>][?(dimc=1)|<b>OFF</b>]
         desc:Toggle the cockpit lights.
-    on click:dimc = dimtoggle
+        on click:dimc is dimtoggle
         tag:dimtoggle
         limit:2
         
@@ -1625,15 +1625,15 @@ Buildings
         name:HUD Color
         text:<#ffffff>HUD Color :</#> <#fde73b>[?(uicol=0)|<b>Yellow</b>][?(uicol=1)|<b>Red</b>][?(uicol=2)|<b>Blue</b>][?(uicol=3)|<b>Green</b>][?(uicol=4)|<b>Pink</b>][?(uicol=5)|<b>Teal</b>]
         desc:Change the cockpit HUD color.
-        on click:uicol = uichanger
+        on click:uicol is uichanger
         tag:upgrades hudchanger
-        limit:7
+        limit:6
         
   *chchanger
         name:Crosshair Style
         text:<#ffffff>Crosshair Style :</#> <#fde73b>[?(uiCH=0)|<b>Trigon</b>][?(uiCH=1)|<b>Hex</b>][?(uiCH=2)|<b>QuadLock</b>][?(uiCH=3)|<b>TargetSight</b>][?(uiCH=4)|<b>Crystal</b>][?(uiCH=5)|<b>Eclipse</b>]
         desc:Change the crosshair style.
-        on click:uiCH = chchanger
+        on click:uiCH is chchanger
         tag:upgrades hudchanger
         limit:6
         
@@ -1641,7 +1641,7 @@ Buildings
         name:Cockpit Type
         text:<#ffffff>Cockpit Type :</#> <#fde73b>[?(uiCP=0)|<b>Explorer</b>][?(uiCP=1)|<b>Freighter</b>][?(uiCP=2)|<b>Hauler</b>][?(uiCP=3)|<b></b>][?(uiCP=4)|<b>Crystal</b>][?(uiCP=5)|<b>Eclipse</b>]
         desc:Change the cockpit type.
-        on click:uiCP = cpchanger
+        on click:uiCP is cpchanger
         tag:upgrades hudchanger
         limit:6
 
@@ -1649,21 +1649,18 @@ Buildings
         name:Ship Randomizer
         text:<#ffffff>Ship Randomizer</#>
         desc:Randomize the looks of the ship.
-        on click:uicol = random(0,5)
-		    on click:uiCH = random(0,5)
-		    on click:uiCP = random(0,2)
-		    on click:dimc = random(0,1)
-		    on click:uichanger = uicol
-		    on click:chchanger = uiCH
-		    on click:cpchanger = uiCP
-		    on click:dimtoggle = dimc
+        on click:
+          uicol = random(0,5)
+		      uiCH = random(0,5)
+		      uiCP = random(0,2)
+		      dimc = random(0,1)
+		      uichanger is uicol
+		      chchanger is uiCH
+		      cpchanger is uiCP
+		      dimtoggle is dimc
+		    end
         tag:upgrades hudchanger
         limit:0
-
-on click:uicol = random(0,5)
-		on click:uiCH = random(0,5)
-		on click:uiCP = random(0,2)
-		on click:dimc = random(0,1)
 
 	*BountyAI
 		name:Artificial Intelligence
