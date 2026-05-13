@@ -896,7 +896,7 @@ top: 0px;
 left:0px;
 background-size: fill !important;
 z-index:-1000;
-background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpt5-2.png");
+
 background-size: 100% 100% !important;
 background-repeat: no-repeat;
 
@@ -1764,6 +1764,15 @@ background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/
 
 
 }
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004001"]) .box.sepOne,
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004001"]) .box.sepOne:hover {
+
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpt5-2.png") !important;
+}
+
+
+
 
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004001"]) .box.sepOne,
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004001"]) .box.sepOne:hover {
