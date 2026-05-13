@@ -1814,13 +1814,13 @@ background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004004"]) .box.sepOne,
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004004"]) .box.sepOne:hover {
 
-    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/CpLightX4.png") !important;
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/CpLightX4-2.png") !important;
 }
 /* Second toggle */
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004004"]) .box.sepOne,
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004004"]) .box.sepOne:hover {
 
-    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/CpDarkX4.png") !important;
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/CpDarkX4-2.png") !important;
 }
 
 
