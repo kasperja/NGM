@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:23/03/2026
-	version:1.72
+	version:1.73
 
 Settings
 	
@@ -104,18 +104,18 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.72</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.73</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
 		on start:uicol = random(0,5)
 		on start:uiCH = random(0,5)
-		on start:uiCP = random(0,2)
+		on start:uiCP = random(0,3)
 		on start:dimc = random(0,1)
   	on start:uichanger = uicol
 	  on start:chchanger = uiCH
 	  on start:cpchanger = uiCP
 	  on start:dimtoggle = dimc
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.72</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.73</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
@@ -883,7 +883,7 @@ Resources
     
   *uiCP
     passive: 
-      if (uiCP>2) 
+      if (uiCP>3) 
 				uiCP is 0
 				cpchanger is 0
 			end
@@ -1639,7 +1639,7 @@ Buildings
         
   *cpchanger
         name:Cockpit Type
-        text:<#ffffff>Cockpit Type :</#> <#fde73b>[?(uiCP=0)|<b>Explorer</b>][?(uiCP=1)|<b>Freighter</b>][?(uiCP=2)|<b>Hauler</b>][?(uiCP=3)|<b></b>][?(uiCP=4)|<b>Crystal</b>][?(uiCP=5)|<b>Eclipse</b>]
+        text:<#ffffff>Cockpit Type :</#> <#fde73b>[?(uiCP=0)|<b>Explorer</b>][?(uiCP=1)|<b>Freighter</b>][?(uiCP=2)|<b>Hauler</b>][?(uiCP=3)|<b>Alien</b>][?(uiCP=4)|<b></b>][?(uiCP=5)|<b>Eclipse</b>]
         desc:Change the cockpit type.
         on click:uiCP is cpchanger
         tag:upgrades hudchanger
@@ -1652,7 +1652,7 @@ Buildings
         on click:
           uicol = random(0,5)
 		      uiCH = random(0,5)
-		      uiCP = random(0,2)
+		      uiCP = random(0,3)
 		      dimc = random(0,1)
 		      uichanger is uicol
 		      chchanger is uiCH
@@ -1994,7 +1994,7 @@ Upgrades
 			lose ResetPrestige
 			uicol = random(0,5)
 		  uiCH = random(0,5)
-		  uiCP = random(0,2)
+		  uiCP = random(0,3)
 		  dimc = random(0,1)
 		  uichanger = uicol
 		  chchanger = uiCH
@@ -2015,7 +2015,7 @@ Upgrades
 			lose ResetPrestige2
 			uicol = random(0,5)
 		  uiCH = random(0,5)
-		  uiCP = random(0,2)
+		  uiCP = random(0,3)
 		  dimc = random(0,1)
 		  uichanger = uicol
 		  chchanger = uiCH
@@ -2260,7 +2260,6 @@ CSS
   visibility :hidden !important;
 
 }
-
 
 
 
