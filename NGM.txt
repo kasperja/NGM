@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:23/03/2026
-	version:1.76
+	version:1.77
 
 Settings
 	
@@ -104,7 +104,7 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.76</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.77</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
 		on start:uicol = random(0,5)
@@ -115,7 +115,7 @@ Buttons
 	  on start:chchanger = uiCH
 	  on start:cpchanger = uiCP
 	  on start:dimtoggle = dimc
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.76</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.77</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
@@ -851,13 +851,13 @@ Resources
 	
 	*hexHandler3
     hidden
-    text:[?(uicol=0)|<#002001></#>][?(uicol=1)|<#002002></#>][?(uicol=2)|<#002003></#>][?(uicol=3)|<#002004></#>][?(uicol=4)|<#002005></#>][?(uicol=5)|<#002006></#>]
+    text:[?(uicol=0)|<#002001></#>][?(uicol=1)|<#002002></#>][?(uicol=2)|<#002003></#>][?(uicol=3)|<#002004></#>][?(uicol=4)|<#002005></#>][?(uicol=5)|<#002006></#>][?(uicol=6)|<#002001></#>]
     class:hidden hexHandler3
     tag:hexHandler3
     
   *hexHandler4
     hidden
-    text:[?(uiCH=0)|<#003001></#>][?(uiCH=1)|<#003002></#>][?(uiCH=2)|<#003003></#>][?(uiCH=3)|<#003004></#>][?(uiCH=4)|<#003005></#>][?(uiCH=5)|<#003006></#>]
+    text:[?(uiCH=0)|<#003001></#>][?(uiCH=1)|<#003002></#>][?(uiCH=2)|<#003003></#>][?(uiCH=3)|<#003004></#>][?(uiCH=4)|<#003005></#>][?(uiCH=5)|<#003006></#>][?(uiCH=6)|<#003001></#>]
     class:hidden hexHandler4
     tag:hexHandler4
     
