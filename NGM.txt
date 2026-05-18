@@ -146,7 +146,7 @@ Buttons
 Resources
   *hexHandler
     hidden
-    text:[?(spt=0)|<#001010></#>][?(spt=1)|<#001011></#>][?(spt=2)|<#001012></#>][?(spt=3)|<#001013></#>][?(spt=4)|<#001014></#>]
+    text:[?(spt=0)|<#001010></#>][?(spt=1)|<#001011></#>][?(spt=2)|<#001012></#>][?(spt=3)|<#001013></#>][?(spt=4)|<#001014></#>][?(spt=5)|<#001010></#>]
     class:hidden hexHandler
     tag:hexHandler
     
@@ -1600,7 +1600,7 @@ Buildings
 
 	*speedtoggle
         name:Throttle
-        text:Throttle : [?(spt=0)|█][?(spt=1)|█ █ █][?(spt=2)|█ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █][?(spt=4)|█ █ █  █ █ █  █ █ █  █ █ █ <b>MAX</b>]
+        text:Throttle : [?(spt=0)|█][?(spt=1)|█ █ █][?(spt=2)|█ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █][?(spt=4)|█ █ █  █ █ █  █ █ █  █ █ █ <b>MAX</b>][?(spt=5)|█]
         desc:Set the speed of the Spaceship.<//>Faster = More encounters.<//>Slower = More passive income.<//><b>Current Effect:</b><.>Encounter frequency: <b>[(100*((2+spt)/2))]%</b><.>Credits income: <b>[(20)-(spt*5)]%</b> increased.<.>Ore income: <b>[(20)-(spt*5)]%</b> increased.
     on click:spt = speedtoggle
         tag:speedtoggle
