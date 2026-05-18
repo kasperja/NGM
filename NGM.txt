@@ -822,6 +822,12 @@ Resources
 		  multiply yield of goldenCarrots by 1.0
 		  multiply yield of tsc by 1.0
 		end
+		if (spt==5)
+			multiply yield of bunnies by 1.20
+		  multiply yield of talz by 1.20
+		  multiply yield of goldenCarrots by 1.20
+		  multiply yield of tsc by 1.20
+		end
 		end
     hidden
 
