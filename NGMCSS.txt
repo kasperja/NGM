@@ -1416,7 +1416,7 @@ width: 100% !important;
 color: #eeeeee !important;
 border: 0px;
 border: 0px;
-top: -60%;
+top: -63%;
 left:0px;
 
 
@@ -1494,7 +1494,7 @@ width: 100% !important;
 color: #eeeeee !important;
 border: 0px;
 border: 0px;
-top: -60%;
+top: -63%;
 left:0px;
 
 
@@ -1571,7 +1571,7 @@ width: 100% !important;
 color: #eeeeee !important;
 border: 0px;
 border: 0px;
-top: -60%;
+top: -63%;
 left:0px;
 
 
@@ -1771,6 +1771,12 @@ background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/
     background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpt5-2.png") !important;
 }
 
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001020"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004001"]) .box.sepOne,
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001020"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004001"]) .box.sepOne:hover {
+
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpt5-2.png") !important;
+}
+
 
 
 
@@ -1787,6 +1793,12 @@ background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/
 
     background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDlightX1.png") !important;
 }
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001020"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004002"]) .box.sepOne,
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001020"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004002"]) .box.sepOne:hover {
+
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDlightX1.png") !important;
+}
 /* Second toggle */
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004002"]) .box.sepOne,
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004002"]) .box.sepOne:hover {
@@ -1799,13 +1811,19 @@ background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004003"]) .box.sepOne,
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004003"]) .box.sepOne:hover {
 
-    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDlightX3.png") !important;
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDlightX3-2.png") !important;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001020"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004003"]) .box.sepOne,
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001020"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004003"]) .box.sepOne:hover {
+
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDlightX3-2.png") !important;
 }
 /* Second toggle */
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004003"]) .box.sepOne,
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004003"]) .box.sepOne:hover {
 
-    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDdarkX3.png") !important;
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDdarkX3-2.png") !important;
 }
 
 
@@ -1814,13 +1832,19 @@ background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004004"]) .box.sepOne,
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001018"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004004"]) .box.sepOne:hover {
 
-    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/CpLightX4-2.png") !important;
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDlightX4-3.png") !important;
+}
+
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001020"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004004"]) .box.sepOne,
+#content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001020"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004004"]) .box.sepOne:hover {
+
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDlightX4-3.png") !important;
 }
 /* Second toggle */
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004004"]) .box.sepOne,
 #content:has(#box-main .hexHandler2 .thing-text span[style*="color:#001019"]):has(#box-main .hexHandler5 .thing-text span[style*="color:#004004"]) .box.sepOne:hover {
 
-    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/CpDarkX4-2.png") !important;
+    background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDdarkX4-3.png") !important;
 }
 
 
