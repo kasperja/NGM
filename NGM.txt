@@ -1606,7 +1606,7 @@ Buildings
 
 	*speedtoggle
         name:Throttle
-        text:Throttle : [?(spt=0)|█][?(spt=1)|█ █ █][?(spt=2)|█ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █][?(spt=4)|█ █ █  █ █ █  █ █ █  █ █ █ <b>MAX</b>][?(spt=5)|█]
+        text:Throttle : [?(spt=0)|█][?(spt=1)|█ █ █][?(spt=2)|█ █ █  █ █ █][?(spt=3)|█ █ █  █ █ █  █ █ █][?(spt=4)|█ █ █  █ █ █  █ █ █  █ █ █ <b>MAX</b>][?(spt=5)|]
         desc:Set the speed of the Spaceship.<//>Faster = More encounters.<//>Slower = More passive income.<//><b>Current Effect:</b><.>Encounter frequency: <b>[?(spt<5)|[(100*((2+spt)/2))]%</b><.>Credits income: <b>[(20)-(spt*5)]%</b> increased.<.>Ore income: <b>[(20)-(spt*5)]%</b> increased.][?(spt=5)|[(100)]%</b><.>Credits income: <b>[(20)]%</b> increased.<.>Ore income: <b>[(20)]%</b> increased.]
     on click:spt = speedtoggle
         tag:speedtoggle
