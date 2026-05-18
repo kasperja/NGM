@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:23/03/2026
-	version:1.75
+	version:1.76
 
 Settings
 	
@@ -104,7 +104,7 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.75</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.76</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
 		on start:uicol = random(0,5)
@@ -115,7 +115,7 @@ Buttons
 	  on start:chchanger = uiCH
 	  on start:cpchanger = uiCP
 	  on start:dimtoggle = dimc
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.75</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.76</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
@@ -863,7 +863,7 @@ Resources
     
   *hexHandler5
     hidden
-    text:[?(uiCP=0)|<#004001></#>][?(uiCP=1)|<#004002></#>][?(uiCP=2)|<#004003></#>][?(uiCP=3)|<#004004></#>][?(uiCP=4)|<#004005></#>][?(uiCP=5)|<#004001></#>]
+    text:[?(uiCP=0)|<#004001></#>][?(uiCP=1)|<#004002></#>][?(uiCP=2)|<#004003></#>][?(uiCP=3)|<#004004></#>][?(uiCP=4)|<#004001></#>]
     class:hidden hexHandler5
     tag:hexHandler5
     
