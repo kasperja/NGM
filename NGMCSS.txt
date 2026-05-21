@@ -300,16 +300,32 @@ background-repeat: no-repeat;
 {
  	
  }
+#box-things-Buttons{
+width: 100%;
+height: 100%;
 
+
+
+}
 
 #thing-0
   {
-   	transform: translate(-50%, -50%) !important;
-	left: 50% !important;
+    position: absolute !important;
+   	
+   	
+  	 
     background-repeat: no-repeat;
     border-radius:50%;
     background:#00000000;
 	 
+	left: 50% !important;
+    top: 29% !important;
+
+    
+    width: 250px;
+    height: 250px;
+    
+    margin: -125px !important;
 	
  
 /*-webkit-animation-name: spin;
@@ -902,6 +918,26 @@ background-repeat: no-repeat;
 
 transition: 0.4s;
 }
+
+#box-lazers{
+position: absolute !important;
+height: 100% !important;
+width: 100% !important;
+color: #eeeeee !important;
+border: 0px;
+border: 0px;
+top: 0px;
+left:0px;
+background-size: cover !important;
+z-index:-1100;
+background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/Lazers-4.png") !important;
+    opacity: 0;
+background-size: 100% 100% !important;
+background-repeat: no-repeat;
+transition: opacity 2.3s;
+
+
+}
 .box.sepTwo,.box.sepTwo:hover{
 
 width: 200%;
@@ -977,12 +1013,15 @@ background-position: center center;}
 .thing.shiny.noClick.noText{
 visibility: hidden !important;
 }
-
+#box-buttons{
+top: 10% !important;
+}
 #thing-0{
-	transform: translate(0px, -128px) rotate(0deg) !important;
+
+	
 	transition: 0.3s !important;
 	transition-timing-function: ease-in-out;
-	left: 50% !important;
+	
     background-repeat: no-repeat;
     border-radius:50%;
     background:#00000000;
@@ -990,6 +1029,8 @@ border: 2px !important;
 border-color: #ffde00EE !important;
 background-color: #eeeeee00 !important;
 border-style: dashed dashed dashed dashed !important;
+
+  
 
 }
 #thing-0:hover{
@@ -1001,7 +1042,7 @@ border-style: solid solid solid solid !important;
 }
 #thing-0:active{
 
-	left: 50% !important;
+	
 border: 4px !important;
 border-color: #ff7800EE !important;
 background-color: #eeeeee00 !important;
@@ -1864,6 +1905,20 @@ background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/
 
     background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/cpPSDdarkX5-4.png") !important;
 }
+
+
+
+#content:has(#thing-0:hover) #box-lazers {
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+#content:has(#thing-0:active) #box-lazers {
+
+    opacity: 1;
+    transition:opacity 0.1s;
+}
+
 
 
 
