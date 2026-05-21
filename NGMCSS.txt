@@ -930,7 +930,7 @@ top: 0px;
 left:0px;
 background-size: cover !important;
 z-index:-1100;
-background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/Lazers-4.png") !important;
+background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/Lazers-5.png") !important;
     opacity: 0;
 background-size: 100% 100% !important;
 background-repeat: no-repeat;
