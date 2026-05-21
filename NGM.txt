@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:23/03/2026
-	version:1.81
+	version:1.82
 
 Settings
 	
@@ -105,8 +105,8 @@ Layout
 Buttons
 	*bunnyButton
 		name:Blaster
-		desc:Blast smaller asteroids to earn credits.
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.81</#>
+		desc:Blast smaller asteroids to earn credits.<//><b>Effect:</b><.>Produces <b>20%</b> of your current Credits per second per click, with a minimum of 1 Credit per click.<.>Current production : <b>[(bunny:ps*0.2)]</b> Credits per click.
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.82</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
 		on start:uicol = random(0,5)
@@ -117,11 +117,19 @@ Buttons
 	  on start:chchanger = uiCH
 	  on start:cpchanger = uiCP
 	  on start:dimtoggle = dimc
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.81</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.82</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
-		on click:yield 1 bunny
-		on click:yield 1 talz
+		on click:
+		  if ((bunny:ps*0.2)<=1)
+		    yield 1 bunny
+		    yield 1 talz
+		  end
+		  if ((bunny:ps*0.2)>1)
+		    yield (bunny:ps*0.2) bunny
+		    yield (bunny:ps*0.2) talz
+		  end
+		end
 		//on click:yield 1 prestigio2
 		//on click:yield 500000000000000000000000000 bunnies
 	  //on click:yield 500000000000000000000000000 talz
@@ -1890,10 +1898,8 @@ Upgrades
 
 	*apple2
 		name:Targeting Software
-		desc:Optimizes targeting for all weapons.<//><b>Effect:</b><.>Credits/click x10<.>Credit production +10%
+		desc:Optimizes targeting for all weapons.<//><b>Effect:</b><.>Credit production +10%
 		cost:8000000000 bunnies
-		passive:multiply bunny yield of bunnyButton by 10
-		passive:multiply talz yield of bunnyButton by 10
 		passive:multiply yield of bunnies by 1.10
 		passive:multiply yield of talz by 1.10
 		req: (ionfrigates>=2)
@@ -2268,7 +2274,6 @@ CSS
   visibility :hidden !important;
 
 }
-
 
 
 
