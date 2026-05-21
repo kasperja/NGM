@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:23/03/2026
-	version:1.80
+	version:1.81
 
 Settings
 	
@@ -106,7 +106,7 @@ Buttons
 	*bunnyButton
 		name:Blaster
 		desc:Blast smaller asteroids to earn credits.
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.80</#>
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.81</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
 		on start:uicol = random(0,5)
@@ -117,7 +117,7 @@ Buttons
 	  on start:chchanger = uiCH
 	  on start:cpchanger = uiCP
 	  on start:dimtoggle = dimc
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.80</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.81</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:yield 1 bunny
