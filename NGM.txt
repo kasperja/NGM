@@ -4,7 +4,7 @@ Let's make a game!
 	desc:Journey out, trade and upgrade your spaceship.<//><//><b>Bulk Buying:</b><.>Hold <b>Shift</b> to buy 50 each time.<//><//><b>Credits:</b><.>Programming Assistance: <b>Fractyl Cookie</b>.<.>Programming Assistance: <b>FragileFrenzy</b>.
 	created:07/06/2022
 	updated:23/03/2026
-	version:1.83
+	version:1.84
 
 Settings
 	
@@ -105,8 +105,8 @@ Layout
 Buttons
 	*bunnyButton
 		name:Blaster
-		desc:Blast smaller asteroids to earn credits.<//><b>Effect:</b><.>Produces <b>20%</b> of your current Credits per second per click, with a minimum of 1 Credit per click.<.>Current production : [?((bunny:ps*0.2)>1)|<b>[(bunny:ps*0.2)]</b> Credits][?((bunny:ps*0.2)<=1)|<b>1</b> Credit] per click.
-		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.83</#>
+		desc:Blast smaller asteroids to earn credits.<//><b>Effect:</b><.>Produces <b>20%</b> of your current Credits per second per click, with a minimum of 1 Credit per click.<.>Current production : [?((bunny:ps*0.2)>=2)|<b>[(bunny:ps*0.2)]</b> Credits][?((bunny:ps*0.2)<2)|<b>1</b> Credit] per click.
+		on start:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.84</#>
 		on start:spt = 1
 		on start:yield 1 speedtoggle
 		on start:uicol = random(0,5)
@@ -117,7 +117,7 @@ Buttons
 	  on start:chchanger = uiCH
 	  on start:cpchanger = uiCP
 	  on start:dimtoggle = dimc
-		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.83</#>
+		on load:log Welcome to the </#></><t>Hellion Scarab</#> <//> Game version: 1.84</#>
 		on load:log Game loaded.
 		on click:anim icon wobble
 		on click:
