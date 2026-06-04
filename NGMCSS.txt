@@ -1443,17 +1443,10 @@ body {
   overflow:hidden;
 }
 
-.smallest, .smaller, .small, .regular, .big {
+.regular, .big {
   background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars8.png");
-  background-size:100% 200%;
-  height:200%;
-  width:100%;
   display:inline-block;
   position:absolute;
-  
-  
-  height: 200% !important;
-width: 100% !important;
 color: #eeeeee !important;
 border: 0px;
 border: 0px;
@@ -1461,22 +1454,10 @@ top: -63%;
 left:0px;
 
 
-background-size: 100% 100% !important;
+background-size: cover !important;
 background-repeat: no-repeat;
 }
 
-.smallest {
-  animation: smallest 5s var(--curve) 0s infinite normal;
-  z-index:-1005;
-}
-.smaller {
-  animation: smaller 5s var(--curve) 0s infinite normal;
-  z-index:-1004;
-}
-.small {
-  animation: small 5s var(--curve) 0s infinite normal;
-  z-index:-1003;
-}
 .regular{
   animation: regular 20s var(--curve) 0s infinite normal;
   z-index:-1002;
@@ -1486,28 +1467,6 @@ background-repeat: no-repeat;
   right:0;
   z-index:-1001;
 }
-
-
-
-  
-
-@keyframes smallest {
-  from {
-    transform:scale(0.0001,0.0001);
-    opacity:0;
-  }
-  to {transform:scale(0.001,0.001);}
-}  
-
-@keyframes smaller {
-  from {transform:scale(0.001,0.001);}
-  to {transform:scale(0.01,0.01);}
-}  
-
-@keyframes small {
-  from {transform:scale(0.01,0.01);}
-  to {transform:scale(0.1,0.1);}
-}  
 
 
 @keyframes regular {
@@ -1521,11 +1480,9 @@ background-repeat: no-repeat;
   
 }
 
-.smallest2, .smaller2, .small2, .regular2, .big2 {
+.regular2, .big2 {
   background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars8.png");
-  background-size:100% 200%;
-  height:200%;
-  width:100%;
+  
   display:inline-block;
   position:absolute;
   
@@ -1539,22 +1496,10 @@ top: -63%;
 left:0px;
 
 
-background-size: 100% 100% !important;
+background-size: cover !important;
 background-repeat: no-repeat;
 }
 
-.smallest2 {
-  animation: smallest2 10s var(--curve) 0s infinite normal;
-  z-index:-1005;
-}
-.smaller2 {
-  animation: smaller2 10s var(--curve) 0s infinite normal;
-  z-index:-1004;
-}
-.small2 {
-  animation: small2 10s var(--curve) 0s infinite normal;
-  z-index:-1003;
-}
 .regular2{
   animation: regular2 40s var(--curve) 0s infinite normal;
   z-index:-1002;
@@ -1564,27 +1509,7 @@ background-repeat: no-repeat;
   animation: big2 40s var(--curve) 0s infinite normal;
   right:0;
   z-index:-1001;
-}
-
-  
-
-@keyframes smallest2 {
-  from {
-    transform:scale(0.0001,0.0001) rotate(140deg);
-    opacity:0;
-  }
-  to {transform:scale(0.001,0.001) rotate(140deg);}
-}  
-
-@keyframes smaller2 {
-  from {transform:scale(0.001,0.001) rotate(140deg);}
-  to {transform:scale(0.01,0.01) rotate(140deg);}
-}  
-
-@keyframes small2 {
-  from {transform:scale(0.01,0.01) rotate(140deg);}
-  to {transform:scale(0.1,0.1) rotate(140deg);}
-}  
+} 
 
 
 @keyframes regular2 {
@@ -1598,11 +1523,9 @@ background-repeat: no-repeat;
   
 }
 
-.smallest3, .smaller3, .small3, .regular3, .big3 {
+.regular3, .big3 {
   background-image:url("https://raw.githubusercontent.com/kasperja/NGM/refs/heads/main/stars8.png");
-  background-size:100% 200%;
-  height:200%;
-  width:100%;
+  
   display:inline-block;
   position:absolute;
   
@@ -1616,22 +1539,11 @@ top: -63%;
 left:0px;
 
 
-background-size: 100% 100% !important;
+background-size: cover !important;
 background-repeat: no-repeat;
 }
 
-.smallest3 {
-  animation: smallest3 14s var(--curve) 0s infinite normal;
-  z-index:-1005;
-}
-.smaller3 {
-  animation: smaller3 14s var(--curve) 0s infinite normal;
-  z-index:-1004;
-}
-.small3 {
-  animation: small3 14s var(--curve) 0s infinite normal;
-  z-index:-1003;
-}
+
 .regular3{
   animation: regular3 80s var(--curve) 0s infinite normal;
   z-index:-1002;
@@ -1641,27 +1553,7 @@ background-repeat: no-repeat;
   animation: big3 80s var(--curve) 0s infinite normal;
   right:0;
   z-index:-1001;
-}
-
-  
-
-@keyframes smallest3 {
-  from {
-    transform:scale(0.0001,0.0001) rotate(230deg);
-    opacity:0;
-  }
-  to {transform:scale(0.001,0.001) rotate(230deg);}
-}  
-
-@keyframes smaller3 {
-  from {transform:scale(0.001,0.001) rotate(230deg);}
-  to {transform:scale(0.01,0.01) rotate(230deg);}
-}  
-
-@keyframes small3 {
-  from {transform:scale(0.01,0.01) rotate(230deg);}
-  to {transform:scale(0.1,0.1) rotate(230deg);}
-}  
+} 
 
 
 @keyframes regular3 {
@@ -2426,4 +2318,14 @@ border-color: #ffe33b !important;
 padding-top: 0px !important;
 padding-bottom: 0px !important;
 padding-left: 13% !important;
+}
+
+
+.big,
+.regular,
+.big2,
+.regular2,
+.big3,
+.regular3 {
+    will-change: transform, opacity;
 }
